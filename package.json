@@ -10,10 +10,15 @@
     "Programming Languages"
   ],
   "contributes": {
-    "grammars": [{
-      "language": "ini",
-      "scopeName": "source.ZH-HiLi",
-      "path": "./syntaxes/ini.tmLanguage.json"
-    }]
+    "grammars": [
+      {
+        "language": "ini",
+        "scopeName": "source.ZH-HiLi",
+        "path": "./syntaxes/ini.tmLanguage.json"
+      }
+    ]
+  },
+  "dependencies": {
+    "vscode": "^1.1.34"
   }
 }

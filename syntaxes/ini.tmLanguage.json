@@ -3,6 +3,9 @@
 	"name": "Ini",
 	"patterns": [
 		{
+			"include": "#inline-comment"
+		},
+		{
 			"include": "#keywords"
 		},
 		{
@@ -10,11 +13,31 @@
 		}
 	],
 	"repository": {
-		"blockWords": {
+		"keywords": {
 			"patterns": [{
-				"name": "keyword.control.ini",
-				"match": "\\b(Object|Locmotor)\\b"
+				"begin": "\\b(MappedImage|Object|Locomotor|Armor|CommandButton|CommandSet|FXList|AudioEvent|ObjectCreationList|ParticleSystem|PlayerTemplate|Rank|Science|SpecialPower|DialogEvent|Upgrade|Weapon|Weather)\\b\\s(\\w+)",
+				"beginCaptures": {
+					"1": {
+						"name": "keyword.control.ini"
+					},
+					"2": {
+						"name": "entity.name.type.ini"
+					}
+				},
+				"end": "\\b(End)\\b",
+				"endCaptures": {
+					"1": {
+						"name": "keyword.control.ini"
+					}
+				},
+				"patterns": [{
+						"include": "#inline-comment"
+					}]
 			}]
+		},
+		"objectConditionStates": {
+			"name": "meta.object-condition-state.ini",
+			"match": "\\b(NONE|None|none|DAMAGED|Damaged|damaged|REALLYDAMAGED|Reallydamaged|reallydamaged|ReallyDamaged|RUBBLE|Rubble|rubble)\\b"
 		},
 		"strings": {
 			"name": "string.quoted.double.ini",
@@ -24,6 +47,27 @@
 				{
 					"name": "constant.character.escape.ini",
 					"match": "\\\\."
+				}
+			]
+		},
+		"inline-comment": {
+			"begin": "(^[ \\t]+)?(?=;)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				}
+			},
+			"end": "(?!\\G)",
+			"patterns": [
+				{
+					"begin": ";",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.comment.ini"
+						}
+					},
+					"end": "\\n",
+					"name": "comment.line.ini"
 				}
 			]
 		}
