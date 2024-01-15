@@ -1,0 +1,32 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Ini",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		}
+	],
+	"repository": {
+		"blockWords": {
+			"patterns": [{
+				"name": "keyword.control.ini",
+				"match": "\\b(Object|Locmotor)\\b"
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.ini",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.ini",
+					"match": "\\\\."
+				}
+			]
+		}
+	},
+	"scopeName": "source.ZH-HiLi"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "ZH-HiLi",
+  "displayName": "ZeroSyntax-Highlight",
+  "description": "Syntax highlighting for Zero Hour map.ini",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "grammars": [{
+      "language": "ini",
+      "scopeName": "source.ZH-HiLi",
+      "path": "./syntaxes/ini.tmLanguage.json"
+    }]
+  }
+}
