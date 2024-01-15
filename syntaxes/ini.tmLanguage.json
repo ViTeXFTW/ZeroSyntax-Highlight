@@ -6,14 +6,14 @@
 			"include": "#inline-comment"
 		},
 		{
-			"include": "#keywords"
+			"include": "#keyword"
 		},
 		{
 			"include": "#strings"
 		}
 	],
 	"repository": {
-		"keywords": {
+		"keyword": {
 			"patterns": [{
 				"begin": "\\b(MappedImage|Object|Locomotor|Armor|CommandButton|CommandSet|FXList|AudioEvent|ObjectCreationList|ParticleSystem|PlayerTemplate|Rank|Science|SpecialPower|DialogEvent|Upgrade|Weapon|Weather)\\b\\s(\\w+)",
 				"beginCaptures": {
