@@ -7,9 +7,6 @@
 		},
 		{
 			"include": "#keyword"
-		},
-		{
-			"include": "#doublequoted-strings"
 		}
 	],
 	"repository": {
@@ -24,13 +21,16 @@
 						"name": "entity.name.type.ini"
 					}
 				},
-				"end": "\\b(End)\\b",
+				"end": "\\s*\\b(End)\\b",
 				"endCaptures": {
 					"1": {
 						"name": "keyword.control.ini"
 					}
 				},
 				"patterns": [
+					{
+						"include": "#addmodule-block"
+					},
 					{
 						"include": "#assignment"
 					},
@@ -39,6 +39,28 @@
 					}
 				]
 			}]
+		},
+		"addmodule-block": {
+			"begin": "\\s*\\b(AddModule)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\s*\\b(End)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
 		},
 		"assignment": {
 			"begin": "(^[ \\t]+)?([a-zA-Z]\\w+)\\s*(\\=)\\s*",
