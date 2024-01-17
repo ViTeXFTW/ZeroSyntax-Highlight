@@ -9,13 +9,13 @@
 			"include": "#keyword"
 		},
 		{
-			"include": "#strings"
+			"include": "#doublequoted-strings"
 		}
 	],
 	"repository": {
 		"keyword": {
 			"patterns": [{
-				"begin": "\\b(MappedImage|Object|Locomotor|Armor|CommandButton|CommandSet|FXList|AudioEvent|ObjectCreationList|ParticleSystem|PlayerTemplate|Rank|Science|SpecialPower|DialogEvent|Upgrade|Weapon|Weather)\\b\\s(\\w+)",
+				"begin": "\\b(MappedImage|Object|Locomotor|Armor|CommandButton|CommandSet|FXList|AudioEvent|ObjectCreationList|ParticleSystem|PlayerTemplate|Rank|Science|SpecialPower|DialogEvent|Upgrade|Weapon|Weather)\\s([a-zA-Z]\\w+)",
 				"beginCaptures": {
 					"1": {
 						"name": "keyword.control.ini"
@@ -30,16 +30,55 @@
 						"name": "keyword.control.ini"
 					}
 				},
-				"patterns": [{
+				"patterns": [
+					{
+						"include": "#assignment"
+					},
+					{
 						"include": "#inline-comment"
-					}]
+					}
+				]
 			}]
 		},
-		"objectConditionStates": {
-			"name": "meta.object-condition-state.ini",
-			"match": "\\b(NONE|None|none|DAMAGED|Damaged|damaged|REALLYDAMAGED|Reallydamaged|reallydamaged|ReallyDamaged|RUBBLE|Rubble|rubble)\\b"
+		"assignment": {
+			"begin": "(^[ \\t]+)?([a-zA-Z]\\w+)\\s*(\\=)\\s*",
+			"beginCaptures": {
+				"2": {
+					"name": "variable.parameter"
+				},
+				"3": {
+					"name": "punctuation.whitespace.ini"
+				}
+			},
+			"end": "(?!\\G)",
+			"patterns": [
+				{
+					"include": "#string"
+				},
+				{
+					"include": "#numbers"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
 		},
-		"strings": {
+		"string": {
+			"begin": "(^[ \\t]+)?(?=[a-zA-Z])",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				}
+			},
+			"end": "(?!\\G)",
+			"patterns": [
+				{
+					"match": "[a-zA-Z][\\w]*",
+					"name": "string.unquoted.ini"
+				}
+			]
+		},
+		"doublequoted-strings": {
 			"name": "string.quoted.double.ini",
 			"begin": "\"",
 			"end": "\"",
@@ -47,6 +86,21 @@
 				{
 					"name": "constant.character.escape.ini",
 					"match": "\\\\."
+				}
+			]
+		},
+		"numbers": {
+			"begin": "(^[ \\t]+)?(?=\\d)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				}
+			},
+			"end": "(?!\\G)",
+			"patterns": [
+				{
+					"match": "\\d[\\.\\d]*",
+					"name": "constant.numeric.ini"
 				}
 			]
 		},
