@@ -6,40 +6,191 @@
 			"include": "#inline-comment"
 		},
 		{
-			"include": "#keyword"
+			"include": "#object-class"
 		},
 		{
-			"include": "#strings"
+			"include": "#locomotor-class"
 		}
 	],
 	"repository": {
-		"keyword": {
-			"patterns": [{
-				"begin": "\\b(MappedImage|Object|Locomotor|Armor|CommandButton|CommandSet|FXList|AudioEvent|ObjectCreationList|ParticleSystem|PlayerTemplate|Rank|Science|SpecialPower|DialogEvent|Upgrade|Weapon|Weather)\\b\\s(\\w+)",
-				"beginCaptures": {
-					"1": {
-						"name": "keyword.control.ini"
+		"locomotor-class": {
+			"patterns": [
+				{
+					"begin": "\\b(Locomotor)\\s([a-zA-Z]\\w+)",
+					"beginCaptures": {
+						"1": {
+							"name": "keyword.control.ini"
+						},
+						"2": {
+							"name": "entity.name.type.ini"
+						}
 					},
-					"2": {
-						"name": "entity.name.type.ini"
-					}
-				},
-				"end": "\\b(End)\\b",
-				"endCaptures": {
-					"1": {
-						"name": "keyword.control.ini"
-					}
-				},
-				"patterns": [{
-						"include": "#inline-comment"
-					}]
-			}]
+					"end": "\\s*\\b(End)\\b",
+					"endCaptures": {
+						"1": {
+							"name": "keyword.control.ini"
+						}
+					},
+					"patterns": [
+						{
+							"include": "#assignment"
+						},
+						{
+							"include": "#inline-comment"
+						}
+					]
+				}
+			]
 		},
-		"objectConditionStates": {
-			"name": "meta.object-condition-state.ini",
-			"match": "\\b(NONE|None|none|DAMAGED|Damaged|damaged|REALLYDAMAGED|Reallydamaged|reallydamaged|ReallyDamaged|RUBBLE|Rubble|rubble)\\b"
+		"object-class": {
+			"patterns": [
+				{
+					"begin": "\\b(Object)\\s([a-zA-Z]\\w+)",
+					"beginCaptures": {
+						"1": {
+							"name": "keyword.control.ini"
+						},
+						"2": {
+							"name": "entity.name.type.ini"
+						}
+					},
+					"end": "\\s*\\b(End)\\b",
+					"endCaptures": {
+						"1": {
+							"name": "keyword.control.ini"
+						}
+					},
+					"patterns": [
+						{
+							"include": "#addmodule-block"
+						},
+						{
+							"include": "#inline-removemodule"
+						},
+						{
+							"include": "#assignment"
+						},
+						{
+							"include": "#inline-comment"
+						}
+					]
+				}
+			]
 		},
-		"strings": {
+		"addmodule-block": {
+			"begin": "\\s*\\b(AddModule)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\s*\\b(End)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#draw-block"
+				},
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"inline-removemodule": {
+			"match": "\\s*\\b(RemoveModule)\\b\\s*([a-zA-Z]\\w+)",
+			"captures": {
+				"1": {
+					"name": "keyword.control.ini"
+				},
+				"2": {
+					"name": "storage.type.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"draw-block": {
+			"begin": "\\s*\\b(Draw)\\b\\s*(\\=)\\s*([a-zA-Z]\\w+)\\s*([a-zA-Z][\\w_]+)",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				},
+				"2": {
+					"name": "keyword.operator.assignment.ini"
+				},
+				"3": {
+					"name": "entity.name.function"
+				},
+				"4": {
+					"name": "storage.type.ini"
+				}
+			},
+			"end": "\\s*\\b(End)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"assignment": {
+			"begin": "(^[ \\t]+)?([a-zA-Z]\\w+)\\s*(\\=)\\s*",
+			"beginCaptures": {
+				"2": {
+					"name": "variable.parameter"
+				},
+				"3": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"end": "(?!\\G)",
+			"patterns": [
+				{
+					"include": "#string"
+				},
+				{
+					"include": "#doublequoted-strings"
+				},
+				{
+					"include": "#numbers"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"string": {
+			"begin": "(^[ \\t]+)?(?=[a-zA-Z])",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				}
+			},
+			"end": "(?!\\G)",
+			"patterns": [
+				{
+					"match": "[a-zA-Z][ _a-zA-Z]*",
+					"name": "string.unquoted.ini"
+				}
+			]
+		},
+		"doublequoted-strings": {
 			"name": "string.quoted.double.ini",
 			"begin": "\"",
 			"end": "\"",
@@ -49,6 +200,24 @@
 					"match": "\\\\."
 				}
 			]
+		},
+		"numbers": {
+			"begin": "(^[ \\t]+)?(?=\\d)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				}
+			},
+			"end": "(?!\\G)",
+			"patterns": [
+				{
+					"include": "#double"
+				}
+			]
+		},
+		"double": {
+			"match": "\\d[(\\.\\d]*( \\d[(\\.\\d]*)?",
+			"name": "constant.numeric.ini"
 		},
 		"inline-comment": {
 			"begin": "(^[ \\t]+)?(?=;)",
