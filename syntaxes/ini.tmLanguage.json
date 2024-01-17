@@ -6,42 +6,76 @@
 			"include": "#inline-comment"
 		},
 		{
-			"include": "#keyword"
+			"include": "#object-class"
+		},
+		{
+			"include": "#locomotor-class"
 		}
 	],
 	"repository": {
-		"keyword": {
-			"patterns": [{
-				"begin": "\\b(MappedImage|Object|Locomotor|Armor|CommandButton|CommandSet|FXList|AudioEvent|ObjectCreationList|ParticleSystem|PlayerTemplate|Rank|Science|SpecialPower|DialogEvent|Upgrade|Weapon|Weather)\\s([a-zA-Z]\\w+)",
-				"beginCaptures": {
-					"1": {
-						"name": "keyword.control.ini"
+		"locomotor-class": {
+			"patterns": [
+				{
+					"begin": "\\b(Locomotor)\\s([a-zA-Z]\\w+)",
+					"beginCaptures": {
+						"1": {
+							"name": "keyword.control.ini"
+						},
+						"2": {
+							"name": "entity.name.type.ini"
+						}
 					},
-					"2": {
-						"name": "entity.name.type.ini"
-					}
-				},
-				"end": "\\s*\\b(End)\\b",
-				"endCaptures": {
-					"1": {
-						"name": "keyword.control.ini"
-					}
-				},
-				"patterns": [
-					{
-						"include": "#addmodule-block"
+					"end": "\\s*\\b(End)\\b",
+					"endCaptures": {
+						"1": {
+							"name": "keyword.control.ini"
+						}
 					},
-					{
-						"include": "#inline-removemodule"
+					"patterns": [
+						{
+							"include": "#assignment"
+						},
+						{
+							"include": "#inline-comment"
+						}
+					]
+				}
+			]
+		},
+		"object-class": {
+			"patterns": [
+				{
+					"begin": "\\b(Object)\\s([a-zA-Z]\\w+)",
+					"beginCaptures": {
+						"1": {
+							"name": "keyword.control.ini"
+						},
+						"2": {
+							"name": "entity.name.type.ini"
+						}
 					},
-					{
-						"include": "#assignment"
+					"end": "\\s*\\b(End)\\b",
+					"endCaptures": {
+						"1": {
+							"name": "keyword.control.ini"
+						}
 					},
-					{
-						"include": "#inline-comment"
-					}
-				]
-			}]
+					"patterns": [
+						{
+							"include": "#addmodule-block"
+						},
+						{
+							"include": "#inline-removemodule"
+						},
+						{
+							"include": "#assignment"
+						},
+						{
+							"include": "#inline-comment"
+						}
+					]
+				}
+			]
 		},
 		"addmodule-block": {
 			"begin": "\\s*\\b(AddModule)\\b",
