@@ -95,6 +95,9 @@
 					"include": "#draw-block"
 				},
 				{
+					"include": "#body-block"
+				},
+				{
 					"include": "#assignment"
 				},
 				{
@@ -118,6 +121,37 @@
 				}
 			]
 		},
+		"body-block": {
+			"begin": "\\s*\\b(Body)\\b\\s*(\\=)\\s*([a-zA-Z]\\w+)\\s*([a-zA-Z][\\w_]+)",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				},
+				"2": {
+					"name": "keyword.operator.assignment.ini"
+				},
+				"3": {
+					"name": "entity.name.function"
+				},
+				"4": {
+					"name": "storage.type.ini"
+				}
+			},
+			"end": "\\s*\\b(End)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
 		"draw-block": {
 			"begin": "\\s*\\b(Draw)\\b\\s*(\\=)\\s*([a-zA-Z]\\w+)\\s*([a-zA-Z][\\w_]+)",
 			"beginCaptures": {
@@ -132,6 +166,62 @@
 				},
 				"4": {
 					"name": "storage.type.ini"
+				}
+			},
+			"end": "\\s*\\b(End)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#drawblock-defaultstate"
+				},
+				{
+					"include": "#drawblock-conditionstate"
+				},
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"drawblock-defaultstate": {
+			"begin": "\\s*\\b(DefaultConditionState)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\s*\\b(End)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"drawblock-conditionstate": {
+			"begin": "\\s*\\b(ConditionState)\\b\\s*(\\=)\\s*\\b([Nn]one|[Dd]amaged|[Rr]eally[Dd]amaged|[Rr]ubble)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				},
+				"2": {
+					"name": "keyword.operator.assignment.ini"
+				},
+				"3": {
+					"name": "variable.other.constant.ini"
 				}
 			},
 			"end": "\\s*\\b(End)\\b",
@@ -162,6 +252,9 @@
 			"end": "(?!\\G)",
 			"patterns": [
 				{
+					"include": "#boolean"
+				},
+				{
 					"include": "#string"
 				},
 				{
@@ -185,7 +278,7 @@
 			"end": "(?!\\G)",
 			"patterns": [
 				{
-					"match": "[a-zA-Z][ _a-zA-Z]*",
+					"match": "[a-zA-Z][ \\._a-zA-Z]*",
 					"name": "string.unquoted.ini"
 				}
 			]
@@ -202,7 +295,7 @@
 			]
 		},
 		"numbers": {
-			"begin": "(^[ \\t]+)?(?=\\d)",
+			"begin": "(^[ \\t]+)?(?=-?\\d)",
 			"beginCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -216,8 +309,12 @@
 			]
 		},
 		"double": {
-			"match": "\\d[(\\.\\d]*( \\d[(\\.\\d]*)?",
+			"match": "-?\\d[(\\.\\d]*( \\d[(\\.\\d]*)?",
 			"name": "constant.numeric.ini"
+		},
+		"boolean": {
+			"match": "([Yy]es|[Nn]o|[Tt]rue|[Ff]alse)",
+			"name": "constant.language.boolean.ini"
 		},
 		"inline-comment": {
 			"begin": "(^[ \\t]+)?(?=;)",
