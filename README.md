@@ -1,4 +1,3 @@
-![image](https://github.com/ViTeXFTW/ZeroSyntax-Highlight/assets/90150876/1fdacaad-f0f2-4df2-83c9-7494e80ebfa2)
 <div align="center">
     <h1>ZeroSyntax-Highlight</h1>
     <img src="https://github.com/ViTeXFTW/ZeroSyntax/blob/main/ZeroSyntaxLogo128.png?raw=true">
