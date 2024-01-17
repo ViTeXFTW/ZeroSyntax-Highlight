@@ -1,4 +1,4 @@
-
+![image](https://github.com/ViTeXFTW/ZeroSyntax-Highlight/assets/90150876/1fdacaad-f0f2-4df2-83c9-7494e80ebfa2)
 <div align="center">
     <h1>ZeroSyntax-Highlight</h1>
     <img src="https://github.com/ViTeXFTW/ZeroSyntax/blob/main/ZeroSyntaxLogo128.png?raw=true">
@@ -14,7 +14,8 @@ The project will firstly focus on supporting map.ini files which works in the ba
 ![image](https://github.com/ViTeXFTW/ZeroSyntax-Highlight/assets/90150876/1c46c2ca-8576-4b35-b98c-be17484c7ae0)
 
 ### ZeroSyntax Highlighting
-![image](https://github.com/ViTeXFTW/ZeroSyntax-Highlight/assets/90150876/5d0318a6-7585-44d6-ae61-a06fa18e0937)
+![image](https://github.com/ViTeXFTW/ZeroSyntax-Highlight/assets/90150876/3c63c537-2e6f-40b1-b23a-9b1eea6aba4c)
+
 
 
 
