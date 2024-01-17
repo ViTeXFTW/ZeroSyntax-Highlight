@@ -58,6 +58,9 @@
 			},
 			"patterns": [
 				{
+					"include": "#draw-block"
+				},
+				{
 					"include": "#assignment"
 				},
 				{
@@ -81,6 +84,37 @@
 				}
 			]
 		},
+		"draw-block": {
+			"begin": "\\s*\\b(Draw)\\b\\s*(\\=)\\s*([a-zA-Z]\\w+)\\s*([a-zA-Z][\\w_]+)",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				},
+				"2": {
+					"name": "keyword.operator.assignment.ini"
+				},
+				"3": {
+					"name": "entity.name.function"
+				},
+				"4": {
+					"name": "storage.type.ini"
+				}
+			},
+			"end": "\\s*\\b(End)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
 		"assignment": {
 			"begin": "(^[ \\t]+)?([a-zA-Z]\\w+)\\s*(\\=)\\s*",
 			"beginCaptures": {
@@ -88,13 +122,16 @@
 					"name": "variable.parameter"
 				},
 				"3": {
-					"name": "punctuation.whitespace.ini"
+					"name": "keyword.operator.assignment.ini"
 				}
 			},
 			"end": "(?!\\G)",
 			"patterns": [
 				{
 					"include": "#string"
+				},
+				{
+					"include": "#doublequoted-strings"
 				},
 				{
 					"include": "#numbers"
