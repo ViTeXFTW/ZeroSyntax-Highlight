@@ -92,10 +92,7 @@
 			},
 			"patterns": [
 				{
-					"include": "#draw-block"
-				},
-				{
-					"include": "#body-block"
+					"include": "#modules"
 				},
 				{
 					"include": "#assignment"
@@ -116,6 +113,75 @@
 				}
 			},
 			"patterns": [
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"modules": {
+			"patterns": [
+				{
+					"include": "#draw-block"
+				},
+				{
+					"include": "#body-block"
+				},
+				{
+					"include": "#behavior-block"
+				}
+			]
+		},
+		"behavior-block": {
+			"begin": "\\s*\\b(Behavior)\\b\\s*(\\=)\\s*([a-zA-Z]\\w+)\\s*([a-zA-Z][\\w_]+)",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				},
+				"2": {
+					"name": "keyword.operator.assignment.ini"
+				},
+				"3": {
+					"name": "entity.name.function"
+				},
+				"4": {
+					"name": "storage.type.ini"
+				}
+			},
+			"end": "\\s*\\b(End)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#behavior-turret"
+				},
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"behavior-turret": {
+			"begin": "\\s*\\b(Turret)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\s*\\b(End)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
 				{
 					"include": "#inline-comment"
 				}
@@ -212,16 +278,13 @@
 			]
 		},
 		"drawblock-conditionstate": {
-			"begin": "\\s*\\b(ConditionState)\\b\\s*(\\=)\\s*\\b([Nn]one|[Dd]amaged|[Rr]eally[Dd]amaged|[Rr]ubble)\\b",
+			"begin": "\\s*\\b(ConditionState)\\b\\s*(\\=)\\s*(?=[a-zA-Z])",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.control.ini"
 				},
 				"2": {
 					"name": "keyword.operator.assignment.ini"
-				},
-				"3": {
-					"name": "variable.other.constant.ini"
 				}
 			},
 			"end": "\\s*\\b(End)\\b",
@@ -231,6 +294,10 @@
 				}
 			},
 			"patterns": [
+				{
+					"match": "\\b(NONE|DAMAGED|REALLYDAMAGED|RUBBLE|DOOR_1_OPENING|DOOR_1_CLOSING)+",
+					"name": "variable.other.constant.ini"
+				},
 				{
 					"include": "#assignment"
 				},
@@ -252,6 +319,9 @@
 			"end": "(?!\\G)",
 			"patterns": [
 				{
+					"include": "#locomotor-types"
+				},
+				{
 					"include": "#boolean"
 				},
 				{
@@ -268,6 +338,17 @@
 				}
 			]
 		},
+		"locomotor-types": {
+			"match": "\\s*\\b(SET_NORMAL|SET_WANDER|SET_PANIC)\\s*([a-zA-Z]\\w+)",
+			"captures": {
+				"1": {
+					"name": "variable.other.constant.ini"
+				},
+				"2": {
+					"name": "string.unquoted.ini"
+				}
+			}
+		},
 		"string": {
 			"begin": "(^[ \\t]+)?(?=[a-zA-Z])",
 			"beginCaptures": {
@@ -278,7 +359,7 @@
 			"end": "(?!\\G)",
 			"patterns": [
 				{
-					"match": "[a-zA-Z][ \\._a-zA-Z]*",
+					"match": "[a-zA-Z][ \\._a-zA-Z0-9]*",
 					"name": "string.unquoted.ini"
 				}
 			]
