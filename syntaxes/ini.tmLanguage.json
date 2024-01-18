@@ -62,6 +62,21 @@
 					},
 					"patterns": [
 						{
+							"include": "#Object-WeaponSet"
+						},
+						{
+							"include": "#Object-ArmorSet"
+						},
+						{
+							"include": "#Object-Prerequisites"
+						},
+						{
+							"include": "#UnitSpecificSounds"
+						},
+						{
+							"include": "#modules"
+						},
+						{
 							"include": "#addmodule-block"
 						},
 						{
@@ -74,6 +89,119 @@
 							"include": "#inline-comment"
 						}
 					]
+				}
+			]
+		},
+		"UnitSpecificSounds": {
+			"begin": "\\s*\\b(UnitSpecificSounds)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\s*\\b(End)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"Object-ArmorSet": {
+			"begin": "\\s*\\b(ArmorSet)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\s*\\b(End)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#WeaponArmor-condition"
+				},
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"Object-WeaponSet": {
+			"begin": "\\s*\\b(WeaponSet)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\s*\\b(End)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#WeaponArmor-condition"
+				},
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"WeaponArmor-condition": {
+			"match": "\\s*\\b(Conditions)\\s*(\\=)\\s*\\b([Nn][Oo][Nn][Ee]|[Pp][Ll][Aa][Yy][Ee][Rr]_[Uu][Pp][Gg][Rr][Aa][Dd][Ee])\\b",
+			"captures": {
+				"1": {
+					"name": "entity.name.function"
+				},
+				"2": {
+					"name": "keyword.operator.assignment.ini"
+				},
+				"3": {
+					"name": "variable.other.constant.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"Object-Prerequisites": {
+			"begin": "\\s*\\b(Prerequisites)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\s*\\b(End)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
 				}
 			]
 		},
@@ -319,6 +447,9 @@
 			"end": "(?!\\G)",
 			"patterns": [
 				{
+					"include": "#weapon-types"
+				},
+				{
 					"include": "#locomotor-types"
 				},
 				{
@@ -349,6 +480,10 @@
 				}
 			}
 		},
+		"weapon-types": {
+			"match": "\\b(PRIMARY|SECONDARY|TERTIARY)",
+			"name": "variable.other.constant.ini"
+		},
 		"string": {
 			"begin": "(^[ \\t]+)?(?=[a-zA-Z])",
 			"beginCaptures": {
@@ -359,7 +494,7 @@
 			"end": "(?!\\G)",
 			"patterns": [
 				{
-					"match": "[a-zA-Z][ \\._a-zA-Z0-9]*",
+					"match": "[a-zA-Z][ \\._a-zA-Z0-9:\\+\\-]*",
 					"name": "string.unquoted.ini"
 				}
 			]
@@ -390,12 +525,17 @@
 			]
 		},
 		"double": {
-			"match": "-?\\d[(\\.\\d]*( \\d[(\\.\\d]*)?",
+			"match": "-?\\d[(\\.\\d]*( \\d[(\\.\\d]*)*",
 			"name": "constant.numeric.ini"
 		},
 		"boolean": {
-			"match": "([Yy]es|[Nn]o|[Tt]rue|[Ff]alse)",
-			"name": "constant.language.boolean.ini"
+			"match": "\\b([Yy]es|[Nn]o|[Tt]rue|[Ff]alse)\\s*(?![a-zA-Z])",
+			"name": "constant.language.boolean.ini",
+			"patterns": [
+				{
+					"include": "#string"
+				}
+			]
 		},
 		"inline-comment": {
 			"begin": "(^[ \\t]+)?(?=;)",
