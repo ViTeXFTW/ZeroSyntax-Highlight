@@ -62,6 +62,21 @@
 					},
 					"patterns": [
 						{
+							"include": "#Object-WeaponSet"
+						},
+						{
+							"include": "#Object-ArmorSet"
+						},
+						{
+							"include": "#Object-Prerequisites"
+						},
+						{
+							"include": "#UnitSpecificSounds"
+						},
+						{
+							"include": "#modules"
+						},
+						{
 							"include": "#addmodule-block"
 						},
 						{
@@ -74,6 +89,119 @@
 							"include": "#inline-comment"
 						}
 					]
+				}
+			]
+		},
+		"UnitSpecificSounds": {
+			"begin": "\\s*\\b(UnitSpecificSounds)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\s*\\b(End)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"Object-ArmorSet": {
+			"begin": "\\s*\\b(ArmorSet)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\s*\\b(End)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#WeaponArmor-condition"
+				},
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"Object-WeaponSet": {
+			"begin": "\\s*\\b(WeaponSet)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\s*\\b(End)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#WeaponArmor-condition"
+				},
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"WeaponArmor-condition": {
+			"match": "\\s*\\b(Conditions)\\s*(\\=)\\s*\\b([Nn][Oo][Nn][Ee]|[Pp][Ll][Aa][Yy][Ee][Rr]_[Uu][Pp][Gg][Rr][Aa][Dd][Ee])\\b",
+			"captures": {
+				"1": {
+					"name": "entity.name.function"
+				},
+				"2": {
+					"name": "keyword.operator.assignment.ini"
+				},
+				"3": {
+					"name": "variable.other.constant.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"Object-Prerequisites": {
+			"begin": "\\s*\\b(Prerequisites)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\s*\\b(End)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
 				}
 			]
 		},
@@ -92,7 +220,7 @@
 			},
 			"patterns": [
 				{
-					"include": "#draw-block"
+					"include": "#modules"
 				},
 				{
 					"include": "#assignment"
@@ -118,8 +246,77 @@
 				}
 			]
 		},
-		"draw-block": {
-			"begin": "\\s*\\b(Draw)\\b\\s*(\\=)\\s*([a-zA-Z]\\w+)\\s*([a-zA-Z][\\w_]+)",
+		"modules": {
+			"patterns": [
+				{
+					"include": "#draw-block"
+				},
+				{
+					"include": "#body-block"
+				},
+				{
+					"include": "#behavior-block"
+				}
+			]
+		},
+		"behavior-block": {
+			"begin": "\\s*\\b(Behavior)\\b\\s*(\\=)\\s*([a-zA-Z]\\w+)\\s*([a-zA-Z][\\w_]+)",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				},
+				"2": {
+					"name": "keyword.operator.assignment.ini"
+				},
+				"3": {
+					"name": "entity.name.function"
+				},
+				"4": {
+					"name": "storage.type.ini"
+				}
+			},
+			"end": "\\s*\\b(End)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#behavior-turret"
+				},
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"behavior-turret": {
+			"begin": "\\s*\\b(Turret)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\s*\\b(End)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"body-block": {
+			"begin": "\\s*\\b(Body)\\b\\s*(\\=)\\s*([a-zA-Z]\\w+)\\s*([a-zA-Z][\\w_]+)",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.control.ini"
@@ -149,6 +346,94 @@
 				}
 			]
 		},
+		"draw-block": {
+			"begin": "\\s*\\b(Draw)\\b\\s*(\\=)\\s*([a-zA-Z]\\w+)\\s*([a-zA-Z][\\w_]+)",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				},
+				"2": {
+					"name": "keyword.operator.assignment.ini"
+				},
+				"3": {
+					"name": "entity.name.function"
+				},
+				"4": {
+					"name": "storage.type.ini"
+				}
+			},
+			"end": "\\s*\\b(End)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#drawblock-defaultstate"
+				},
+				{
+					"include": "#drawblock-conditionstate"
+				},
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"drawblock-defaultstate": {
+			"begin": "\\s*\\b(DefaultConditionState)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\s*\\b(End)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"drawblock-conditionstate": {
+			"begin": "\\s*\\b(ConditionState)\\b\\s*(\\=)\\s*(?=[a-zA-Z])",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				},
+				"2": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"end": "\\s*\\b(End)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"match": "\\b(NONE|USER_1|USER_2|JAMMED|ATTACKING|WEAPONSET_CRATEUPGRADE_ONE|WEAPONSET_CRATEUPGRADE_TWO|ARMORSET_CRATEUPGRADE_TWO|ARMORSET_CRATEUPGRADE_ONE|PREORDER|STUNNED|STUNNED_FLAILING|EXPLODED_BOUNCING|EXPLODED_FLAILING|CAPTURED|RAISING_FLAG|CONTINUOUS_FIRE_SLOW|CONTINUOUS_FIRE_FAST|CONTINUOUS_FIRE_MEAN|SPECIAL_CHEERING|ARMED|RAPELLING|PARACHUTING|CLIMBING|SPLATTED|BURNED|AFLAME|SMOLDERING|POWER_PLANT_UPGRADING|POWER_PLANT_UPGRADED|OVER_WATER|MOVING|DEPLOYED|UNPACKING|PACKING|JETEXHAUST|JETAFTERBURNER|LOADED|CARRYING|DOCKING_ENDING|DOCKING_ACTIVE|DOCKING_BEGINNING|DOCKING|PANICKING|RADAR_UPGRADED|RADAR_EXTENDED|CONSTRUCTION_COMPLETE|ACTIVELY_CONSTRUCTING|ACTIVELY_BEING_CONSTRUCTED|PARTIALLY_CONSTRUCTED|AWAITING_CONSTRUCTION|DYING|PRONE|FREEFALL|POST_COLLAPSE|TOPPLED|TURRET_ROTATE|RELOADING_A|BETWEEN_FIRING_SHOTS_A|FIRING_A|PREATTACK_A|USING_WEAPON_A|RELOADING_B|BETWEEN_FIRING_SHOTS_B|FIRING_B|PREATTACK_B|USING_WEAPON_B|RELOADING_C|BETWEEN_FIRING_SHOTS_C|FIRING_C|PREATTACK_C|USING_WEAPON_C|DOOR_4_WAITING_TO_CLOSE|DOOR_4_WAITING_OPEN|DOOR_4_CLOSING|DOOR_4_OPENING|DOOR_3_WAITING_TO_CLOSE|DOOR_3_WAITING_OPEN|DOOR_3_CLOSING|DOOR_3_OPENING|DOOR_2_WAITING_TO_CLOSE|DOOR_2_WAITING_OPEN|DOOR_2_CLOSING|DOOR_2_OPENING|DOOR_1_WAITING_TO_CLOSE|DOOR_1_WAITING_OPEN|DOOR_1_CLOSING|DOOR_1_OPENING|WEAPONSET_PLAYER_UPGRADE|WEAPONSET_HERO|WEAPONSET_ELITE|WEAPONSET_VETERAN|ENEMYNEAR|REALLYDAMAGED|RUBBLE|DAMAGED|SNOW|SOLD|DISGUISED|NIGHT|SPECIAL_DAMAGED|BACKCRUSHED|FRONTCRUSHED|SECOND_LIFE|RIDER1|RIDER2|RIDER3|RIDER4|RIDER5|RIDER6|RIDER7|RIDER8|PRISTINE|RIGHT_TO_CENTER|CENTER_TO_RIGHT|LEFT_TO_CENTER|CENTER_TO_LEFT)+",
+					"name": "variable.other.constant.ini"
+				},
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
 		"assignment": {
 			"begin": "(^[ \\t]+)?([a-zA-Z]\\w+)\\s*(\\=)\\s*",
 			"beginCaptures": {
@@ -161,6 +446,15 @@
 			},
 			"end": "(?!\\G)",
 			"patterns": [
+				{
+					"include": "#weapon-types"
+				},
+				{
+					"include": "#locomotor-types"
+				},
+				{
+					"include": "#boolean"
+				},
 				{
 					"include": "#string"
 				},
@@ -175,6 +469,21 @@
 				}
 			]
 		},
+		"locomotor-types": {
+			"match": "\\s*\\b(SET_NORMAL|SET_SUPERSONIC|SET_SLUGGISH|SET_TAXIING|SET_PANIC|SET_WANDER|SET_FREEFALL|SET_NORMAL_UPGRADED)\\s*([a-zA-Z]\\w+)",
+			"captures": {
+				"1": {
+					"name": "variable.other.constant.ini"
+				},
+				"2": {
+					"name": "string.unquoted.ini"
+				}
+			}
+		},
+		"weapon-types": {
+			"match": "\\b(PRIMARY|SECONDARY|TERTIARY)",
+			"name": "variable.other.constant.ini"
+		},
 		"string": {
 			"begin": "(^[ \\t]+)?(?=[a-zA-Z])",
 			"beginCaptures": {
@@ -185,7 +494,7 @@
 			"end": "(?!\\G)",
 			"patterns": [
 				{
-					"match": "[a-zA-Z][ _a-zA-Z]*",
+					"match": "[a-zA-Z][ \\._a-zA-Z0-9:\\+\\-]*",
 					"name": "string.unquoted.ini"
 				}
 			]
@@ -202,7 +511,7 @@
 			]
 		},
 		"numbers": {
-			"begin": "(^[ \\t]+)?(?=\\d)",
+			"begin": "(^[ \\t]+)?(?=-?\\d)",
 			"beginCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -216,8 +525,17 @@
 			]
 		},
 		"double": {
-			"match": "\\d[(\\.\\d]*( \\d[(\\.\\d]*)?",
+			"match": "-?\\d[(\\.\\d]*( \\d[(\\.\\d]*)*",
 			"name": "constant.numeric.ini"
+		},
+		"boolean": {
+			"match": "\\b([Yy]es|[Nn]o|[Tt]rue|[Ff]alse)\\s*(?![a-zA-Z])",
+			"name": "constant.language.boolean.ini",
+			"patterns": [
+				{
+					"include": "#string"
+				}
+			]
 		},
 		"inline-comment": {
 			"begin": "(^[ \\t]+)?(?=;)",
