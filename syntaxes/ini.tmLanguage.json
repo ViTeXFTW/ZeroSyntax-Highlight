@@ -376,6 +376,15 @@
 					"include": "#drawblock-conditionstate"
 				},
 				{
+					"include": "#drawblock-transitionstate"
+				},
+				{
+					"include": "#drawblock-aliasconditionstate"
+				},
+				{
+					"include": "#drawblock-ignoreconditionstate"
+				},
+				{
 					"include": "#assignment"
 				},
 				{
@@ -427,8 +436,94 @@
 					"name": "variable.other.constant.ini"
 				},
 				{
+					"include": "#transitionkey-assignment"
+				},
+				{
 					"include": "#assignment"
 				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"drawblock-transitionstate": {
+			"begin": "\\s*\\b(TransitionState)\\b\\s*(\\=)\\s*(\\b(NONE|DOWN_DEFAULT|UP_DAY|UP_NIGHT|UP_SNOWNIGHT|UP_SNOW)|[a-zA-Z][\\w_\\-]+| )+",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				},
+				"2": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"name": "variable.other.constant.ini",
+			"end": "\\s*\\b(End)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"drawblock-aliasconditionstate": {
+			"begin": "\\s*\\b(AliasConditionState)\\s*(=)\\s*",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				},
+				"2": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"end": "(?!\\G)",
+			"patterns": [
+				{
+					"match": "(\\s*\\b(NONE|USER_1|USER_2|JAMMED|ATTACKING|WEAPONSET_CRATEUPGRADE_ONE|WEAPONSET_CRATEUPGRADE_TWO|ARMORSET_CRATEUPGRADE_TWO|ARMORSET_CRATEUPGRADE_ONE|PREORDER|STUNNED|STUNNED_FLAILING|EXPLODED_BOUNCING|EXPLODED_FLAILING|CAPTURED|RAISING_FLAG|CONTINUOUS_FIRE_SLOW|CONTINUOUS_FIRE_FAST|CONTINUOUS_FIRE_MEAN|SPECIAL_CHEERING|ARMED|RAPELLING|PARACHUTING|CLIMBING|SPLATTED|BURNED|AFLAME|SMOLDERING|POWER_PLANT_UPGRADING|POWER_PLANT_UPGRADED|OVER_WATER|MOVING|DEPLOYED|UNPACKING|PACKING|JETEXHAUST|JETAFTERBURNER|LOADED|CARRYING|DOCKING_ENDING|DOCKING_ACTIVE|DOCKING_BEGINNING|DOCKING|PANICKING|RADAR_UPGRADED|RADAR_EXTENDED|CONSTRUCTION_COMPLETE|ACTIVELY_CONSTRUCTING|ACTIVELY_BEING_CONSTRUCTED|PARTIALLY_CONSTRUCTED|AWAITING_CONSTRUCTION|DYING|PRONE|FREEFALL|POST_COLLAPSE|TOPPLED|TURRET_ROTATE|RELOADING_A|BETWEEN_FIRING_SHOTS_A|FIRING_A|PREATTACK_A|USING_WEAPON_A|RELOADING_B|BETWEEN_FIRING_SHOTS_B|FIRING_B|PREATTACK_B|USING_WEAPON_B|RELOADING_C|BETWEEN_FIRING_SHOTS_C|FIRING_C|PREATTACK_C|USING_WEAPON_C|DOOR_4_WAITING_TO_CLOSE|DOOR_4_WAITING_OPEN|DOOR_4_CLOSING|DOOR_4_OPENING|DOOR_3_WAITING_TO_CLOSE|DOOR_3_WAITING_OPEN|DOOR_3_CLOSING|DOOR_3_OPENING|DOOR_2_WAITING_TO_CLOSE|DOOR_2_WAITING_OPEN|DOOR_2_CLOSING|DOOR_2_OPENING|DOOR_1_WAITING_TO_CLOSE|DOOR_1_WAITING_OPEN|DOOR_1_CLOSING|DOOR_1_OPENING|WEAPONSET_PLAYER_UPGRADE|WEAPONSET_HERO|WEAPONSET_ELITE|WEAPONSET_VETERAN|ENEMYNEAR|REALLYDAMAGED|RUBBLE|DAMAGED|SNOW|SOLD|DISGUISED|NIGHT|SPECIAL_DAMAGED|BACKCRUSHED|FRONTCRUSHED|SECOND_LIFE|RIDER1|RIDER2|RIDER3|RIDER4|RIDER5|RIDER6|RIDER7|RIDER8|PRISTINE|RIGHT_TO_CENTER|CENTER_TO_RIGHT|LEFT_TO_CENTER|CENTER_TO_LEFT))+",
+					"name": "variable.other.constant.ini"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"drawblock-ignoreconditionstate": {
+			"begin": "\\s*\\b(IgnoreConditionStates)\\s*(=)(\\s*[a-zA-Z][\\w_]+)+",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				},
+				"2": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"name": "variable.other.constant.ini",
+			"end": "(?!\\G)",
+			"patterns": [
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"transitionkey-assignment": {
+			"begin": "(^[ \\t]+)?(TransitionKey)\\s*(\\=)(\\s*[a-zA-Z][\\w_]+)+",
+			"beginCaptures": {
+				"2": {
+					"name": "variable.parameter"
+				},
+				"3": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"name": "variable.other.constant.ini",
+			"end": "(?!\\G)",
+			"patterns": [
 				{
 					"include": "#inline-comment"
 				}
