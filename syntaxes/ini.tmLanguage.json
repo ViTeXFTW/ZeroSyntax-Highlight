@@ -281,6 +281,40 @@
 				},
 				{
 					"include": "#behavior-block"
+				},
+				{
+					"include": "#clientupdate-block"
+				}
+			]
+		},
+		"clientupdate-block": {
+			"begin": "\\s*\\b(ClientUpdate)\\b\\s*(\\=)\\s*([a-zA-Z]\\w+)\\s*([a-zA-Z][\\w_]+)",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				},
+				"2": {
+					"name": "keyword.operator.assignment.ini"
+				},
+				"3": {
+					"name": "entity.name.function"
+				},
+				"4": {
+					"name": "storage.type.ini"
+				}
+			},
+			"end": "\\s*\\b(End)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
 				}
 			]
 		},
