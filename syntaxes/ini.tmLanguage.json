@@ -470,19 +470,35 @@
 			]
 		},
 		"locomotor-types": {
-			"match": "\\s*\\b(SET_NORMAL|SET_SUPERSONIC|SET_SLUGGISH|SET_TAXIING|SET_PANIC|SET_WANDER|SET_FREEFALL|SET_NORMAL_UPGRADED)\\s*([a-zA-Z]\\w+)",
-			"captures": {
+			"begin": "\\s*\\b(SET_NORMAL|SET_SUPERSONIC|SET_SLUGGISH|SET_TAXIING|SET_PANIC|SET_WANDER|SET_FREEFALL|SET_NORMAL_UPGRADED)\\s*",
+			"beginCaptures": {
 				"1": {
 					"name": "variable.other.constant.ini"
 				},
 				"2": {
 					"name": "string.unquoted.ini"
 				}
-			}
+			},
+			"end": "(?!\\G)",
+			"patterns": [
+				{
+					"include": "#string"
+				}
+			]
 		},
 		"weapon-types": {
-			"match": "\\b(PRIMARY|SECONDARY|TERTIARY)(\\s*\\b(PRIMARY|SECONDARY|TERTIARY))*",
-			"name": "variable.other.constant.ini"
+			"begin": "(\\s*\\b(PRIMARY|SECONDARY|TERTIARY))+\\s*",
+			"beginCaptures": {
+				"1": {
+					"name": "variable.other.constant.ini"
+				}
+			},
+			"end": "(?!\\G)",
+			"patterns": [
+				{
+					"include": "#string"
+				}
+			]
 		},
 		"string": {
 			"begin": "(^[ \\t]+)?(?=[a-zA-Z])",
