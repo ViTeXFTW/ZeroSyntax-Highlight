@@ -435,7 +435,7 @@
 			]
 		},
 		"assignment": {
-			"begin": "(^[ \\t]+)?([a-zA-Z]\\w+)\\s*(\\=)\\s*",
+			"begin": "(^[ \\t]+)?([a-zA-Z][\\w%]+)\\s*(\\=)\\s*",
 			"beginCaptures": {
 				"2": {
 					"name": "variable.parameter"
@@ -481,7 +481,7 @@
 			}
 		},
 		"weapon-types": {
-			"match": "\\b(PRIMARY|SECONDARY|TERTIARY)",
+			"match": "\\b(PRIMARY|SECONDARY|TERTIARY)(\\s*\\b(PRIMARY|SECONDARY|TERTIARY))*",
 			"name": "variable.other.constant.ini"
 		},
 		"string": {
@@ -494,7 +494,7 @@
 			"end": "(?!\\G)",
 			"patterns": [
 				{
-					"match": "[a-zA-Z][ \\._a-zA-Z0-9:\\+\\-]*",
+					"match": "[a-zA-Z][ \\._a-zA-Z0-9:\\+\\-%]*",
 					"name": "string.unquoted.ini"
 				}
 			]
@@ -525,7 +525,7 @@
 			]
 		},
 		"double": {
-			"match": "-?\\d[(\\.\\d]*( \\d[(\\.\\d]*)*",
+			"match": "-?\\d[\\.\\d%fF]*( \\d[\\.\\d%fF]*)*",
 			"name": "constant.numeric.ini"
 		},
 		"boolean": {
