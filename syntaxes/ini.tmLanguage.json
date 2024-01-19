@@ -373,6 +373,9 @@
 			},
 			"patterns": [
 				{
+					"include": "#weapon-types-turret"
+				},
+				{
 					"include": "#assignment"
 				},
 				{
@@ -689,6 +692,18 @@
 					"include": "#string"
 				}
 			]
+		},
+		"weapon-types-turret": {
+			"match": "\\s*([a-zA-Z][\\w%]+)\\s*(\\=)(\\s*\\b(PRIMARY|SECONDARY|TERTIARY))+",
+			"captures": {
+				"1": {
+					"name": "variable.parameter"
+				},
+				"2": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"name": "variable.other.constant.ini"
 		},
 		"weapon-types": {
 			"begin": "(\\s*\\b(PRIMARY|SECONDARY|TERTIARY))+\\s*",
