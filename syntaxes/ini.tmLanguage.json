@@ -345,6 +345,12 @@
 					"include": "#behavior-turret"
 				},
 				{
+					"include": "#behavior-attackareadecal"
+				},
+				{
+					"include": "#behavior-targetingreticledecal"
+				},
+				{
 					"include": "#assignment"
 				},
 				{
@@ -354,6 +360,50 @@
 		},
 		"behavior-turret": {
 			"begin": "\\s*\\b(Turret)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\s*\\b(End)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"behavior-attackareadecal": {
+			"begin": "\\s*\\b(AttackAreaDecal)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\s*\\b(End)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"behavior-targetingreticledecal": {
+			"begin": "\\s*\\b(TargetingReticleDecal)\\b",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.control.ini"
