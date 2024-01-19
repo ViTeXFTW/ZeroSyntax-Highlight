@@ -74,10 +74,13 @@
 							"include": "#UnitSpecificSounds"
 						},
 						{
+							"include": "#UnitSpecificFX"
+						},
+						{
 							"include": "#modules"
 						},
 						{
-							"include": "#addmodule-block"
+							"include": "#AddModule-block"
 						},
 						{
 							"include": "#inline-removemodule"
@@ -205,7 +208,29 @@
 				}
 			]
 		},
-		"addmodule-block": {
+		"UnitSpecificFX": {
+			"begin": "\\s*\\b(UnitSpecificFX)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\s*\\b(End)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"AddModule-block": {
 			"begin": "\\s*\\b(AddModule)\\b",
 			"beginCaptures": {
 				"1": {
