@@ -2,12 +2,15 @@
   "name": "ZS-HiLi",
   "displayName": "ZeroSyntax-Highlight",
   "description": "Syntax highlighting for Zero Hour map.ini",
-  "version": "0.0.1",
+  "icon": ",/images/icon.png",
+  "version": "0.1.0",
   "engines": {
     "vscode": "^1.85.0"
   },
   "categories": [
-    "Programming Languages"
+    "Programming Languages",
+    "Themes",
+    "Visualization"
   ],
   "contributes": {
     "grammars": [
