@@ -12,6 +12,7 @@
 	"repository": {
 		"class": {
 			"patterns": [
+				{"include": "#specialpower-class"},
 				{"include": "#science-class"},
 				{"include": "#rank-class"},
 				{"include": "#playertemplate-class"},
@@ -20,6 +21,31 @@
 				{"include": "#mappedimage-class"},
 				{"include": "#locomotor-class"},
 				{"include": "#object-class"}
+			]
+		},
+		"specialpower-class": {
+			"begin": "\\s*\\b(SpecialPower)\\s+([a-zA-Z]\\w+)",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				},
+				"2": {
+					"name": "entity.name.type.ini"
+				}
+			},
+			"end": "\\s*\\b([Ee]nd|END)\\s*",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
 			]
 		},
 		"science-class": {
