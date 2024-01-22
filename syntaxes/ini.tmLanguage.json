@@ -351,6 +351,9 @@
 					"include": "#behavior-targetingreticledecal"
 				},
 				{
+					"include": "#behavior-griddecaltempalte"
+				},
+				{
 					"include": "#assignment"
 				},
 				{
@@ -412,7 +415,29 @@
 					"name": "keyword.control.ini"
 				}
 			},
-			"end": "\\s*\\b(End)\\b",
+			"end": "\\s*\\b(End)",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"behavior-griddecaltempalte": {
+			"begin": "\\s*\\b(GridDecalTemplate)",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\s*\\b(End)",
 			"endCaptures": {
 				"1": {
 					"name": "keyword.control.ini"
@@ -771,7 +796,7 @@
 			]
 		},
 		"inline-comment": {
-			"begin": "(^[ \\t]+)?(?=;)",
+			"begin": "(^[ \\t]+)?(?=(;|//))",
 			"beginCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -781,6 +806,16 @@
 			"patterns": [
 				{
 					"begin": ";",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.comment.ini"
+						}
+					},
+					"end": "\\n",
+					"name": "comment.line.ini"
+				},
+				{
+					"begin": "//",
 					"beginCaptures": {
 						"0": {
 							"name": "punctuation.definition.comment.ini"
