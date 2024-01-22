@@ -6,17 +6,253 @@
 			"include": "#inline-comment"
 		},
 		{
-			"include": "#object-class"
-		},
-		{
-			"include": "#locomotor-class"
+			"include": "#class"
 		}
 	],
 	"repository": {
+		"class": {
+			"patterns": [
+				{"include": "#ocl-class"},
+				{"include": "#mappedimage-class"},
+				{"include": "#locomotor-class"},
+				{"include": "#object-class"}
+			]
+		},
+		"ocl-class": {
+			"patterns": [
+				{
+					"begin": "\\s*\\b(ObjectCreationList)\\s+([a-zA-Z]\\w+)",
+					"beginCaptures": {
+						"1": {
+							"name": "keyword.control.ini"
+						},
+						"2": {
+							"name": "entity.name.type.ini"
+						}
+					},
+					"end": "\\s*\\b(End)",
+					"endCaptures": {
+						"1": {
+							"name": "keyword.control.ini"
+						}
+					},
+					"patterns": [
+						{
+							"include": "#ocl-randomforce"
+						},
+						{
+							"include": "#ocl-attack"
+						},
+						{
+							"include": "#ocl-createdebris"
+						},
+						{
+							"include": "#ocl-createobject"
+						},
+						{
+							"include": "#ocl-deliverpayload"
+						},
+						{
+							"include": "#ocl-fireweapon"
+						},
+						{
+							"include": "#inline-comment"
+						}
+					]
+				}
+			]
+		},
+		"ocl-randomforce": {
+			"begin": "\\s*\\b(ApplyRandomForce)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\s*\\b(End)",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [{
+				"include": "#assignment"
+			},
+			{
+				"include": "#inline-comment"
+			}]
+		},
+		"ocl-attack": {
+			"begin": "\\s*\\b(Attack)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\s*\\b(End)",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#ocl-deliverydecal"
+				},
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"ocl-createdebris": {
+			"begin": "\\s*\\b(CreateDebris)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\s*\\b(End)",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"ocl-createobject": {
+			"begin": "\\s*\\b(CreateObject)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\s*\\b(End)",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"ocl-deliverpayload": {
+			"begin": "\\s*\\b(DeliverPayload)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\s*\\b(End)",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#ocl-deliverydecal"
+				},
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"ocl-deliverydecal": {
+			"begin": "\\s*\\b(DeliveryDecal)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\s*\\b(End)",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"ocl-fireweapon": {
+			"begin": "\\s*\\b(FireWeapon)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\s*\\b(End)",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"mappedimage-class": {
+			"patterns": [
+				{
+					"begin": "\\s*\\b(MappedImage)\\s+([a-zA-Z]\\w+)",
+					"beginCaptures": {
+						"1": {
+							"name": "keyword.control.ini"
+						},
+						"2": {
+							"name": "entity.name.type.ini"
+						}
+					},
+					"end": "\\s*\\b(End)",
+					"endCaptures": {
+						"1": {
+							"name": "keyword.control.ini"
+						}
+					},
+					"patterns": [
+						{
+							"include": "#assignment"
+						},
+						{
+							"include": "#inline-comment"
+						}
+					]
+				}
+			]
+		},
 		"locomotor-class": {
 			"patterns": [
 				{
-					"begin": "\\b(Locomotor)\\s([a-zA-Z]\\w+)",
+					"begin": "\\s*\\b(Locomotor)\\s+([a-zA-Z]\\w+)",
 					"beginCaptures": {
 						"1": {
 							"name": "keyword.control.ini"
@@ -45,7 +281,7 @@
 		"object-class": {
 			"patterns": [
 				{
-					"begin": "\\b(Object)\\s([a-zA-Z]\\w+)",
+					"begin": "\\s*\\b(Object)\\s+([a-zA-Z]\\w+)",
 					"beginCaptures": {
 						"1": {
 							"name": "keyword.control.ini"
@@ -244,6 +480,21 @@
 				}
 			},
 			"patterns": [
+				{
+					"include": "#Object-WeaponSet"
+				},
+				{
+					"include": "#Object-ArmorSet"
+				},
+				{
+					"include": "#Object-Prerequisites"
+				},
+				{
+					"include": "#UnitSpecificSounds"
+				},
+				{
+					"include": "#UnitSpecificFX"
+				},
 				{
 					"include": "#modules"
 				},
@@ -737,6 +988,9 @@
 			},
 			"end": "(?!\\G)",
 			"patterns": [
+				{
+					"include": "#inline-comment"
+				},
 				{
 					"include": "#string"
 				}
