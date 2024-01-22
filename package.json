@@ -22,6 +22,8 @@
     ]
   },
   "dependencies": {
+    "minimatch": "^3.0.5",
+    "minimist": "^0.2.4",
     "vscode": "^1.1.34"
   }
 }
