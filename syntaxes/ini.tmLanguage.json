@@ -351,6 +351,9 @@
 					"include": "#behavior-targetingreticledecal"
 				},
 				{
+					"include": "#behavior-griddecaltempalte"
+				},
+				{
 					"include": "#assignment"
 				},
 				{
@@ -412,7 +415,29 @@
 					"name": "keyword.control.ini"
 				}
 			},
-			"end": "\\s*\\b(End)\\b",
+			"end": "\\s*\\b(End)",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"behavior-griddecaltempalte": {
+			"begin": "\\s*\\b(GridDecalTemplate)",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\s*\\b(End)",
 			"endCaptures": {
 				"1": {
 					"name": "keyword.control.ini"
@@ -677,21 +702,19 @@
 			]
 		},
 		"locomotor-types": {
-			"begin": "\\s*\\b(SET_NORMAL|SET_SUPERSONIC|SET_SLUGGISH|SET_TAXIING|SET_PANIC|SET_WANDER|SET_FREEFALL|SET_NORMAL_UPGRADED)\\s*",
+			"begin": "\\s*\\b(SET_NORMAL|SET_SUPERSONIC|SET_SLUGGISH|SET_TAXIING|SET_PANIC|SET_WANDER|SET_FREEFALL|SET_NORMAL_UPGRADED)\\s*([a-zA-Z][\\w_]+)?$",
 			"beginCaptures": {
 				"1": {
 					"name": "variable.other.constant.ini"
 				},
 				"2": {
 					"name": "string.unquoted.ini"
+				},
+				"3": {
+					"name": "string.unquoted.ini"
 				}
 			},
-			"end": "(?!\\G)",
-			"patterns": [
-				{
-					"include": "#string"
-				}
-			]
+			"end": "(?!\\G)"
 		},
 		"weapon-types-turret": {
 			"match": "\\s*([a-zA-Z][\\w%]+)\\s*(\\=)(\\s*\\b(PRIMARY|SECONDARY|TERTIARY))+",
@@ -706,7 +729,7 @@
 			"name": "variable.other.constant.ini"
 		},
 		"weapon-types": {
-			"begin": "(\\s*\\b(PRIMARY|SECONDARY|TERTIARY))+\\s*",
+			"begin": "(\\s*\\b(PRIMARY|SECONDARY|TERTIARY))\\s*",
 			"beginCaptures": {
 				"1": {
 					"name": "variable.other.constant.ini"
@@ -773,7 +796,7 @@
 			]
 		},
 		"inline-comment": {
-			"begin": "(^[ \\t]+)?(?=;)",
+			"begin": "(^[ \\t]+)?(?=(;|//))",
 			"beginCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -783,6 +806,16 @@
 			"patterns": [
 				{
 					"begin": ";",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.comment.ini"
+						}
+					},
+					"end": "\\n",
+					"name": "comment.line.ini"
+				},
+				{
+					"begin": "//",
 					"beginCaptures": {
 						"0": {
 							"name": "punctuation.definition.comment.ini"
