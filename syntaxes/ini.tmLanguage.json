@@ -12,6 +12,8 @@
 	"repository": {
 		"class": {
 			"patterns": [
+				{"include": "#armor-class"},
+				{"include": "#weapon-class"},
 				{"include": "#upgrade-class"},
 				{"include": "#specialpower-class"},
 				{"include": "#science-class"},
@@ -22,6 +24,56 @@
 				{"include": "#mappedimage-class"},
 				{"include": "#locomotor-class"},
 				{"include": "#object-class"}
+			]
+		},
+		"armor-class": {
+			"begin": "\\s*\\b(Armor)\\s+([a-zA-Z]\\w+)",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				},
+				"2": {
+					"name": "entity.name.type.ini"
+				}
+			},
+			"end": "\\b([Ee]nd|END)\\s*",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"weapon-class": {
+			"begin": "\\s*\\b(Weapon)\\s+([a-zA-Z]\\w+)",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				},
+				"2": {
+					"name": "entity.name.type.ini"
+				}
+			},
+			"end": "\\b([Ee]nd|END)\\s*",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
 			]
 		},
 		"upgrade-class": {
