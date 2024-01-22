@@ -12,6 +12,7 @@
 	"repository": {
 		"class": {
 			"patterns": [
+				{"include": "#upgrade-class"},
 				{"include": "#specialpower-class"},
 				{"include": "#science-class"},
 				{"include": "#rank-class"},
@@ -21,6 +22,31 @@
 				{"include": "#mappedimage-class"},
 				{"include": "#locomotor-class"},
 				{"include": "#object-class"}
+			]
+		},
+		"upgrade-class": {
+			"begin": "\\s*\\b(Upgrade)\\s+([a-zA-Z]\\w+)",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				},
+				"2": {
+					"name": "entity.name.type.ini"
+				}
+			},
+			"end": "\\s*\\b([Ee]nd|END)\\s*",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
 			]
 		},
 		"specialpower-class": {
