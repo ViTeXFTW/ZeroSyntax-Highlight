@@ -12,6 +12,8 @@
 	"repository": {
 		"class": {
 			"patterns": [
+				{"include": "#audio-class"},
+				{"include": "#dialog-class"},
 				{"include": "#commandbutton-class"},
 				{"include": "#weather-class"},
 				{"include": "#armor-class"},
@@ -30,6 +32,56 @@
 		},
 		"commandbutton-class": {
 			"begin": "\\s*\\b(CommandButton)\\s+([a-zA-Z]\\w+)",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				},
+				"2": {
+					"name": "entity.name.type.ini"
+				}
+			},
+			"end": "\\b([Ee]nd|END)\\s*",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"dialog-class": {
+			"begin": "\\s*\\b(DialogEvent)\\s+([a-zA-Z]\\w+)",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				},
+				"2": {
+					"name": "entity.name.type.ini"
+				}
+			},
+			"end": "\\b([Ee]nd|END)\\s*",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"audio-class": {
+			"begin": "\\s*\\b(AudioEvent)\\s+([a-zA-Z]\\w+)",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.control.ini"
