@@ -2,8 +2,17 @@
   "name": "ZS-HiLi",
   "displayName": "ZeroSyntax-Highlight",
   "description": "Syntax highlighting for Zero Hour map.ini",
-  "icon": ",/images/icon.png",
+  "icon": "./images/icon.png",
   "version": "0.1.0",
+  "author": {
+    "name": "ViTeXFTW",
+    "email": "vitexftw@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ViTeXFTW/ZeroSyntax-Highlight"
+  },
+  "license": "MIT",
   "engines": {
     "vscode": "^1.85.0"
   },
@@ -32,7 +41,7 @@
     "watch": "tsc -watch -p ./",
     "clean": "rimraf ./out && rimraf ./dist",
     "lint": "eslint . --ext ts",
-    "package": "vsce package --baseImagesUrl ",
+    "package": "vsce package",
     "test": "npm run compile && node ./out/test/runTest.js",
     "posttest": "npm run lint",
     "prepublishOnly": "npm test",
