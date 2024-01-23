@@ -23,7 +23,7 @@ For contributing to this project you will need to fork the repository to get you
 Should there be any issues with the submitted code a comment will be left on the **Pull Request** and will first be accepted when all issues have been fixed.
 
 ## License
-This projct is under the MIT [LICENSE](LICENSE)
+This projct is under the MIT LICENSE
 
 ## Suggestions
 As this is my first open-source project, if you have any ideas or suggestions please write to me on eithre Discord or mail. (Discord might be better)
