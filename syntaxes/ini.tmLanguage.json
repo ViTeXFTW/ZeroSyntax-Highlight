@@ -12,6 +12,8 @@
 	"repository": {
 		"class": {
 			"patterns": [
+				{"include": "#fxlist-class"},
+				{"include": "#particlesystem-class"},
 				{"include": "#audio-class"},
 				{"include": "#dialog-class"},
 				{"include": "#commandbutton-class"},
@@ -28,6 +30,228 @@
 				{"include": "#mappedimage-class"},
 				{"include": "#locomotor-class"},
 				{"include": "#object-class"}
+			]
+		},
+		"fxlist-class": {
+			"begin": "\\s*\\b([Ff][Xx][Ll]ist)\\s+([a-zA-Z]\\w+)",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				},
+				"2": {
+					"name": "entity.name.type.ini"
+				}
+			},
+			"end": "\\b([Ee]nd|END)\\s*",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#inline-comment"
+				},
+				{
+					"include": "#fxlist-sound"
+				},
+				{
+					"include": "#fxlist-particlesystem"
+				},
+				{
+					"include": "#fxlist-lightpulse"
+				},
+				{
+					"include": "#fxlist-viewshake"
+				},
+				{
+					"include": "#fxlist-terrainscorch"
+				},
+				{
+					"include": "#fxlist-tracer"
+				},
+				{
+					"include": "#fxlist-fxlistatbone"
+				}
+			]
+		},
+		"fxlist-fxlistatbone": {
+			"begin": "\\s*\\b([Ff][Xx][Ll]ist[Aa]t[Bb]one[Pp]os)",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\b([Ee]nd|END)\\s*",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"fxlist-tracer": {
+			"begin": "\\s*\\b([Tt]racer)",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\b([Ee]nd|END)\\s*",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"fxlist-terrainscorch": {
+			"begin": "\\s*\\b(TerrainScorch)",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\b([Ee]nd|END)\\s*",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns":[
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"fxlist-viewshake": {
+			"begin": "\\s*\\b([Vv]iew[Ss]hake)",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\b([Ee]nd|END)\\s*",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [ 
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"fxlist-lightpulse": {
+			"begin": "\\s*\\b([Ll]ight[Pp]ulse)",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\b([Ee]nd|END)\\s*",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"fxlist-sound": {
+			"begin": "\\s*\\b([Ss]ound)",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\b([Ee]nd|END)\\s*",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"fxlist-particlesystem": {
+			"begin": "\\s*\\b([Pp]articleSystem)",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\b([Ee]nd|END)\\s*",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [ 
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"particlesystem-class": {
+			"begin": "\\s*\\b(ParticleSystem)\\s+([a-zA-Z]\\w+)",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				},
+				"2": {
+					"name": "entity.name.type.ini"
+				}
+			},
+			"end": "\\b([Ee]nd|END)\\s*",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
 			]
 		},
 		"commandbutton-class": {

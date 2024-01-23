@@ -1,0 +1,125 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Ini",
+	"patterns": [
+		{
+			"include": "#inline-comment"
+		},
+		{
+			"include": "#assignment"
+		}
+	],
+	"repository": {
+		"assignment": {
+			"begin": "(^[ \\t]+)?([a-zA-Z]\\w*)\\s*(=)\\s*((?:\\d+|[a-zA-Z\"][\\w\"]*)(?:\\s+(?:\\d+|[a-zA-Z\"][\\w\"]*))*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.parameter"
+				},
+				"3": {
+					"name": "keyword.operator.assignment.ini"
+				},
+				"4": {
+					"patterns": [
+						{
+							"include": "#value"
+						}
+					]
+				}
+			},
+			"end": "(?!\\G)"
+		},
+		"value": {
+			"patterns": [
+				{
+					"include": "#numbers"
+				},
+				{
+					"include": "#string"
+				}
+			]
+		},
+		"numbers": {
+			"patterns": [
+				{
+					"include": "#integer"
+				},
+				{
+					"include": "#float"
+				}
+			]
+		},
+		"integer": {
+			"match": "\\d+",
+			"name": "constant.numeric.ini"
+		},
+		"float": {
+			"match": "(\\d+)?\\.\\d+",
+			"name": "constant.numeric.ini"
+		},
+		"string": {
+			"patterns": [
+				{
+					"begin": "\"",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.begin.ini"
+						}
+					},
+					"end": "\"",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.end.ini"
+						}
+					},
+					"name": "string.quoted.double.ini",
+					"patterns": [
+						{
+							"match": "\\\\[\"\\\\nrt]",
+							"name": "constant.character.escape.ini"
+						}
+					]
+				},
+				{
+					"match": "[a-zA-Z]\\w*",
+					"name": "string.quoted"
+				}
+			]
+		},
+		"inline-comment": {
+			"begin": "(^[ \\t]+)?(?=(;|//))",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				}
+			},
+			"end": "(?!\\G)",
+			"patterns": [
+				{
+					"begin": ";",
+					"beginCaptures": {
+						"0": {
+							"name": "comment.line.semicolon.ini"
+						}
+					},
+					"end": "\\n",
+					"name": "comment.line.ini"
+				},
+				{
+					"begin": "//",
+					"beginCaptures": {
+						"0": {
+							"name": "comment.line.double-slash.ini"
+						}
+					},
+					"end": "\\n",
+					"name": "comment.line.ini"
+				}
+			]
+		}
+	},
+	"scopeName": "source.ZH-HiLi"
+}
