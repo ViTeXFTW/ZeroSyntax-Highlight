@@ -29,6 +29,7 @@
 				{"include": "#ocl-class"},
 				{"include": "#mappedimage-class"},
 				{"include": "#locomotor-class"},
+				{"include": "#objectreskin-class"},
 				{"include": "#object-class"}
 			]
 		},
@@ -802,6 +803,58 @@
 							"include": "#inline-comment"
 						}
 					]
+				}
+			]
+		},
+		"objectreskin-class": {
+			"begin": "\\s*\\b(ObjectReskin)\\s+([a-zA-Z]\\w+)\\s+([a-zA-Z]\\w+)",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				},
+				"2": {
+					"name": "entity.name.type.ini"
+				},
+				"3": {
+					"name": "entity.name.type.ini"
+				}
+			},
+			"end": "\\s*\\b([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Object-WeaponSet"
+				},
+				{
+					"include": "#Object-ArmorSet"
+				},
+				{
+					"include": "#Object-Prerequisites"
+				},
+				{
+					"include": "#UnitSpecificSounds"
+				},
+				{
+					"include": "#UnitSpecificFX"
+				},
+				{
+					"include": "#modules"
+				},
+				{
+					"include": "#AddModule-block"
+				},
+				{
+					"include": "#inline-removemodule"
+				},
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
 				}
 			]
 		},
