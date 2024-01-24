@@ -1641,7 +1641,7 @@
 			]
 		},
 		"double": {
-			"match": "-?\\d[\\.\\d%fF]*( \\d[\\.\\d%fF]*)*",
+			"match": "-?\\d[\\.\\d%fF]*( -?\\d[\\.\\d%fF]*)*",
 			"name": "constant.numeric.ini"
 		},
 		"boolean": {
