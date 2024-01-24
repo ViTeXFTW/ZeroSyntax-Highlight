@@ -1119,6 +1119,9 @@
 					"include": "#behavior-turret"
 				},
 				{
+					"include": "#behavior-altturret"
+				},
+				{
 					"include": "#behavior-attackareadecal"
 				},
 				{
@@ -1137,6 +1140,31 @@
 		},
 		"behavior-turret": {
 			"begin": "\\s*\\b(Turret)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\s*\\b([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#weapon-types-turret"
+				},
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"behavior-altturret": {
+			"begin": "\\s*\\b(AltTurret)\\b",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.control.ini"
