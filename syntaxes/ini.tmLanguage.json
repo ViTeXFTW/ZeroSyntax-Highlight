@@ -1569,13 +1569,13 @@
 					"include": "#boolean"
 				},
 				{
+					"include": "#numbers"
+				},
+				{
 					"include": "#string"
 				},
 				{
 					"include": "#doublequoted-strings"
-				},
-				{
-					"include": "#numbers"
 				},
 				{
 					"include": "#inline-comment"
@@ -1653,7 +1653,7 @@
 			]
 		},
 		"numbers": {
-			"begin": "(^[ \\t]+)?(?=-?\\d)",
+			"begin": "(^[ \\t]+)?(?=(-|\\.){0,2}\\d)",
 			"beginCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -1667,7 +1667,7 @@
 			]
 		},
 		"double": {
-			"match": "-?\\d[\\.\\d%fF]*( -?\\d[\\.\\d%fF]*)*",
+			"match": "-?( |\\d+\\.|\\.|\\d+|\\d+\\.\\d+|0|%)+",
 			"name": "constant.numeric.ini"
 		},
 		"boolean": {
