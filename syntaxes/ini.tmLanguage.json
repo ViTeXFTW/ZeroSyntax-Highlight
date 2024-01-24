@@ -12,6 +12,7 @@
 	"repository": {
 		"class": {
 			"patterns": [
+				{"include": "#damagefx-class"},
 				{"include": "#fxlist-class"},
 				{"include": "#particlesystem-class"},
 				{"include": "#audio-class"},
@@ -29,7 +30,33 @@
 				{"include": "#ocl-class"},
 				{"include": "#mappedimage-class"},
 				{"include": "#locomotor-class"},
+				{"include": "#objectreskin-class"},
 				{"include": "#object-class"}
+			]
+		},
+		"damagefx-class": {
+			"begin": "\\s*\\b([Dd]amage[Ff][Xx])\\s+([a-zA-Z]\\w+)",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				},
+				"2": {
+					"name": "entity.name.type"
+				}
+			},
+			"end": "\\b([Ee]nd|END)\\s*",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns":[
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
 			]
 		},
 		"fxlist-class": {
@@ -805,6 +832,58 @@
 				}
 			]
 		},
+		"objectreskin-class": {
+			"begin": "\\s*\\b(ObjectReskin)\\s+([a-zA-Z]\\w+)\\s+([a-zA-Z]\\w+)",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				},
+				"2": {
+					"name": "entity.name.type.ini"
+				},
+				"3": {
+					"name": "entity.name.type.ini"
+				}
+			},
+			"end": "\\s*\\b([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Object-WeaponSet"
+				},
+				{
+					"include": "#Object-ArmorSet"
+				},
+				{
+					"include": "#Object-Prerequisites"
+				},
+				{
+					"include": "#UnitSpecificSounds"
+				},
+				{
+					"include": "#UnitSpecificFX"
+				},
+				{
+					"include": "#modules"
+				},
+				{
+					"include": "#AddModule-block"
+				},
+				{
+					"include": "#inline-removemodule"
+				},
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
 		"object-class": {
 			"begin": "\\s*\\b(Object)\\s+([a-zA-Z]\\w+)",
 			"beginCaptures": {
@@ -1119,6 +1198,9 @@
 					"include": "#behavior-turret"
 				},
 				{
+					"include": "#behavior-altturret"
+				},
+				{
 					"include": "#behavior-attackareadecal"
 				},
 				{
@@ -1137,6 +1219,31 @@
 		},
 		"behavior-turret": {
 			"begin": "\\s*\\b(Turret)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "\\s*\\b([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#weapon-types-turret"
+				},
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
+			]
+		},
+		"behavior-altturret": {
+			"begin": "\\s*\\b(AltTurret)\\b",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.control.ini"
@@ -1343,7 +1450,7 @@
 			},
 			"patterns": [
 				{
-					"match": "\\b(NONE|USER_1|USER_2|JAMMED|ATTACKING|WEAPONSET_CRATEUPGRADE_ONE|WEAPONSET_CRATEUPGRADE_TWO|ARMORSET_CRATEUPGRADE_TWO|ARMORSET_CRATEUPGRADE_ONE|PREORDER|STUNNED|STUNNED_FLAILING|EXPLODED_BOUNCING|EXPLODED_FLAILING|CAPTURED|RAISING_FLAG|CONTINUOUS_FIRE_SLOW|CONTINUOUS_FIRE_FAST|CONTINUOUS_FIRE_MEAN|SPECIAL_CHEERING|ARMED|RAPELLING|PARACHUTING|CLIMBING|SPLATTED|BURNED|AFLAME|SMOLDERING|POWER_PLANT_UPGRADING|POWER_PLANT_UPGRADED|OVER_WATER|MOVING|DEPLOYED|UNPACKING|PACKING|JETEXHAUST|JETAFTERBURNER|LOADED|CARRYING|DOCKING_ENDING|DOCKING_ACTIVE|DOCKING_BEGINNING|DOCKING|PANICKING|RADAR_UPGRADED|RADAR_EXTENDED|CONSTRUCTION_COMPLETE|ACTIVELY_CONSTRUCTING|ACTIVELY_BEING_CONSTRUCTED|PARTIALLY_CONSTRUCTED|AWAITING_CONSTRUCTION|DYING|PRONE|FREEFALL|POST_COLLAPSE|TOPPLED|TURRET_ROTATE|RELOADING_A|BETWEEN_FIRING_SHOTS_A|FIRING_A|PREATTACK_A|USING_WEAPON_A|RELOADING_B|BETWEEN_FIRING_SHOTS_B|FIRING_B|PREATTACK_B|USING_WEAPON_B|RELOADING_C|BETWEEN_FIRING_SHOTS_C|FIRING_C|PREATTACK_C|USING_WEAPON_C|DOOR_4_WAITING_TO_CLOSE|DOOR_4_WAITING_OPEN|DOOR_4_CLOSING|DOOR_4_OPENING|DOOR_3_WAITING_TO_CLOSE|DOOR_3_WAITING_OPEN|DOOR_3_CLOSING|DOOR_3_OPENING|DOOR_2_WAITING_TO_CLOSE|DOOR_2_WAITING_OPEN|DOOR_2_CLOSING|DOOR_2_OPENING|DOOR_1_WAITING_TO_CLOSE|DOOR_1_WAITING_OPEN|DOOR_1_CLOSING|DOOR_1_OPENING|WEAPONSET_PLAYER_UPGRADE|WEAPONSET_HERO|WEAPONSET_ELITE|WEAPONSET_VETERAN|ENEMYNEAR|REALLYDAMAGED|RUBBLE|DAMAGED|SNOW|SOLD|DISGUISED|NIGHT|SPECIAL_DAMAGED|BACKCRUSHED|FRONTCRUSHED|SECOND_LIFE|RIDER1|RIDER2|RIDER3|RIDER4|RIDER5|RIDER6|RIDER7|RIDER8|PRISTINE|RIGHT_TO_CENTER|CENTER_TO_RIGHT|LEFT_TO_CENTER|CENTER_TO_LEFT)+",
+					"match": "\\b(NONE|USER_1|USER_2|JAMMED|ATTACKING|WEAPONSET_CRATEUPGRADE_ONE|WEAPONSET_CRATEUPGRADE_TWO|ARMORSET_CRATEUPGRADE_TWO|ARMORSET_CRATEUPGRADE_ONE|PREORDER|STUNNED|STUNNED_FLAILING|EXPLODED_BOUNCING|EXPLODED_FLAILING|CAPTURED|RAISING_FLAG|CONTINUOUS_FIRE_SLOW|CONTINUOUS_FIRE_FAST|CONTINUOUS_FIRE_MEAN|SPECIAL_CHEERING|ARMED|RAPELLING|PARACHUTING|CLIMBING|SPLATTED|BURNED|AFLAME|SMOLDERING|POWER_PLANT_UPGRADING|POWER_PLANT_UPGRADED|OVER_WATER|MOVING|DEPLOYED|UNPACKING|PACKING|JETEXHAUST|JETAFTERBURNER|LOADED|CARRYING|DOCKING_ENDING|DOCKING_ACTIVE|DOCKING_BEGINNING|DOCKING|PANICKING|RADAR_UPGRADED|RADAR_EXTENDED|CONSTRUCTION_COMPLETE|ACTIVELY_CONSTRUCTING|ACTIVELY_BEING_CONSTRUCTED|PARTIALLY_CONSTRUCTED|AWAITING_CONSTRUCTION|DYING|PRONE|FREEFALL|POST_COLLAPSE|TOPPLED|TURRET_ROTATE|RELOADING_A|BETWEEN_FIRING_SHOTS_A|FIRING_A|PREATTACK_A|USING_WEAPON_A|RELOADING_B|BETWEEN_FIRING_SHOTS_B|FIRING_B|PREATTACK_B|USING_WEAPON_B|RELOADING_C|BETWEEN_FIRING_SHOTS_C|FIRING_C|PREATTACK_C|USING_WEAPON_C|DOOR_4_WAITING_TO_CLOSE|DOOR_4_WAITING_OPEN|DOOR_4_CLOSING|DOOR_4_OPENING|DOOR_3_WAITING_TO_CLOSE|DOOR_3_WAITING_OPEN|DOOR_3_CLOSING|DOOR_3_OPENING|DOOR_2_WAITING_TO_CLOSE|DOOR_2_WAITING_OPEN|DOOR_2_CLOSING|DOOR_2_OPENING|DOOR_1_WAITING_TO_CLOSE|DOOR_1_WAITING_OPEN|DOOR_1_CLOSING|DOOR_1_OPENING|WEAPONSET_PLAYER_UPGRADE|WEAPONSET_HERO|WEAPONSET_ELITE|WEAPONSET_VETERAN|ENEMYNEAR|REALLYDAMAGED|RUBBLE|DAMAGED|SNOW|SOLD|DISGUISED|NIGHT|SPECIAL_DAMAGED|BACKCRUSHED|FRONTCRUSHED|SECOND_LIFE|RIDER1|RIDER2|RIDER3|RIDER4|RIDER5|RIDER6|RIDER7|RIDER8|PRISTINE|RIGHT_TO_CENTER|CENTER_TO_RIGHT|LEFT_TO_CENTER|CENTER_TO_LEFT|[Nn]one|[Uu]ser_1|[Uu]ser_2|[Jj]ammed|[Aa]ttacking|[Ww]eaponset_[Cc]rateupgrade_[Oo]ne|[Ww]eaponset_[Cc]rateupgrade_[Tt]wo|[Aa]rmorset_[Cc]rateupgrade_[Tt]wo|[Aa]rmorset_[Cc]rateupgrade_[Oo]ne|[Pp]reorder|[Ss]tunned|[Ss]tunned_[Ff]lailing|[Ee]xploded_[Bb]ouncing|[Ee]xploded_[Ff]lailing|[Cc]aptured|[Rr]aising_[Ff]lag|[Cc]ontinuous_[Ff]ire_[Ss]low|[Cc]ontinuous_[Ff]ire_[Ff]ast|[Cc]ontinuous_[Ff]ire_[Mm]ean|[Ss]pecial_[Cc]heering|[Aa]rmed|[Rr]apelling|[Pp]arachuting|[Cc]limbing|[Ss]platted|[Bb]urned|[Aa]flame|[Ss]moldering|[Pp]ower_[Pp]lant_[Uu]pgrading|[Pp]ower_[Pp]lant_[Uu]pgraded|[Oo]ver_[Ww]ater|[Mm]oving|[Dd]eployed|[Uu]npacking|[Pp]acking|[Jj]etexhaust|[Jj]etafterburner|[Ll]oaded|[Cc]arrying|[Dd]ocking_[Ee]nding|[Dd]ocking_[Aa]ctive|[Dd]ocking_[Bb]eginning|[Dd]ocking|[Pp]anicking|[Rr]adar_[Uu]pgraded|[Rr]adar_[Ee]xtended|[Cc]onstruction_[Cc]omplete|[Aa]ctively_[Cc]onstructing|[Aa]ctively_[Bb]eing_[Cc]onstructed|[Pp]artially_[Cc]onstructed|[Aa]waiting_[Cc]onstruction|[Dd]ying|[Pp]rone|[Ff]reefall|[Pp]ost_[Cc]ollapse|[Tt]oppled|[Tt]urret_[Rr]otate|[Rr]eloading_[Aa]|[Bb]etween_[Ff]iring_[Ss]hots_[Aa]|[Ff]iring_[Aa]|[Pp]reattack_[Aa]|[Uu]sing_[Ww]eapon_[Aa]|[Rr]eloading_[Bb]|[Bb]etween_[Ff]iring_[Ss]hots_[Bb]|[Ff]iring_[Bb]|[Pp]reattack_[Bb]|[Uu]sing_[Ww]eapon_[Bb]|[Rr]eloading_[Cc]|[Bb]etween_[Ff]iring_[Ss]hots_[Cc]|[Ff]iring_[Cc]|[Pp]reattack_[Cc]|[Uu]sing_[Ww]eapon_[Cc]|[Dd]oor_4_[Ww]aiting_[Tt]o_[Cc]lose|[Dd]oor_4_[Ww]aiting_[Oo]pen|[Dd]oor_4_[Cc]losing|[Dd]oor_4_[Oo]pening|[Dd]oor_3_[Ww]aiting_to_[Cc]lose|[Dd]oor_3_[Ww]aiting_[Oo]pen|[Dd]oor_3_[Cc]losing|[Dd]oor_3_[Oo]pening|[Dd]oor_2_[Ww]aiting_[Tt]o_[Cc]lose|[Dd]oor_2_[Ww]aiting_[Oo]pen|[Dd]oor_2_[Cc]losing|[Dd]oor_2_[Oo]pening|[Dd]oor_1_[Ww]aiting_[Tt]o_[Cc]lose|[Dd]oor_1_[Ww]aiting_[Oo]pen|[Dd]oor_1_[Cc]losing|[Dd]oor_1_[Oo]pening|[Ww]eaponset_[Pp]layer_[Uu]pgrade|[Ww]eaponset_[Hh]ero|[Ww]eaponset_[Ee]lite|[Ww]eaponset_[Vv]eteran|[Ee]nemynear|[Rr]eally[Dd]amaged|[Rr]ubble|[Dd]amaged|[Ss]now|[Ss]old|[Dd]isguised|[Nn]ight|[Ss]pecial_[Dd]amaged|[Bb]ack[Cc]rushed|[Ff]ront[Cc]rushed|[Ss]econd_[Ll]ife|[Rr]ider1|[Rr]ider2|[Rr]ider3|[Rr]ider4|[Rr]ider5|[Rr]ider6|[Rr]ider7|[Rr]ider8|[Pp]ristine|[Rr]ight_[Tt]o_[Cc]enter|[Cc]enter_[Tt]o_[Rr]ight|[Ll]eft_[Tt]o_[Cc]enter|[Cc]enter_[Tt]o_[Ll]eft)+",
 					"name": "variable.other.constant.ini"
 				},
 				{
@@ -1462,13 +1569,13 @@
 					"include": "#boolean"
 				},
 				{
+					"include": "#numbers"
+				},
+				{
 					"include": "#string"
 				},
 				{
 					"include": "#doublequoted-strings"
-				},
-				{
-					"include": "#numbers"
 				},
 				{
 					"include": "#inline-comment"
@@ -1546,7 +1653,7 @@
 			]
 		},
 		"numbers": {
-			"begin": "(^[ \\t]+)?(?=-?\\d)",
+			"begin": "(^[ \\t]+)?(?=(-|\\.){0,2}\\d)",
 			"beginCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -1560,7 +1667,7 @@
 			]
 		},
 		"double": {
-			"match": "-?\\d[\\.\\d%fF]*( \\d[\\.\\d%fF]*)*",
+			"match": "-?( |\\d+\\.|\\.|\\d+|\\d+\\.\\d+|0|%)+",
 			"name": "constant.numeric.ini"
 		},
 		"boolean": {
