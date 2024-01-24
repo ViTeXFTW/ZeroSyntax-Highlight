@@ -4,6 +4,7 @@
   "description": "Syntax highlighting for Zero Hour map.ini",
   "icon": "./images/icon.png",
   "version": "0.1.0",
+  "publisher": "ViTeXFTW",
   "author": {
     "name": "ViTeXFTW",
     "email": "vitexftw@gmail.com"
