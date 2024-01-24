@@ -12,6 +12,7 @@
 	"repository": {
 		"class": {
 			"patterns": [
+				{"include": "#damagefx-class"},
 				{"include": "#fxlist-class"},
 				{"include": "#particlesystem-class"},
 				{"include": "#audio-class"},
@@ -31,6 +32,31 @@
 				{"include": "#locomotor-class"},
 				{"include": "#objectreskin-class"},
 				{"include": "#object-class"}
+			]
+		},
+		"damagefx-class": {
+			"begin": "\\s*\\b([Dd]amage[Ff][Xx])\\s+([a-zA-Z]\\w+)",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				},
+				"2": {
+					"name": "entity.name.type"
+				}
+			},
+			"end": "\\b([Ee]nd|END)\\s*",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns":[
+				{
+					"include": "#assignment"
+				},
+				{
+					"include": "#inline-comment"
+				}
 			]
 		},
 		"fxlist-class": {
