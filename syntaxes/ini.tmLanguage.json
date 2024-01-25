@@ -6,11 +6,91 @@
 			"include": "#inline-comment"
 		},
 		{
-			"include": "#assignment"
+			"include": "#Object-Class"
 		}
 	],
 	"repository": {
-		"assignment": {
+		"Object-Class": {
+			"begin": "(^[ \\t]+)?(Object)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Object-RemoveModule"
+				},
+				{
+					"include": "#Locomotor-Assignment"
+				},
+				{
+					"include": "#General-Assignment"
+				}
+			]
+		},
+		"Object-RemoveModule": {
+			"match": "(^[ \\t]+)?(RemoveModule)([ \\t]+)([a-zA-Z_][\\w%]*)",
+			"captures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"4": {
+					"name": "storage.type.ini"
+				}
+			}
+		},
+		"Locomotor-Assignment": {
+			"begin": "(^[ \\t]+)?(Locomotor)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "$",
+			"patterns": [
+				{
+					"match": "[ \\t]+",
+					"name": "punctuation.whitespace.ini"
+				},
+				{
+					"match": "=",
+					"name": "keyword.operator.assignment.ini"
+				},
+				{
+					"match": "\\b(S|SE|SET|SET_|SET_N|SET_NO|SET_NOR|SET_NORM|SET_NORMA|SET_NORMAL|SET_S|SET_SL|SET_SLU|SET_SLUG|SET_SLUGG|SET_SLUGGI|SET_SLUGGIS|SET_SLUGGISH|SET_SU|SET_SUP|SET_SUPE|SET_SUPER|SET_SUPERS|SET_SUPERSO|SET_SUPERSON|SET_SUPERSONI|SET_SUPERSONIC|SET_P|SET_PA|SET_PAN|SET_PANI|SET_PANIC|SET_T|SET_TA|SET_TAX|SET_TAXI|SET_TAXII|SET_TAXIIN|SET_TAXIING|SET_W|SET_WA|SET_WAN|SET_WAND|SET_WANDE|SET_WANDER|SET_F|SET_FR|SET_FRE|SET_FREE|SET_FREEF|SET_FREEFA|SET_FREEFAL|SET_FREEFALL|SET_NORMAL_|SET_NORMAL_U|SET_NORMAL_UP|SET_NORMAL_UPG|SET_NORMAL_UPGR|SET_NORMAL_UPGRA|SET_NORMAL_UPGRAD|SET_NORMAL_UPGRADE|SET_NORMAL_UPGRADED|)\\b",
+					"name": "variable.other.constant.ini"
+				}
+			]	
+		},
+		"General-Assignment": {
 			"begin": "(^[ \\t]+)?([a-zA-Z_][\\w%]*)",
 			"captures": {
 				"1": {
@@ -31,38 +111,46 @@
 					"name": "keyword.operator.assignment.ini"
 				},
 				{
-					"include": "#value"
+					"include": "#Value"
 				}
 			]
 		},
-		"value": {
+		"Value": {
 			"patterns": [
 				{
-					"include": "#inline-comment"
+					"include": "#Inline-Comment"
 				},
 				{
-					"include": "#number"
+					"include": "#Number"
 				},
 				{
-					"include": "#boolean"
+					"include": "#Boolean"
 				},
 				{
-					"include": "#weaponslots"
+					"include": "#Assignment-Keywords"
 				},
 				{
-					"include": "#string"
+					"include": "#String"
 				}
 			]
 		},
-		"weaponslots": {
+		"Assignment-Keywords": {
 			"patterns": [
 				{
-					"match": "\\b(PRIMARY|SECONDATY|TERTIARY)\\b",
+					"match": "\\b(PRIMARY|SECONDARY|TERTIARY|SET_NORMAL|SET_SUPERSONIC|SET_SLUGGISH|SET_TAXIING|SET_PANIC|SET_WANDER|SET_FREEFALL|SET_NORMAL_UPGRADED)\\b\\s*[\\d%]+",
+					"name": "invalid.illegal.assignment-keywords.ini"
+				},
+				{
+					"match": "\\b(PRIMARY|SECONDARY|TERTIARY|SET_NORMAL|SET_SUPERSONIC|SET_SLUGGISH|SET_TAXIING|SET_PANIC|SET_WANDER|SET_FREEFALL|SET_NORMAL_UPGRADED)\\b\\s*[!%#]",
+					"name": "invalid.illegal.assignment-keywords.ini"
+				},
+				{
+					"match": "\\b(PRIMARY|SECONDARY|TERTIARY|SET_NORMAL|SET_SUPERSONIC|SET_SLUGGISH|SET_TAXIING|SET_PANIC|SET_WANDER|SET_FREEFALL|SET_NORMAL_UPGRADED)\\b",
 					"name": "variable.other.constant.ini"
 				}
 			]
 		},
-		"string": {
+		"String": {
 			"patterns": [
 				{
 					"match": "\".*?\"",
@@ -78,39 +166,39 @@
 				}
 			]
 		},
-		"number": {
+		"Number": {
 			"patterns": [
 				{
 					"match": "-?\\d*\\.\\d+%",
 					"name": "invalid.illegal.precentage.ini"
 				},
 				{
-					"match": "-?\\d+(\\.\\d+)?%?",
+					"match": "-?\\d+(\\.\\d+)?[%fF]?",
 					"name": "constant.numeric.ini"
 				},
 				{
-					"match": "-?\\.\\d+",
+					"match": "-?\\.\\d+[fF]?",
 					"name": "constant.numeric.ini"
 				}
 			]	
 		},
-		"boolean": {
+		"Boolean": {
 			"patterns": [
 				{
 					"match": "[ \\t]+",
 					"name": "punctuation.whitespace.ini"
 				},
 				{
-					"match": "[Tt]rue|TRUE|[Yy]es|YES",
+					"match": "\\b([Tt]rue|TRUE|[Yy]es|YES)\\b",
 					"name": "constant.language.boolean.true.ini"
 				},
 				{
-					"match": "[Ff]alse|FALSE|[Nn]o|NO",
+					"match": "\\b([Ff]alse|FALSE|[Nn]o|NO)\\b",
 					"name": "constant.language.boolean.false.ini"
 				}
 			]
 		},
-		"inline-comment": {
+		"Inline-Comment": {
 			"begin": "(^[ \\t]+)?(?=(;|//))",
 			"beginCaptures": {
 				"1": {
