@@ -161,6 +161,93 @@
 					"include": "#Inline-Comment"
 				},
 				{
+					"include": "#DrawModule-DefaultConditionState"
+				},
+				{
+					"include": "#DrawModule-ConditionState"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				},
+				{
+					"include": "#General-Assignment"
+				}
+			]
+		},
+		"DrawModule-ConditionState": {
+			"begin": "(^[ \\t]+)?\\b(ConditionState|conditionstate)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"match": "[ \\t]+",
+					"name": "punctuation.whitespace.ini"
+				},
+				{
+					"match": "=",
+					"name": "keyword.operator.assignment.ini"
+				},
+				{
+					"match": "\\b(None|NONE|Damaged|DAMAGED|ReallyDamaged|Reallydamaged|REALLYDAMAGED|Rubble|RUBBLE)",
+					"name": "variable.other.constant.ini"
+				},
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				},
+				{
+					"include": "#General-Assignment"
+				}
+			]
+		},
+		"DrawModule-DefaultConditionState": {
+			"begin": "(^[ \\t]+)?\\b(DefaultConditionState|defaultconditionstate)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"match": "[ \\t]+",
+					"name": "punctuation.whitespace.ini"
+				},
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				},
+				{
 					"include": "#General-Assignment"
 				}
 			]
