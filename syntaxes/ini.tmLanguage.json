@@ -3,7 +3,7 @@
 	"name": "Ini",
 	"patterns": [
 		{
-			"include": "#inline-comment"
+			"include": "#Inline-Comment"
 		},
 		{
 			"include": "#Object-Class"
@@ -43,6 +43,12 @@
 					"include": "#Object-RemoveModule"
 				},
 				{
+					"include": "#Object-Modules"
+				},
+				{
+					"include": "#Object-PropertyBlocks"	
+				},
+				{
 					"include": "#Locomotor-Assignment"
 				},
 				{
@@ -77,10 +83,166 @@
 					"include": "#Inline-Comment"
 				},
 				{
+					"include": "#Object-Modules"
+				},
+				{
+					"include": "#Object-PropertyBlocks"	
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Object-Modules": {
+			"patterns": [
+				{
 					"include": "#Object-DrawModule"
 				},
 				{
-					"include": "#Locomotor-Assignment"
+					"include": "#Object-BodyModule"
+				},
+				{
+					"include": "#Object-BehaviorModule"
+				},
+				{
+					"include": "#Object-ClientUpdate"
+				}
+			]
+		},
+		"Object-PropertyBlocks": {
+			"patterns": [
+				{
+					"include": "#Object-WeaponSet"
+				},
+				{
+					"include": "#Object-ArmorSet"
+				},
+				{
+					"include": "#Object-UnitSpecificSounds"
+				},
+				{
+					"include": "#Object-Prerequisites"
+				}
+			]
+		},
+		"Object-Prerequisites": {
+			"begin": "(^[ \\t]+)?\\b(Prerequisites|PREREQUISITES)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"	
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"	
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Object-UnitSpecificSounds": {
+			"begin": "(^[ \\t]+)?\\b(UnitSpecificSounds|UNITSPECIFICSOUNDS)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Object-WeaponSet": {
+			"begin": "(^[ \\t]+)?\\b(WeaponSet|WEAPONSET)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Object-ArmorSet": {
+			"begin": "(^[ \\t]+)?\\b(ArmorSet|ARMORSET)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
 				},
 				{
 					"include": "#General-Assignment"
@@ -91,7 +253,7 @@
 			]
 		},
 		"Object-RemoveModule": {
-			"match": "(^[ \\t]+)?(RemoveModule)([ \\t]+)([a-zA-Z_][\\w%]*)",
+			"match": "(^[ \\t]+)?(RemoveModule)([ \\t]+)([a-zA-Z_][\\w]*)",
 			"captures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -107,14 +269,23 @@
 				}
 			}
 		},
-		"Object-DrawModule": {
-			"begin": "(^[ \\t]+)?\\b(Draw|DRAW)\\b",
+		"Object-ClientUpdate": {
+			"begin": "(^[ \\t]+)?\\b([Cc]lient[Uu]pdate|CLIENTUPDATE)\\b([ \\t]*)(=)([ \\t]*)",
 			"beginCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
 				},
 				"2": {
 					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"4": {
+					"name": "keyword.operator.assignment.ini"
+				},
+				"5": {
+					"name": "punctuation.whitespace.ini"
 				}
 			},
 			"end": "(^[ \\t]+)?([Ee]nd|END)",
@@ -128,32 +299,41 @@
 			},
 			"patterns": [
 				{
-					"match": "[ \\t]+",
-					"name": "punctuation.whitespace.ini"
+					"include": "#WhiteSpace"
 				},
 				{
-					"match": "=",
-					"name": "keyword.operator.assignment.ini"
-				},
-				{
-					"begin": "\\b(W|W3|W3D|W3D[a-zA-Z]*)\\b",
+					"begin": "(?<==[ \\t]*)([a-zA-Z_]\\w*)",
 					"beginCaptures": {
-						"0": {
+						"1": {
 							"name": "entity.name.function.ini"
-						}	
+						}
 					},
 					"end": "$",
 					"patterns": [
 						{
-							"match": "[ \\t]+",
-							"name": "punctuation.whitespace.ini"
-						},
-						{
-							"match": "[a-zA-Z_]\\w*",
-							"name": "storage.type.ini"
+							"begin": "(?<==[ \\t]*[a-zA-Z]+[ \\t]+)([a-zA-Z_]\\w*)",
+							"beginCaptures": {
+								"1": {
+									"name": "storage.type.ini"
+								}
+							},
+							"end": "$",
+							"patterns": [
+								{
+									"include": "#Inline-Comment"
+								},
+								{
+									"match": "[^ \\t]+",
+									"name": "invalid.illegal.moduletag.ini"
+								}
+							]
 						},
 						{
 							"include": "#Inline-Comment"
+						},
+						{
+							"match": "[^ \\t]+",
+							"name": "invalid.illegal.moduletag.ini"
 						}
 					]
 				},
@@ -161,10 +341,333 @@
 					"include": "#Inline-Comment"
 				},
 				{
-					"include": "#DrawModule-DefaultConditionState"
+					"match": "[^ \\t]+",
+					"name": "invalid.illegal.moduletag.ini"
+				}
+			]
+		},
+		"Object-BehaviorModule": {
+			"begin": "(^[ \\t]+)?\\b(Behavior|BEHAVIOR)\\b([ \\t]*)(=)([ \\t]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"4": {
+					"name": "keyword.operator.assignment.ini"
+				},
+				"5": {
+					"name": "punctuation.whitespace.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#WhiteSpace"
+				},
+				{
+					"begin": "(?<==[ \\t]*)([a-zA-Z_]\\w*)",
+					"beginCaptures": {
+						"1": {
+							"name": "entity.name.function.ini"
+						}
+					},
+					"end": "$",
+					"patterns": [
+						{
+							"begin": "(?<==[ \\t]*[a-zA-Z]+[ \\t]+)([a-zA-Z_]\\w*)",
+							"beginCaptures": {
+								"1": {
+									"name": "storage.type.ini"
+								}
+							},
+							"end": "$",
+							"patterns": [
+								{
+									"include": "#Inline-Comment"
+								},
+								{
+									"match": "[^ \\t]+",
+									"name": "invalid.illegal.moduletag.ini"
+								}
+							]
+						},
+						{
+							"include": "#Inline-Comment"
+						},
+						{
+							"match": "[^ \\t]+",
+							"name": "invalid.illegal.moduletag.ini"
+						}
+					]
+				},
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Behavior-Turret"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Behavior-Turret": {
+			"begin": "(^[ \\t]+)?\\b([Tt]urret|TURRET|[Aa]lt[Tt]urret|ALTTURRET)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"	
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"	
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Object-BodyModule": {
+			"begin": "(^[ \\t]+)?\\b(Body|BODY)\\b([ \\t]*)(=)([ \\t]*)([a-zA-Z]+)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"4": {
+					"name": "keyword.operator.assignment.ini"
+				},
+				"5": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"6": {
+					"name": "entity.name.function.ini"
+				}	
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#WhiteSpace"
+				},
+				{
+					"begin": "(?<=\\b([a-zA-Z]*Body)[ \\t]*)([a-zA-Z_]\\w*)",
+					"beginCaptures": {
+						"1": {
+							"name": "punctuation.whitespace.ini"
+						},
+						"2": {
+							"name": "storage.type.ini"
+						}
+					},
+					"end": "$",
+					"patterns": [
+						{
+							"comment": "Makes sure nothing can be written after the module tag"
+						},
+						{
+							"include": "#Inline-Comment"
+						},
+						{
+							"match": "[^ \\t]+",
+							"name": "invalid.illegal.moduletag.ini"
+						}
+					]
+				},
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Object-DrawModule": {
+			"begin": "(^[ \\t]+)?\\b(Draw|DRAW)\\b([ \\t]*)(=)([ \\t]*)\\b(W|W3|W3D|W3D[a-zA-Z]*)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"4": {
+					"name": "keyword.operator.assignment.ini"
+				},
+				"5": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"6": {
+					"name": "entity.name.function.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#WhiteSpace"
+				},
+				{
+					"begin": "(?<=\\b(W3D\\w*)[ \\t]+)([a-zA-Z_]\\w*)",
+					"comment": "Checks if the previous word was W3D...[ \\t] then the next will be captured as the module tag",
+					"beginCaptures": {
+						"1": {
+							"name": "punctuation.whitespace.ini"
+						},
+						"2": {
+							"name": "storage.type.ini"
+						}
+					},
+					"end": "$",
+					"patterns": [
+						{
+							"comment": "Makes sure nothing can be written after the module tag"
+						},
+						{
+							"include": "#Inline-Comment"
+						},
+						{
+							"match": "[^ \\t]+",
+							"name": "invalid.illegal.moduletag.ini"
+						}
+					]
+				},
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#DrawModule-StateBlocks"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				},
+				{
+					"include": "#General-Assignment"
+				}
+			]
+		},
+		"Module-ModuleTag": {
+			"match": "[a-zA-Z]\\w*",
+			"name": "storage.type.ini"
+		},
+		"DrawModule-StateBlocks": {
+			"patterns": [
+				{
+					"include": "#DrawModule-TransitionState"
 				},
 				{
 					"include": "#DrawModule-ConditionState"
+				},
+				{
+					"include": "#DrawModule-DefaultConditionState"
+				}
+			]
+		},
+		"DrawModule-TransitionState": {
+			"begin": "(^[ \\t]+)?\\b(Transition[Ss]tate|transitionstate)\\b([ \\t]+)(=)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"4": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#WhiteSpace"
+				},
+				{
+					"begin": "(?<=(\\b(Transition[Ss]tate|transitionstate)\\b)[ \\t]+(=)[ \\t]+)",
+					"end": "$",
+					"patterns": [
+						{
+							"include": "#Inline-Comment"
+						},
+						{
+							"match": "[a-zA-Z_\\d]+",
+							"name": "variable.other.constant.ini"
+						},
+						{
+							"match": "[^ \\t]+",
+							"name": "invalid.illegal.transitionstate.ini"
+						}
+					]
+				}, 
+				{
+					"include": "#Inline-Comment"
 				},
 				{
 					"include": "#Invalid-Assignment"
@@ -175,13 +678,19 @@
 			]
 		},
 		"DrawModule-ConditionState": {
-			"begin": "(^[ \\t]+)?\\b(ConditionState|conditionstate)\\b",
+			"begin": "(^[ \\t]+)?\\b(Condition[Ss]tate|conditionstate)\\b([ \\t]+)(=)",
 			"beginCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
 				},
 				"2": {
 					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"4": {
+					"name": "keyword.operator.assignment.ini"
 				}
 			},
 			"end": "(^[ \\t]+)?([Ee]nd|END)",
@@ -195,17 +704,25 @@
 			},
 			"patterns": [
 				{
-					"match": "[ \\t]+",
-					"name": "punctuation.whitespace.ini"
+					"include": "#WhiteSpace"
 				},
 				{
-					"match": "=",
-					"name": "keyword.operator.assignment.ini"
-				},
-				{
-					"match": "\\b(None|NONE|Damaged|DAMAGED|ReallyDamaged|Reallydamaged|REALLYDAMAGED|Rubble|RUBBLE)",
-					"name": "variable.other.constant.ini"
-				},
+					"begin": "(?<=(\\b(Condition[Ss]tate|conditionstate)\\b)[ \\t]+(=)[ \\t]+)",
+					"end": "$",
+					"patterns": [
+						{
+							"include": "#Inline-Comment"
+						},
+						{
+							"match": "[a-zA-Z_\\d]+",
+							"name": "variable.other.constant.ini"
+						},
+						{
+							"match": "[^ \\t]+",
+							"name": "invalid.illegal.conditionstate.ini"
+						}
+					]
+				}, 
 				{
 					"include": "#Inline-Comment"
 				},
@@ -238,8 +755,7 @@
 			},
 			"patterns": [
 				{
-					"match": "[ \\t]+",
-					"name": "punctuation.whitespace.ini"
+					"include": "#WhiteSpace"
 				},
 				{
 					"include": "#Inline-Comment"
@@ -288,8 +804,10 @@
 			"end": "$",
 			"patterns": [
 				{
-					"match": "[ \\t]+",
-					"name": "punctuation.whitespace.ini"
+					"include": "#WhiteSpace"
+				},
+				{
+					"include": "#Inline-Comment"
 				},
 				{
 					"match": "[^a-zA-Z_]\\w*",
@@ -313,12 +831,10 @@
 			"end": "$",
 			"patterns": [
 				{
-					"match": "[ \\t]+",
-					"name": "punctuation.whitespace.ini"
+					"include": "#WhiteSpace"
 				},
 				{
-					"match": "=",
-					"name": "keyword.operator.assignment.ini"
+					"include": "#Equals"
 				},
 				{
 					"include": "#WeaponSlot-Keywords"
@@ -330,10 +846,6 @@
 		},
 		"WeaponSlot-Keywords": {
 			"patterns": [
-				{
-					"match": "\\b(PRIMARY|SECONDARY|TERTIARY)\\b\\s*[\\d%]+",
-					"name": "invalid.illegal.assignment-keywords.ini"
-				},
 				{
 					"match": "\\b(PRIMARY|SECONDARY|TERTIARY)\\b\\s*[!%#]",
 					"name": "invalid.illegal.assignment-keywords.ini"
@@ -364,8 +876,16 @@
 			]
 		},
 		"Invalid-Value": {
-			"match": "[^a-zA-Z_\\d\\-\"'\\.].*",
+			"match": "[^a-zA-Z_\\d\\-\"'\\.:+].*",
 			"name": "invalid.illegal.value.ini"
+		},
+		"WhiteSpace": {
+			"match": "[ \\t]+",
+			"name": "punctuation.whitespace.ini"
+		},
+		"Equals": {
+			"match": "=",
+			"name": "keyword.operator.assignment.ini"
 		},
 		"String": {
 			"patterns": [
@@ -378,7 +898,7 @@
 					"name": "string.quoted.single.ini"
 				},
 				{
-					"match": "[a-zA-Z_]\\w*",
+					"match": "[a-zA-Z_:\\.+]\\w*",
 					"name": "string.unquoted.ini"
 				}
 			]
@@ -402,8 +922,7 @@
 		"Boolean": {
 			"patterns": [
 				{
-					"match": "[ \\t]+",
-					"name": "punctuation.whitespace.ini"
+					"include": "#WhiteSpace"
 				},
 				{
 					"match": "\\b([Tt]rue|TRUE|[Yy]es|YES)\\b",
