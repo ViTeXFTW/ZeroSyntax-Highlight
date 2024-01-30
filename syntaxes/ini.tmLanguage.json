@@ -7,6 +7,10 @@
 		},
 		{
 			"include": "#Object-Class"
+		},
+		{
+			"match": "([Ee]nd|END)",
+			"name": "invalid.illegal.ini"
 		}
 	],
 	"repository": {
