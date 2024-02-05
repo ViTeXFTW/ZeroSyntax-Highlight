@@ -345,6 +345,12 @@
 					"include": "#Inline-Comment"
 				},
 				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				},
+				{
 					"match": "[^ \\t]+",
 					"name": "invalid.illegal.moduletag.ini"
 				}
