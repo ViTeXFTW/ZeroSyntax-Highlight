@@ -128,12 +128,46 @@
 					"include": "#Object-UnitSpecificSounds"
 				},
 				{
+					"include": "#Object-UnitSpecificFX"
+				},
+				{
 					"include": "#Object-Prerequisites"
 				}
 			]
 		},
+		"Object-UnitSpecificFX": {
+			"begin": "(^[ \\t]+)?\\b([Uu]nit[Ss]pecific[Ff][Xx]|UNITSPECIFICFX)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
 		"Object-Prerequisites": {
-			"begin": "(^[ \\t]+)?\\b(Prerequisites|PREREQUISITES)\\b",
+			"begin": "(^[ \\t]+)?\\b([Pp]rerequisites|PREREQUISITES)\\b",
 			"beginCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"	
@@ -429,6 +463,108 @@
 				},
 				{
 					"include": "#Behavior-Turret"
+				},
+				{
+					"include": "#Behavior-AttackAreaDecal"
+				},
+				{
+					"include": "#Behavior-TargetingReticleDecal"
+				},
+				{
+					"include": "#Behavior-GridDecalTemplate"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Behavior-GridDecalTemplate": {
+			"begin": "(^[ \\t]+)?\\b([Gg]rid[Dd]ecal[Tt]emplate)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"	
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"	
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Behavior-TargetingReticleDecal": {
+			"begin": "(^[ \\t]+)?\\b([Tt]argeting[Rr]eticle[Dd]ecal)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"	
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"	
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Behavior-AttackAreaDecal": {
+			"begin": "(^[ \\t]+)?\\b([Aa]ttack[Aa]rea[Dd]ecal)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"	
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"	
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
 				},
 				{
 					"include": "#General-Assignment"
@@ -915,10 +1051,6 @@
 		},
 		"Number": {
 			"patterns": [
-				{
-					"match": "-?\\d*\\.\\d+%",
-					"name": "invalid.illegal.precentage.ini"
-				},
 				{
 					"match": "-?\\d+(\\.\\d+)?[%fF]?",
 					"name": "constant.numeric.ini"
