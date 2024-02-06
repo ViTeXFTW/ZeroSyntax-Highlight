@@ -6,7 +6,7 @@
 			"include": "#Inline-Comment"
 		},
 		{
-			"include": "#Object-Class"
+			"include": "#ObjectRelated-class"
 		},
 		{
 			"match": "([Ee]nd|END)",
@@ -14,6 +14,68 @@
 		}
 	],
 	"repository": {
+		"ObjectRelated-class": {
+			"patterns": [
+				{
+					"include": "#Object-Class"
+				},
+				{
+					"include": "#ObjectReskin-class"
+				}
+			]
+		},
+		"ObjectReskin-class": {
+			"begin": "(^[ \\t]+)?(ObjectReskin)[ \\t]+([a-zA-Z_][\\w%]*)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				},
+				"4": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Object-AddModule"
+				},
+				{
+					"include": "#Object-RemoveModule"
+				},
+				{
+					"include": "#Object-Modules"
+				},
+				{
+					"include": "#Object-PropertyBlocks"	
+				},
+				{
+					"include": "#Locomotor-Assignment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
 		"Object-Class": {
 			"begin": "(^[ \\t]+)?(Object)[ \\t]+([a-zA-Z_][\\w%]*)",
 			"beginCaptures": {
