@@ -3,9 +3,8 @@
 ![ZeroSyntaxLogo128](https://github.com/ViTeXFTW/ZeroSyntax-Highlight/assets/90150876/cd30167b-08d6-4dcd-80e4-d1fad9f6c672)
 
 ## Introduction
-**ZeroHour-Highlight** is a simple syntax highlighter for map.ini files in Command & Conquer Generals Zero Hour. This project aims to provide a simple and easy syntax highlighting to help find errors, structure and understand the map.ini file.  
-This project don't have any warning or error handling this will be handled in [ZeroSyntax-Diagnostics](https://github.com/ViTeXFTW/ZeroSyntax-Diagnostics)  
-The project will firstly focus on supporting map.ini files which works in the basegame (not modded).
+**ZeroHour-Highlight** is a simple syntax highlighter for map.ini files in Command & Conquer Generals Zero Hour. This project aims to provide a simple and easy syntax highlighting to help find errors, structure and understand the map.ini file.
+The project will firstly focus on supporting map.ini files which works in the basegame (not modded). With this said, the highligher have mostly been tested in Zero Hour, but should work in vanilla (none zero hour).
 
 ## Showcase
 
@@ -14,9 +13,6 @@ The project will firstly focus on supporting map.ini files which works in the ba
 
 ### ZeroSyntax Highlighting
 ![image](https://github.com/ViTeXFTW/ZeroSyntax-Highlight/assets/90150876/3c63c537-2e6f-40b1-b23a-9b1eea6aba4c)
-
-
-
 
 ## Contributing
 For contributing to this project you will need to fork the repository to get your own copy. In you own copy you can change and manipulate the program. When you are satisfied with your solution you create a **Pull Request** and an administator will look at it.
