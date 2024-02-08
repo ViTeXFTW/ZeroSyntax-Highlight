@@ -9,11 +9,156 @@
 			"include": "#ObjectRelated-class"
 		},
 		{
+			"include": "#AudioEvent-Class"
+		},
+		{
+			"include": "#DialogEvent-Class"
+		},
+		{
 			"match": "([Ee]nd|END)",
 			"name": "invalid.illegal.ini"
 		}
 	],
 	"repository": {
+		"DialogEvent-Class": {
+			"begin": "(^[ \\t]+)?(DialogEvent)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#DialogEvent-priority"
+				},
+				{
+					"include": "#AudioEvent-type"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"DialogEvent-priority": {
+			"begin": "(^[ \\t]+)?([Pp]riority)[ \\t]*(=)[ \\t]*",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				},
+				"3": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"end": "$",
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#DialogEvent-priority-value"
+				},
+				{
+					"match": "[^0-9]+",
+					"name": "invalid.illegal.priority.ini"
+				}
+			]
+		},
+		"DialogEvent-priority-value": {
+			"match": "\\b(high|medium|low|critical)\\b",
+			"name": "variable.other.constant.ini"
+		},
+		"AudioEvent-Class": {
+			"begin": "(^[ \\t]+)?(AudioEvent)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#AudioEvent-type"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"AudioEvent-type": {
+			"begin": "(^[ \\t]+)?([Tt]ype)[ \\t]*(=)[ \\t]*",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				},
+				"3": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"end": "$",
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#AudioEvent-type-value"
+				},
+				{
+					"match": "[^a-zA-Z]+",
+					"name": "invalid.illegal.audiotype.ini"
+				}
+			]
+		},
+		"AudioEvent-type-value": {
+			"match": "(^[ \\t]+)?\\b(ui|voice|player|world|global|shrouded|everyone)\\b",
+			"name": "variable.other.constant.ini"
+		},
 		"ObjectRelated-class": {
 			"patterns": [
 				{
