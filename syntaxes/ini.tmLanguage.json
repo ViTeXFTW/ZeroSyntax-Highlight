@@ -7,6 +7,10 @@
 		},
 		{
 			"include": "#class"
+		},
+		{
+			"match": "(^[ \\t]*)?\\b([Ee]nd|END)\\b",
+			"name": "invalid.illegal.ini"
 		}
 	],
 	"repository": {
