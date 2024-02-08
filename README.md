@@ -13,8 +13,11 @@ The project will firstly focus on supporting map.ini files which works in the ba
 
 ### ZeroSyntax Highlighting
 ![image](https://github.com/ViTeXFTW/ZeroSyntax-Highlight/assets/90150876/3c63c537-2e6f-40b1-b23a-9b1eea6aba4c)
+![image](https://github.com/ViTeXFTW/ZeroSyntax-Highlight/assets/90150876/fa9617f7-2a6f-4cf4-9b8e-b15d6964da3a)
 
-## Contributing
+
+
+## Contributing  
 For contributing to this project you will need to fork the repository to get your own copy. In you own copy you can change and manipulate the program. When you are satisfied with your solution you create a **Pull Request** and an administator will look at it.
 Should there be any issues with the submitted code a comment will be left on the **Pull Request** and will first be accepted when all issues have been fixed.
 
