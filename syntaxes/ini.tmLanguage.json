@@ -6,7 +6,13 @@
 			"include": "#Inline-Comment"
 		},
 		{
-			"include": "#ObjectRelated-class"
+			"include": "#ObjectRelated-Class"
+		},
+		{
+			"include": "#ParticleSystem-Class"	
+		},
+		{
+			"include": "#PlayerTemplate-Class"
 		},
 		{
 			"include": "#AudioEvent-Class"
@@ -20,6 +26,74 @@
 		}
 	],
 	"repository": {
+		"ParticleSystem-Class": {
+			"begin": "(^[ \\t]+)?(ParticleSystem)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"PlayerTemplate-Class": {
+			"begin": "(^[ \\t]+)?(PlayerTemplate)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
 		"DialogEvent-Class": {
 			"begin": "(^[ \\t]+)?(DialogEvent)[ \\t]+([a-zA-Z_][\\w%]*)",
 			"beginCaptures": {
@@ -159,7 +233,7 @@
 			"match": "(^[ \\t]+)?\\b(ui|voice|player|world|global|shrouded|everyone)\\b",
 			"name": "variable.other.constant.ini"
 		},
-		"ObjectRelated-class": {
+		"ObjectRelated-Class": {
 			"patterns": [
 				{
 					"include": "#Object-Class"
@@ -1265,6 +1339,17 @@
 				{
 					"match": "-?\\.\\d+[fF]?",
 					"name": "constant.numeric.ini"
+				},
+				{
+					"match": "([xXYyZzRrGgBb]:)(-?\\d+(\\.\\d+)?)",
+					"captures": {
+						"1": {
+							"name": "string.unquoted.ini"
+						},
+						"2": {
+							"name": "constant.numeric.ini"
+						}
+					}
 				}
 			]	
 		},
