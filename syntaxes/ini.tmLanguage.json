@@ -9,6 +9,15 @@
 			"include": "#ObjectRelated-Class"
 		},
 		{
+			"include": "#Weapon-Class"
+		},
+		{
+			"include": "#Upgrade-Class"
+		},
+		{
+			"include": "#SpecialPower-Class"
+		},
+		{
 			"include": "#ParticleSystem-Class"	
 		},
 		{
@@ -26,6 +35,108 @@
 		}
 	],
 	"repository": {
+		"Weapon-Class": {
+			"begin": "(^[ \\t]+)?([Ww]eapon)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Upgrade-Class": {
+			"begin": "(^[ \\t]+)?([Uu]pgrade)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"SpecialPower-Class": {
+			"begin": "(^[ \\t]+)?([Ss]pecialPower)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
 		"ParticleSystem-Class": {
 			"begin": "(^[ \\t]+)?(ParticleSystem)[ \\t]+([a-zA-Z_][\\w%]*)",
 			"beginCaptures": {
