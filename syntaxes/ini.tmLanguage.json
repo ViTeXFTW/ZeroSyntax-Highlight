@@ -62,12 +62,52 @@
 					"include": "#Inline-Comment"
 				},
 				{
+					"include": "#Weapon-WeaponBonus-Assignment"
+				},
+				{
 					"include": "#General-Assignment"
 				},
 				{
 					"include": "#Invalid-Assignment"
 				}
 			]
+		},
+		"Weapon-WeaponBonus-Assignment": {
+			"begin": "(^[ \\t]+)?([Ww]eaponBonus)[ \\t]*(=)[ \\t]*",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				},
+				"3": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"end": "$",
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Weapon-WeaponBonus-Assignment-value01"
+				},
+				{
+					"include": "#Number"
+				}
+			]
+		},
+		"Weapon-WeaponBonus-Assignment-value01": {
+			"match": "([ \\t]+)?\\b(DRONE_SPOTTING|PLAYER_UPGRADE|CONTINUOUS_FIRE_MEAN|CONTINUOUS_FIRE_FAST|DAMAGE|RANGE|RATE_OF_FIRE)\\b",
+			"captures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.other.constant.ini"
+				}
+			}
 		},
 		"Upgrade-Class": {
 			"begin": "(^[ \\t]+)?([Uu]pgrade)[ \\t]+([a-zA-Z_][\\w%]*)",
