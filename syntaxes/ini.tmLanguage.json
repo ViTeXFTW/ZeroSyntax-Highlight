@@ -9,6 +9,12 @@
 			"include": "#ObjectRelated-Class"
 		},
 		{
+			"include": "#Locomotor-Class"
+		},
+		{
+			"include": "#Rank-Class"
+		},
+		{
 			"include": "#Science-Class"
 		},
 		{
@@ -38,6 +44,108 @@
 		}
 	],
 	"repository": {
+		"Locomotor-Class": {
+			"begin": "(^[ \\t]+)?([Ll]ocomotor)[ \\t]+([a-zA-Z_0-9][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Locomotor-Surface-Assignment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Locomotor-Surface-Assignment": {
+			"begin": "(^[ \\t]+)?([Ss]urfaces)[ \\t]*(=)[ \\t]*",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				},
+				"3": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"end": "$",
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Locomotor-Surface-Assignment-value01"
+				},
+				{
+					"match": "[^a-zA-Z_]+",
+					"name": "invalid.illegal.surface.ini"
+				}
+			]
+		},
+		"Locomotor-Surface-Assignment-value01": {
+			"match": "\\b(GROUND|ground|RUBBLE|rubble|CLIFF|cliff|AIR|air|WATER|water)\\b",
+			"name": "variable.other.constant.ini"
+		},
+		"Rank-Class": {
+			"begin": "(^[ \\t]+)?([Rr]ank)[ \\t]+([0-8])",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
 		"Science-Class": {
 			"begin": "(^[ \\t]+)?([Ss]cience)[ \\t]+([a-zA-Z_][\\w%]*)",
 			"beginCaptures": {
