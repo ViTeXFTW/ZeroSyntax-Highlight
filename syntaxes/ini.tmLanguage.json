@@ -275,7 +275,7 @@
 					"include": "#DialogEvent-priority"
 				},
 				{
-					"include": "#AudioEvent-type"
+					"include": "#AudioEvent-Type"
 				},
 				{
 					"include": "#General-Assignment"
@@ -343,7 +343,10 @@
 					"include": "#Inline-Comment"
 				},
 				{
-					"include": "#AudioEvent-type"
+					"include": "#AudioEvent-Type"
+				},
+				{
+					"include": "#AudioEvent-Priority"
 				},
 				{
 					"include": "#General-Assignment"
@@ -353,7 +356,38 @@
 				}
 			]
 		},
-		"AudioEvent-type": {
+		"AudioEvent-Priority": {
+			"begin": "(^[ \\t]+)?([Pp]riority)[ \\t]*(=)[ \\t]*",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				},
+				"3": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"end": "$",
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#AudioEvent-priority-value"
+				},
+				{
+					"match": "[^a-zA-Z]+",
+					"name": "invalid.illegal.priority.ini"
+				}
+			]
+		},
+		"AudioEvent-priority-value": {
+			"match": "\\b(lowest|LOWEST|low|LOW|normal|NORMAL|high|HIGH|critical|CRITICAL)\\b",
+			"name": "variable.other.constant.ini"
+		},
+		"AudioEvent-Type": {
 			"begin": "(^[ \\t]+)?([Tt]ype)[ \\t]*(=)[ \\t]*",
 			"beginCaptures": {
 				"1": {
@@ -381,7 +415,7 @@
 			]
 		},
 		"AudioEvent-type-value": {
-			"match": "(^[ \\t]+)?\\b(ui|voice|player|world|global|shrouded|everyone)\\b",
+			"match": "(^[ \\t]+)?\\b(ui|UI|voice|VOICE|player|PLAYER|world|WORLD|global|GLOBAL|shrouded|SHROUDED|everyone|EVERYONE)\\b",
 			"name": "variable.other.constant.ini"
 		},
 		"ObjectRelated-Class": {
