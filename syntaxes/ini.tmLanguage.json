@@ -9,6 +9,9 @@
 			"include": "#ObjectRelated-Class"
 		},
 		{
+			"include": "#Science-Class"
+		},
+		{
 			"include": "#Weapon-Class"
 		},
 		{
@@ -35,6 +38,40 @@
 		}
 	],
 	"repository": {
+		"Science-Class": {
+			"begin": "(^[ \\t]+)?([Ss]cience)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
 		"Weapon-Class": {
 			"begin": "(^[ \\t]+)?([Ww]eapon)[ \\t]+([a-zA-Z_][\\w%]*)",
 			"beginCaptures": {
