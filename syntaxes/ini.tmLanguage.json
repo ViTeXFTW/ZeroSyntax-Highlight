@@ -9,6 +9,9 @@
 			"include": "#ObjectRelated-Class"
 		},
 		{
+			"include": "#Armor-Class"
+		},
+		{
 			"include": "#Locomotor-Class"
 		},
 		{
@@ -44,6 +47,40 @@
 		}
 	],
 	"repository": {
+		"Armor-Class": {
+			"begin": "(^[ \\t]+)?([Aa]rmor)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
 		"Locomotor-Class": {
 			"begin": "(^[ \\t]+)?([Ll]ocomotor)[ \\t]+([a-zA-Z_0-9][\\w%]*)",
 			"beginCaptures": {
