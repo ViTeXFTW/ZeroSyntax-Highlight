@@ -9,6 +9,9 @@
 			"include": "#ObjectRelated-Class"
 		},
 		{
+			"include": "#MappedImage-Class"
+		},
+		{
 			"include": "#Armor-Class"
 		},
 		{
@@ -47,6 +50,40 @@
 		}
 	],
 	"repository": {
+		"MappedImage-Class": {
+			"begin": "(^[ \\t]+)?([Mm]apped[Ii]mage)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
 		"Armor-Class": {
 			"begin": "(^[ \\t]+)?([Aa]rmor)[ \\t]+([a-zA-Z_][\\w%]*)",
 			"beginCaptures": {
