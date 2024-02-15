@@ -31,10 +31,411 @@
 				{ "include": "#AudioEvent-Class" },
 				{ "include": "#Weather-Class" },
 				{ "include": "#WaterTransparency-Class" },
-				{ "include": "#CommandSet" }
+				{ "include": "#CommandSet-Class" },
+				{ "include": "#CommandButton-Class" },
+				{ "include": "#FXList-Class" }
 			]
 		},
-		"CommandSet": {
+		"FXList-Class": {
+			"begin": "(^[ \\t]+)?([Ff][Xx][Ll]ist)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{ "include": "#Inline-Comment" },
+				{ "include": "#FXList-TerrainScorch" },
+				{ "include": "#FXList-Sound" },
+				{ "include": "#FXList-LightPulse" },
+				{ "include": "#FXList-ParticleSystem" },
+				{ "include": "#FXList-ViewShake" },
+				{ "include": "#FXList-Tracer" },
+				{ "include": "#FXList-FXListAtBonePos" }
+			]
+		},
+		"FXList-FXListAtBonePos": {
+			"begin": "(^[ \\t]+)?([Ff][Xx][Ll]istAtBonePos)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#FXListAtBonePos-Invalid-Assignment"
+				},
+				{
+					"include": "#General-Assignment"
+				}
+			]
+		},
+		"FXList-Tracer": {
+			"begin": "(^[ \\t]+)?([Tt]racer)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"FXList-ViewShake": {
+			"begin": "(^[ \\t]+)?([Vv]iew[Ss]hake)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"FXList-LightPulse": {
+			"begin": "(^[ \\t]+)?([Ll]ight[Pp]ulse)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"FXList-Sound": {
+			"begin": "(^[ \\t]+)?([Ss]ound)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"FXList-ParticleSystem": {
+			"begin": "(^[ \\t]+)?([Pp]article[Ss]ystem)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"FXList-TerrainScorch": {
+			"begin": "(^[ \\t]+)?([Tt]errain[Ss]corch)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"CommandButton-Class": {
+			"begin": "(^[ \\t]+)?([Cc]ommandButton)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#CommandButton-Cursor-Assignment"
+				},
+				{
+					"include": "#CommandButton-BorderType-Assignment"
+				},
+				{
+					"include": "#CommandButton-Options-Assignment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{	
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"CommandButton-Options-Assignment": {
+			"begin": "(^[ \\t]+)?([Oo]ptions)[ \\t]*(=)[ \\t]*",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				},
+				"3": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"end": "$",
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#CommandButton-Options-Assignment-Value"
+				},
+				{
+					"match": "[^a-zA-Z_]+",
+					"name": "invalid.illegal.options.ini"
+				}
+			]
+		},
+		"CommandButton-Options-Assignment-Value": {
+			"match": "\\b(NEED_SPECIAL_POWER_SCIENCE|NEED_TARGET_POS|CONTEXTMODE_COMMAND|CAN_USE_WAYPOINTS|SCRIPT_ONLY|NEED_TARGET_ENEMY_OBJECT|NEED_TARGET_NEUTRAL_OBJECT|OK_FOR_MULTI_SELECT|NEED_TARGET_ENEMY_OBJECT|NEED_UPGRADE|CHECK_LIKE|OPTION_ONE|OPTION_TWO|OPTION_THREE|NOT_QUEUEABLE|IGNORES_UNDERPOWERED|NEED_TARGET_ALLY_OBJECT|MUST_BE_STOPPED|USES_MINE_CLEARING_WEAPONSET)\\b",
+			"name": "variable.other.constant.ini"
+		},
+		"CommandButton-BorderType-Assignment": {
+			"begin": "(^[ \\t]+)?\\b([Bb]utton[Bb]order[Tt]ype)\\b[ \\t]*(=)[ \\t]*",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				},
+				"3": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"end": "$",
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#CommandButton-BorderType-Assignment-Value"
+				},
+				{
+					"match": "[^a-zA-Z_]+",
+					"name": "invalid.illegal.bordertype.ini"
+				}
+			]
+		},
+		"CommandButton-BorderType-Assignment-Value": {
+			"match": "\\b(ACTION|SYSTEM|UPGRADE|NONE|BUILD)\\b",
+			"name": "variable.other.constant.ini",
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				}
+			]
+		},
+		"CommandButton-Cursor-Assignment": {
+			"begin": "(^[ \\t]+)?\\b([Cc]ursor[Nn]ame|InvalidCursorName)\\b[ \\t]*(=)[ \\t]*",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				},
+				"3": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"end": "$",
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#CommandButton-Cursor-Assignment-Value"
+				},
+				{
+					"match": "[^a-zA-Z_]+",
+					"name": "invalid.illegal.cursor.ini"
+				}
+			]
+		},
+		"CommandButton-Cursor-Assignment-Value": {
+			"match": "\\b(Normal|Arrow|Scroll|Target|Move|AttackMove|AttackObj|ForceAttackObj|ForceAttackGround|Select|GenericInvalid|EnterFriendly|EnterAggressive|CaptureBuilding|SnipeVehicle|FireBomb|Defector|LaserGuidedMissiles|TankHunterTNTAttack|StabAttack|Hack|StabAttackInvalid|PlaceRemoteCharge|PlaceTimedCharge|PlaceChargeInvalid|SetRallyPoint|Dock|GetRepaired|GetHealed|DoRepair|ResumeConstruction|FireFlame|PlaceBeacon|DisguiseAsVehicle|Waypoint|OutRange|ParticleUplinkCannon)\\b",
+			"name": "variable.other.constant.ini",
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				}
+			]
+		},
+		"CommandSet-Class": {
 			"begin": "(^[ \\t]+)?([Cc]ommandSet)[ \\t]+([a-zA-Z_][\\w%]*)",
 			"beginCaptures": {
 				"1": {
@@ -1883,7 +2284,7 @@
 			]
 		},
 		"Inline-Comment": {
-			"begin": "(^[ \\t]+)?(?=(;|//))",
+			"begin": "((^[ \\t]+)|[ \\t]+)?(?=(;|//))",
 			"beginCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
