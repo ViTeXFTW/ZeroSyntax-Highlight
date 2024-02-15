@@ -9,7 +9,7 @@
 			"include": "#INI-Classes"
 		},
 		{
-			"match": "([Ee]nd|END)",
+			"match": "\\b([Ee]nd|END)\\b",
 			"name": "invalid.illegal.ini"
 		}
 	],
@@ -33,7 +33,269 @@
 				{ "include": "#WaterTransparency-Class" },
 				{ "include": "#CommandSet-Class" },
 				{ "include": "#CommandButton-Class" },
-				{ "include": "#FXList-Class" }
+				{ "include": "#FXList-Class" },
+				{ "include": "#ObjectCreationList-Class" }
+			]
+		},
+		"ObjectCreationList-Class": {
+			"begin": "(^[ \\t]+)?([Oo]bjectCreationList)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{ "include": "#Inline-Comment" },
+				{ "include": "#OCL-Attack" },
+				{ "include": "#OCL-FireWeapon" },
+				{ "include": "#OCL-DeliverPayload" },
+				{ "include": "#OCL-ApplyRandomForce" },
+				{ "include": "#OCL-CreateObject" },
+				{ "include": "#OCL-CreateDebris" }
+			]
+		},
+		"OCL-Attack": {
+			"begin": "(^[ \\t]+)?([Aa]ttack)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#OCL-DeliveryDecal"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"OCL-FireWeapon": {
+			"begin": "(^[ \\t]+)?([Ff]ire[Ww]eapon)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b\\b([Ee]nd|END)\\b\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"OCL-DeliverPayload": {
+			"begin": "(^[ \\t]+)?([Dd]eliverPayload)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#OCL-DeliveryDecal"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"OCL-DeliveryDecal": {
+			"begin": "(^[ \\t]+)?\\b([Dd]eliveryDecal)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"OCL-ApplyRandomForce": {
+			"begin": "(^[ \\t]+)?([Aa]pplyRandomForce)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"OCL-CreateObject": {
+			"begin": "(^[ \\t]+)?([Cc]reateObject)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#OCL-CreateObject-Invalid-Assignment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]	
+		},
+		"OCL-CreateDebris": {
+			"begin": "(^[ \\t]+)?([Cc]reateDebris)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#OCL-CreateDebris-Invalid-Assignment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
 			]
 		},
 		"FXList-Class": {
@@ -49,7 +311,7 @@
 					"name": "entity.name.type.class.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -82,7 +344,7 @@
 					"name": "entity.name.type.class.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -113,7 +375,7 @@
 					"name": "variable.name.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -144,7 +406,7 @@
 					"name": "variable.name.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -175,7 +437,7 @@
 					"name": "variable.name.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -206,7 +468,7 @@
 					"name": "variable.name.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -237,7 +499,7 @@
 					"name": "variable.name.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -268,7 +530,7 @@
 					"name": "variable.name.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -302,7 +564,7 @@
 					"name": "entity.name.type.class.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -448,7 +710,7 @@
 					"name": "entity.name.type.class.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -509,7 +771,7 @@
 					"name": "variable.name.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -540,7 +802,7 @@
 					"name": "keyword.control.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -574,7 +836,7 @@
 					"name": "entity.name.type.class.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -608,7 +870,7 @@
 					"name": "entity.name.type.class.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -642,7 +904,7 @@
 					"name": "entity.name.type.class.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -710,7 +972,7 @@
 					"name": "entity.name.type.class.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -744,7 +1006,7 @@
 					"name": "entity.name.type.class.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -778,7 +1040,7 @@
 					"name": "entity.name.type.class.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -829,7 +1091,7 @@
 			]
 		},
 		"Weapon-WeaponBonus-Assignment-value01": {
-			"match": "([ \\t]+)?\\b(DRONE_SPOTTING|PLAYER_UPGRADE|CONTINUOUS_FIRE_MEAN|CONTINUOUS_FIRE_FAST|DAMAGE|RANGE|RATE_OF_FIRE)\\b",
+			"match": "([ \\t]+)?\\b(DRONE_SPOTTING|PLAYER_UPGRADE|CONTINUOUS_FIRE_MEAN|CONTINUOUS_FIRE_FAST|DAMAGE|RANGE|RATE_OF_FIRE|HORDE|RADIUS|GARRISONED)\\b",
 			"captures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -852,7 +1114,7 @@
 					"name": "entity.name.type.class.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -886,7 +1148,7 @@
 					"name": "entity.name.type.class.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -920,7 +1182,7 @@
 					"name": "entity.name.type.class.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -954,7 +1216,7 @@
 					"name": "entity.name.type.class.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -988,7 +1250,7 @@
 					"name": "entity.name.type.class.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -1059,7 +1321,7 @@
 					"name": "entity.name.type.class.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -1159,7 +1421,7 @@
 			]
 		},
 		"ObjectReskin-class": {
-			"begin": "(^[ \\t]+)?(ObjectReskin)[ \\t]+([a-zA-Z_][\\w%]*)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"begin": "(^[ \\t]+)?(ObjectReskin)[ \\t]+([a-zA-Z_][\\w%]*)[ \\t]+([a-zA-Z_0-9][\\w%]*)",
 			"beginCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -1174,7 +1436,7 @@
 					"name": "entity.name.type.class.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -1211,7 +1473,7 @@
 			]
 		},
 		"Object-Class": {
-			"begin": "(^[ \\t]+)?(Object)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"begin": "(^[ \\t]+)?(Object)[ \\t]+([a-zA-Z_0-9][\\w%]*)",
 			"beginCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -1223,7 +1485,7 @@
 					"name": "entity.name.type.class.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -1269,7 +1531,7 @@
 					"name": "keyword.control.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -1341,7 +1603,7 @@
 					"name": "keyword.control.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -1372,7 +1634,7 @@
 					"name": "keyword.control.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"	
@@ -1403,7 +1665,7 @@
 					"name": "keyword.control.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -1434,7 +1696,7 @@
 					"name": "keyword.control.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -1465,7 +1727,7 @@
 					"name": "keyword.control.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -1522,7 +1784,7 @@
 					"name": "punctuation.whitespace.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -1605,7 +1867,7 @@
 					"name": "punctuation.whitespace.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -1687,7 +1949,7 @@
 					"name": "keyword.control.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"end": "(^[ \\t]+)?\\b\\b([Ee]nd|END)\\b\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"	
@@ -1718,7 +1980,7 @@
 					"name": "keyword.control.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"end": "(^[ \\t]+)?\\b\\b([Ee]nd|END)\\b\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"	
@@ -1749,7 +2011,7 @@
 					"name": "keyword.control.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"end": "(^[ \\t]+)?\\b\\b([Ee]nd|END)\\b\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"	
@@ -1780,7 +2042,7 @@
 					"name": "keyword.control.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"	
@@ -1823,7 +2085,7 @@
 					"name": "entity.name.function.ini"
 				}	
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -1893,7 +2155,7 @@
 					"name": "entity.name.function.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -1978,7 +2240,7 @@
 					"name": "keyword.operator.assignment.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -2035,7 +2297,7 @@
 					"name": "keyword.operator.assignment.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -2086,7 +2348,7 @@
 					"name": "keyword.control.ini"
 				}
 			},
-			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
