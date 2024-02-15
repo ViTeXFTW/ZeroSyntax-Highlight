@@ -34,8 +34,76 @@
 				{ "include": "#CommandSet-Class" },
 				{ "include": "#CommandButton-Class" },
 				{ "include": "#FXList-Class" },
-				{ "include": "#ObjectCreationList-Class" }
+				{ "include": "#ObjectCreationList-Class" },
+				{ "include": "#DamageFX-Class" }
 			]
+		},
+		"DamageFX-Class": {
+			"begin": "(^[ \\t]+)?([Dd]amage[Ff][Xx])[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#DamageFX-Assignemnt"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"DamageFX-Assignemnt": {
+			"begin": "(^[ \\t]+)?([a-zA-Z_][\\w%]*)",
+			"captures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				}
+			},
+			"end": "$",
+			"patterns": [
+				{
+					"include": "#WhiteSpace"
+				},
+				{
+					"include": "#Equals"
+				},
+				{
+					"include": "#DamageFX-Assignemnt-DamageCategories"
+				},
+				{
+					"include": "#Value"
+				}
+			]
+		},
+		"DamageFX-Assignemnt-DamageCategories": {
+			"match": "\\b(HEROIC|PARTICLE_BEAM|EXPLOSION|CRUSH|ARMOR_PIERCING|SMALL_ARMS|GATTLING|RADIATION|FLAME|LASER|SNIPER|POISON|HEALING|UNRESISTABLE|WATER|DEPLOY|SURRENDER|HACK|KILL_PILOT|PENALTY|FALLING|MELEE|DISARM|HAZARD_CLEANUP|INFANTRY_MISSILE|AURORA_BOMB|LAND_MINE|JET_MISSILES|STEALTHJET_MISSILES|MOLOTOV_COCKTAIL|COMANCHE_VULCAN|SUBDUAL_MISSILE|SUBDUAL_VEHICLE|SUBDUAL_BUILDING|SUBDUAL_UNRESISTABLE|MICROWAVE|KILL_GARRISONED|STATUS|DEFAULT)\\b",
+			"name": "variable.other.constant.ini"
 		},
 		"ObjectCreationList-Class": {
 			"begin": "(^[ \\t]+)?([Oo]bjectCreationList)[ \\t]+([a-zA-Z_][\\w%]*)",
@@ -793,7 +861,7 @@
 			]
 		},
 		"Weather-Class": {
-			"begin": "(^[ \\t]+)?([Ww]eather)",
+			"begin": "(^[ \\t]+)?\\b([Ww]eather)\\b",
 			"beginCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
