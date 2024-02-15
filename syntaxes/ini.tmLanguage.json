@@ -6,43 +6,7 @@
 			"include": "#Inline-Comment"
 		},
 		{
-			"include": "#ObjectRelated-Class"
-		},
-		{
-			"include": "#MappedImage-Class"
-		},
-		{
-			"include": "#Armor-Class"
-		},
-		{
-			"include": "#Locomotor-Class"
-		},
-		{
-			"include": "#Rank-Class"
-		},
-		{
-			"include": "#Science-Class"
-		},
-		{
-			"include": "#Weapon-Class"
-		},
-		{
-			"include": "#Upgrade-Class"
-		},
-		{
-			"include": "#SpecialPower-Class"
-		},
-		{
-			"include": "#ParticleSystem-Class"	
-		},
-		{
-			"include": "#PlayerTemplate-Class"
-		},
-		{
-			"include": "#AudioEvent-Class"
-		},
-		{
-			"include": "#DialogEvent-Class"
+			"include": "#INI-Classes"
 		},
 		{
 			"match": "([Ee]nd|END)",
@@ -50,6 +14,87 @@
 		}
 	],
 	"repository": {
+		"INI-Classes": {
+			"patterns": [
+				{ "include": "#ObjectRelated-Class" },
+				{ "include": "#MappedImage-Class" },
+				{ "include": "#Armor-Class" },
+				{ "include": "#Locomotor-Class" },
+				{ "include": "#Rank-Class" },
+				{ "include": "#Science-Class" },
+				{ "include": "#Weapon-Class" },
+				{ "include": "#Upgrade-Class" },
+				{ "include": "#SpecialPower-Class" },
+				{ "include": "#ParticleSystem-Class" },
+				{ "include": "#PlayerTemplate-Class" },
+				{ "include": "#DialogEvent-Class" },
+				{ "include": "#AudioEvent-Class" },
+				{ "include": "#Weather-Class" },
+				{ "include": "#WaterTransparency-Class" }
+			]
+		},
+		"WaterTransparency-Class": {
+			"begin": "(^[ \\t]+)?([Ww]ater[Tt]ransparency)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Weather-Class": {
+			"begin": "(^[ \\t]+)?([Ww]eather)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
 		"MappedImage-Class": {
 			"begin": "(^[ \\t]+)?([Mm]apped[Ii]mage)[ \\t]+([a-zA-Z_][\\w%]*)",
 			"beginCaptures": {
