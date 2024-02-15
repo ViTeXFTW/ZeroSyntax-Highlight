@@ -30,8 +30,73 @@
 				{ "include": "#DialogEvent-Class" },
 				{ "include": "#AudioEvent-Class" },
 				{ "include": "#Weather-Class" },
-				{ "include": "#WaterTransparency-Class" }
+				{ "include": "#WaterTransparency-Class" },
+				{ "include": "#CommandSet" }
 			]
+		},
+		"CommandSet": {
+			"begin": "(^[ \\t]+)?([Cc]ommandSet)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?([Ee]nd|END)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#CommandSet-Assignment"
+				},
+				{
+					"include": "#CommandSet-Invalid-Assignment"
+				}
+			]
+		},
+		"CommandSet-Assignment": {
+			"begin": "(^[ \\t]+)?\\b((1[0-8])|([1-9]))\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "$",
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#WhiteSpace"
+				},
+				{
+					"include": "#Equals"
+				},
+				{
+					"include": "#String"
+				}
+			]
+		},
+		"CommandSet-Invalid-Assignment": {
+			"match": "(^[ \\t]+)?([^\\d]|0|19|[2-9]\\d+|\\d{2,})",
+			"name": "invalid.illegal.commandset.ini"
 		},
 		"WaterTransparency-Class": {
 			"begin": "(^[ \\t]+)?([Ww]ater[Tt]ransparency)",
