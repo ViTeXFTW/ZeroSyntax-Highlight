@@ -9,6 +9,12 @@
 			"include": "#INI-Classes"
 		},
 		{
+			"include": "#General-Assignment"
+		},
+		{
+			"include": "#Invalid-Assignment"
+		},
+		{
 			"match": "\\b([Ee]nd|END)\\b",
 			"name": "invalid.illegal.ini"
 		}
@@ -31,6 +37,7 @@
 				{ "include": "#AudioEvent-Class" },
 				{ "include": "#Weather-Class" },
 				{ "include": "#WaterTransparency-Class" },
+				{ "include": "#WaterSet-Class" },
 				{ "include": "#CommandSet-Class" },
 				{ "include": "#CommandButton-Class" },
 				{ "include": "#FXList-Class" },
@@ -39,7 +46,106 @@
 				{ "include": "#MouseCursor-Class" },
 				{ "include": "#Mouse-Class" },
 				{ "include": "#InGameUI-Class" },
-				{ "include": "#AIData-Class" }
+				{ "include": "#AIData-Class" },
+				{ "include": "#Animation2D-Class" },
+				{ "include": "#AudioSettings-Class" },
+				{ "include": "#GameData-Class" }
+			]
+		},
+		"GameData-Class": {
+			"begin": "(^[ \\t]+)?\\b(GameData)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"AudioSettings-Class": {
+			"begin": "(^[ \\t]+)?\\b([Aa]udio[Ss]ettings)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Animation2D-Class": {
+			"begin": "(^[ \\t]+)?\\b([Aa]nimation2D)\\b[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
 			]
 		},
 		"AIData-Class": {
@@ -1108,14 +1214,48 @@
 			"match": "(^[ \\t]+)?([^\\d]|0|19|[2-9]\\d+|\\d{2,})",
 			"name": "invalid.illegal.commandset.ini"
 		},
-		"WaterTransparency-Class": {
-			"begin": "(^[ \\t]+)?([Ww]ater[Tt]ransparency)",
+		"WaterSet-Class": {
+			"begin": "(^[ \\t]+)?([Ww]ater[Ss]et)[ \\t]+([a-zA-Z_][\\w%]*)",
 			"beginCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
 				},
 				"2": {
-					"name": "variable.name.ini"
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"WaterTransparency-Class": {
+			"begin": "(^[ \\t]+)?\\b(WaterTransparency)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
 				}
 			},
 			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
@@ -2892,7 +3032,7 @@
 					"name": "string.quoted.single.ini"
 				},
 				{
-					"match": "[a-zA-Z_:\\.+]\\w*",
+					"match": "[a-zA-Z_:\\.+][\\w\\\\]*",
 					"name": "string.unquoted.ini"
 				}
 			]
