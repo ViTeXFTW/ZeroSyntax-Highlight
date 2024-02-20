@@ -35,7 +35,106 @@
 				{ "include": "#CommandButton-Class" },
 				{ "include": "#FXList-Class" },
 				{ "include": "#ObjectCreationList-Class" },
-				{ "include": "#DamageFX-Class" }
+				{ "include": "#DamageFX-Class" },
+				{ "include": "#MouseCursor-Class" },
+				{ "include": "#Mouse-Class" },
+				{ "include": "#InGameUI-Class" }
+			]
+		},
+		"InGameUI-Class": {
+			"begin": "(^[ \\t]+)?([Ii]n[Gg]ame[Uu][Ii])",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Mouse-Class": {
+			"begin": "(^[ \\t]+)?\\b([Mm]ouse)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignemnt"
+				}
+			]
+		},
+		"MouseCursor-Class": {
+			"begin": "(^[ \\t]+)?\\b([Mm]ouse[Cc]ursor)\\b[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignemnt"
+				}
 			]
 		},
 		"DamageFX-Class": {
@@ -1570,6 +1669,9 @@
 					"include": "#Object-AddModule"
 				},
 				{
+					"include": "#Object-ReplaceModule"
+				},
+				{
 					"include": "#Object-RemoveModule"
 				},
 				{
@@ -1580,6 +1682,46 @@
 				},
 				{
 					"include": "#Locomotor-Assignment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Object-ReplaceModule": {
+			"begin": "(^[ \\t]+)?([Rr]eplace[Mm]odule)[ \\t]+([a-zA-Z_0-9][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Object-Modules"
+				},
+				{
+					"include": "#Object-PropertyBlocks"	
 				},
 				{
 					"include": "#General-Assignment"
