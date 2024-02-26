@@ -351,6 +351,40 @@
 					"include": "#Inline-Comment"
 				},
 				{
+					"include": "#Cursor-InGameUI-Class"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Cursor-InGameUI-Class": {
+			"begin": "(^[ \\t]+)?(\\w+(?![^=\\n]*=))",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
 					"include": "#General-Assignment"
 				},
 				{
@@ -3048,7 +3082,7 @@
 					"name": "constant.numeric.ini"
 				},
 				{
-					"match": "([xXYyZzRrGgBb]:)(-?\\d+(\\.\\d+)?)",
+					"match": "([xXYyZzRrGgBbAa]:)(-?\\d+(\\.\\d+)?)",
 					"captures": {
 						"1": {
 							"name": "string.unquoted.ini"
