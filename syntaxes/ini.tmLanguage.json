@@ -49,7 +49,39 @@
 				{ "include": "#AIData-Class" },
 				{ "include": "#Animation2D-Class" },
 				{ "include": "#AudioSettings-Class" },
-				{ "include": "#GameData-Class" }
+				{ "include": "#GameData-Class" },
+				{ "include": "#DrawGroupInfo-Class" }
+			]
+		},
+		"DrawGroupInfo-Class": {
+			"begin": "(^[ \\t]+)?\\b(DrawGroupInfo)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
 			]
 		},
 		"GameData-Class": {
@@ -741,7 +773,7 @@
 					"include": "#Inline-Comment"
 				},
 				{
-					"include": "#OCL-CreateObject-Invalid-Assignment"
+					"include": "#Disposition-Object-Assignment"
 				},
 				{
 					"include": "#General-Assignment"
@@ -750,6 +782,34 @@
 					"include": "#Invalid-Assignment"
 				}
 			]	
+		},
+		"Disposition-Object-Assignment": {
+			"begin": "(^[ \\t]+)?\\b(Disposition)[ \\t](=)[ \\t]",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				},
+				"3": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"end": "$",
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Disposition-Object-Assignment-Values"
+				}
+			]
+
+		},
+		"Disposition-Object-Assignment-Values": {
+			"match": "\\b(LIKE_EXISTING|INHERIT_VELOCITY|ON_GROUND_ALIGNED|SEND_IT_FLYING|RANDOM_FORCE)",
+			"name": "variable.other.constant.ini"
 		},
 		"OCL-CreateDebris": {
 			"begin": "(^[ \\t]+)?([Cc]reateDebris)",
@@ -775,7 +835,7 @@
 					"include": "#Inline-Comment"
 				},
 				{
-					"include": "#OCL-CreateDebris-Invalid-Assignment"
+					"include": "#Disposition-Debris-Assignment"
 				},
 				{
 					"include": "#General-Assignment"
@@ -784,6 +844,33 @@
 					"include": "#Invalid-Assignment"
 				}
 			]
+		},
+		"Disposition-Debris-Assignment": {
+			"begin": "(^[ \\t]+)?([Dd]isposition)[ \\t]*(=)[ \\t]*",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				},
+				"3": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"end": "$",
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Disposition-Debris-Assignment-Values"
+				}
+			]
+		},
+		"Disposition-Debris-Assignment-Values": {
+			"match": "(RANDOM_FORCE|INHERIT_VELOCITY|SEND_IT_FLYING|FLOATING|SEND_IT_UP)",
+			"name": "variable.other.constant.ini"
 		},
 		"FXList-Class": {
 			"begin": "(^[ \\t]+)?([Ff][Xx][Ll]ist)[ \\t]+([a-zA-Z_][\\w%]*)",
