@@ -2507,6 +2507,12 @@
 					"include": "#Object-Modules"
 				},
 				{
+					"include": "#Object-OverrideableByLikeKind-Block"
+				},
+				{
+					"include": "#Object-InheritableModule-Block"
+				},
+				{
 					"include": "#Object-PropertyBlocks"	
 				},
 				{
@@ -2514,6 +2520,74 @@
 				},
 				{
 					"include": "#KindOf-Assignemnt"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Object-OverrideableByLikeKind-Block": {
+			"begin": "(^[ \\t]+)?\\b([Oo]verrideable[Bb]y[Ll]ike[Kk]ind)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Object-Modules"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Object-InheritableModule-Block": {
+			"begin": "(^[ \\t]+)?\\b([Ii]nheritable[Mm]odule)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Object-Modules"
 				},
 				{
 					"include": "#General-Assignment"
