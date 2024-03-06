@@ -2,16 +2,21 @@
 
 All notable changes to the "ZH-HiLi" extension will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## [Unreleased]
 
-## [0.2.0] - 
+## [0.2.0]
 
 ### Added
-- Added illigal character captures for lonely End statements, after module assignemnt or object definition. 
+- Lonely End statements now gets captured as illigal characters
+- ObjectReskin class now has highlighting
+- DamageFX class now has highlighting
 
-### Changed
-- Rewrote tmLanguage.json file with look ahead and behinds instead of direct lookup.
+### Fixes
+- AltTurret added to AIUpdateInterfaces
+- Numbers with leading . (period) now gets captured
+- Now captures multiple numbers sperated by spaces
+- Updated Readme
 
-## [0.1.0] - 2024-01-22
+## [0.1.0]
 
 - Initial release
