@@ -13,7 +13,7 @@ The project will firstly focus on supporting map.ini files which works in the ba
 
 ### ZeroSyntax Highlighting
 ![image](https://github.com/ViTeXFTW/ZeroSyntax-Highlight/assets/90150876/3c63c537-2e6f-40b1-b23a-9b1eea6aba4c)
-![image](https://github.com/ViTeXFTW/ZeroSyntax-Highlight/assets/90150876/fa9617f7-2a6f-4cf4-9b8e-b15d6964da3a)
+
 
 
 

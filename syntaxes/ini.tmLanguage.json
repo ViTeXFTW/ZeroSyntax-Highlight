@@ -3,1708 +3,3837 @@
 	"name": "Ini",
 	"patterns": [
 		{
-			"include": "#inline-comment"
+			"include": "#Inline-Comment"
 		},
 		{
-			"include": "#class"
+			"include": "#INI-Classes"
 		},
 		{
-			"match": "(^[ \\t]*)?\\b([Ee]nd|END)\\b",
+			"include": "#General-Assignment"
+		},
+		{
+			"include": "#Invalid-Assignment"
+		},
+		{
+			"match": "\\b([Ee]nd|END)\\b",
 			"name": "invalid.illegal.ini"
 		}
 	],
 	"repository": {
-		"class": {
+		"INI-Classes": {
 			"patterns": [
-				{"include": "#damagefx-class"},
-				{"include": "#fxlist-class"},
-				{"include": "#particlesystem-class"},
-				{"include": "#audio-class"},
-				{"include": "#dialog-class"},
-				{"include": "#commandbutton-class"},
-				{"include": "#weather-class"},
-				{"include": "#armor-class"},
-				{"include": "#weapon-class"},
-				{"include": "#upgrade-class"},
-				{"include": "#specialpower-class"},
-				{"include": "#science-class"},
-				{"include": "#rank-class"},
-				{"include": "#playertemplate-class"},
-				{"include": "#commandset-class"},
-				{"include": "#ocl-class"},
-				{"include": "#mappedimage-class"},
-				{"include": "#locomotor-class"},
-				{"include": "#objectreskin-class"},
-				{"include": "#object-class"}
+				{ "include": "#ObjectRelated-Class" },
+				{ "include": "#MappedImage-Class" },
+				{ "include": "#Armor-Class" },
+				{ "include": "#Locomotor-Class" },
+				{ "include": "#Rank-Class" },
+				{ "include": "#Science-Class" },
+				{ "include": "#Weapon-Class" },
+				{ "include": "#Upgrade-Class" },
+				{ "include": "#SpecialPower-Class" },
+				{ "include": "#ParticleSystem-Class" },
+				{ "include": "#PlayerTemplate-Class" },
+				{ "include": "#DialogEvent-Class" },
+				{ "include": "#AudioEvent-Class" },
+				{ "include": "#Weather-Class" },
+				{ "include": "#WaterTransparency-Class" },
+				{ "include": "#WaterSet-Class" },
+				{ "include": "#CommandSet-Class" },
+				{ "include": "#CommandButton-Class" },
+				{ "include": "#FXList-Class" },
+				{ "include": "#ObjectCreationList-Class" },
+				{ "include": "#DamageFX-Class" },
+				{ "include": "#MouseCursor-Class" },
+				{ "include": "#Mouse-Class" },
+				{ "include": "#InGameUI-Class" },
+				{ "include": "#AIData-Class" },
+				{ "include": "#Animation2D-Class" },
+				{ "include": "#AudioSettings-Class" },
+				{ "include": "#GameData-Class" },
+				{ "include": "#DrawGroupInfo-Class" },
+				{ "include": "#Campaign-Class" },
+				{ "include": "#ChallengeGenerals-Class" },
+				{ "include": "#EvaEvents-Class" },
+				{ "include": "#Music-Class" },
+				{ "include": "#Road-Class" },
+				{ "include": "#Terrain-Class" },
+				{ "include": "#Video-Class" },
+				{ "include": "#CommandMap-Class" },
+				{ "include": "#CrateData-Class" },
+				{ "include": "#LOD-Class" },
+				{ "include": "#MiscAudio-Class" }
 			]
 		},
-		"damagefx-class": {
-			"begin": "\\s*\\b([Dd]amage[Ff][Xx])\\s+([a-zA-Z]\\w+)",
+		"MiscAudio-Class": {
+			"begin": "(^[ \\t]+)?\\b([Mm]isc[Aa]udio)\\b",
 			"beginCaptures": {
 				"1": {
-					"name": "keyword.control.ini"
+					"name": "punctuation.whitespace.ini"
 				},
 				"2": {
-					"name": "entity.name.type"
+					"name": "keyword.control.ini"
 				}
 			},
-			"end": "\\b([Ee]nd|END)\\s*",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns":[
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"fxlist-class": {
-			"begin": "\\s*\\b([Ff][Xx][Ll]ist)\\s+([a-zA-Z]\\w+)",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
+					"name": "punctuation.whitespace.ini"
 				},
 				"2": {
-					"name": "entity.name.type.ini"
-				}
-			},
-			"end": "\\b([Ee]nd|END)\\s*",
-			"endCaptures": {
-				"1": {
 					"name": "keyword.control.ini"
 				}
 			},
 			"patterns": [
 				{
-					"include": "#inline-comment"
+					"include": "#Inline-Comment"
 				},
 				{
-					"include": "#fxlist-sound"
+					"include": "#General-Assignment"
 				},
 				{
-					"include": "#fxlist-particlesystem"
-				},
-				{
-					"include": "#fxlist-lightpulse"
-				},
-				{
-					"include": "#fxlist-viewshake"
-				},
-				{
-					"include": "#fxlist-terrainscorch"
-				},
-				{
-					"include": "#fxlist-tracer"
-				},
-				{
-					"include": "#fxlist-fxlistatbone"
+					"include": "#Invalid-Assignment"
 				}
 			]
 		},
-		"fxlist-fxlistatbone": {
-			"begin": "\\s*\\b([Ff][Xx][Ll]ist[Aa]t[Bb]one[Pp]os)",
+		"LOD-Class": {
+			"begin": "(^[ \\t]+)?\\b([Ss]tatic[Gg]ameLOD|[Dd]ynamic[Gg]ameLOD)\\b[ \\t]+(=)[ \\t]+\\b(Low|Medium|High|VeryHigh)\\b",
 			"beginCaptures": {
 				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"end": "\\b([Ee]nd|END)\\s*",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"fxlist-tracer": {
-			"begin": "\\s*\\b([Tt]racer)",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"end": "\\b([Ee]nd|END)\\s*",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"fxlist-terrainscorch": {
-			"begin": "\\s*\\b(TerrainScorch)",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"end": "\\b([Ee]nd|END)\\s*",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns":[
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"fxlist-viewshake": {
-			"begin": "\\s*\\b([Vv]iew[Ss]hake)",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"end": "\\b([Ee]nd|END)\\s*",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [ 
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"fxlist-lightpulse": {
-			"begin": "\\s*\\b([Ll]ight[Pp]ulse)",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"end": "\\b([Ee]nd|END)\\s*",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"fxlist-sound": {
-			"begin": "\\s*\\b([Ss]ound)",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"end": "\\b([Ee]nd|END)\\s*",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"fxlist-particlesystem": {
-			"begin": "\\s*\\b([Pp]articleSystem)",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"end": "\\b([Ee]nd|END)\\s*",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [ 
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"particlesystem-class": {
-			"begin": "\\s*\\b(ParticleSystem)\\s+([a-zA-Z]\\w+)",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
+					"name": "punctuation.whitespace.ini"
 				},
 				"2": {
-					"name": "entity.name.type.ini"
-				}
-			},
-			"end": "\\b([Ee]nd|END)\\s*",
-			"endCaptures": {
-				"1": {
 					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"commandbutton-class": {
-			"begin": "\\s*\\b(CommandButton)\\s+([a-zA-Z]\\w+)",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				},
-				"2": {
-					"name": "entity.name.type.ini"
-				}
-			},
-			"end": "\\b([Ee]nd|END)\\s*",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"dialog-class": {
-			"begin": "\\s*\\b(DialogEvent)\\s+([a-zA-Z]\\w+)",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				},
-				"2": {
-					"name": "entity.name.type.ini"
-				}
-			},
-			"end": "\\b([Ee]nd|END)\\s*",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"audio-class": {
-			"begin": "\\s*\\b(AudioEvent)\\s+([a-zA-Z]\\w+)",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				},
-				"2": {
-					"name": "entity.name.type.ini"
-				}
-			},
-			"end": "\\b([Ee]nd|END)\\s*",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"weather-class": {
-			"begin": "\\s*\\b(Weather)",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"end": "\\b([Ee]nd|END)\\s*",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"armor-class": {
-			"begin": "\\s*\\b(Armor)\\s+([a-zA-Z]\\w+)",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				},
-				"2": {
-					"name": "entity.name.type.ini"
-				}
-			},
-			"end": "\\b([Ee]nd|END)\\s*",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"weapon-class": {
-			"begin": "\\s*\\b(Weapon)\\s+([a-zA-Z]\\w+)",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				},
-				"2": {
-					"name": "entity.name.type.ini"
-				}
-			},
-			"end": "\\b([Ee]nd|END)\\s*",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"upgrade-class": {
-			"begin": "\\s*\\b(Upgrade)\\s+([a-zA-Z]\\w+)",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				},
-				"2": {
-					"name": "entity.name.type.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)\\s*",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"specialpower-class": {
-			"begin": "\\s*\\b(SpecialPower)\\s+([a-zA-Z]\\w+)",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				},
-				"2": {
-					"name": "entity.name.type.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)\\s*",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"science-class": {
-			"begin": "\\s*\\b(Science)\\s+([a-zA-Z]\\w+)",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				},
-				"2": {
-					"name": "entity.name.type.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"rank-class": {
-			"begin": "\\s*\\b(Rank)\\s+([0-7])",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				},
-				"2": {
-					"name": "entity.name.type.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)\\s*",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"playertemplate-class": {
-			"begin": "\\s*\\b(PlayerTemplate)\\s+([a-zA-Z]\\w+)",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				},
-				"2": {
-					"name": "entity.name.type.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"commandset-class": {
-			"begin": "\\s*\\b(CommandSet)\\s+([a-zA-Z]\\w+)",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				},
-				"2": {
-					"name": "entity.name.type.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#commandset-assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"ocl-class": {
-			"begin": "\\s*\\b(ObjectCreationList)\\s+([a-zA-Z]\\w+)",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				},
-				"2": {
-					"name": "entity.name.type.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#ocl-randomforce"
-				},
-				{
-					"include": "#ocl-attack"
-				},
-				{
-					"include": "#ocl-createdebris"
-				},
-				{
-					"include": "#ocl-createobject"
-				},
-				{
-					"include": "#ocl-deliverpayload"
-				},
-				{
-					"include": "#ocl-fireweapon"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"ocl-randomforce": {
-			"begin": "\\s*\\b(ApplyRandomForce)\\b",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"ocl-attack": {
-			"begin": "\\s*\\b(Attack)\\b",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#ocl-deliverydecal"
-				},
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"ocl-createdebris": {
-			"begin": "\\s*\\b(CreateDebris)\\b",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"ocl-createobject": {
-			"begin": "\\s*\\b(CreateObject)\\b",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"ocl-deliverpayload": {
-			"begin": "\\s*\\b(DeliverPayload)\\b",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#ocl-deliverydecal"
-				},
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"ocl-deliverydecal": {
-			"begin": "\\s*\\b(DeliveryDecal)\\b",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"ocl-fireweapon": {
-			"begin": "\\s*\\b(FireWeapon)\\b",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"mappedimage-class": {
-			"begin": "\\s*\\b(MappedImage)\\s+([a-zA-Z]\\w+)",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				},
-				"2": {
-					"name": "entity.name.type.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"locomotor-class": {
-			"patterns": [
-				{
-					"begin": "\\s*\\b(Locomotor)\\s+([a-zA-Z]\\w+)",
-					"beginCaptures": {
-						"1": {
-							"name": "keyword.control.ini"
-						},
-						"2": {
-							"name": "entity.name.type.ini"
-						}
-					},
-					"end": "\\s*\\b([Ee]nd|END)",
-					"endCaptures": {
-						"1": {
-							"name": "keyword.control.ini"
-						}
-					},
-					"patterns": [
-						{
-							"include": "#assignment"
-						},
-						{
-							"include": "#inline-comment"
-						}
-					]
-				}
-			]
-		},
-		"objectreskin-class": {
-			"begin": "\\s*\\b(ObjectReskin)\\s+([a-zA-Z]\\w+)\\s+([a-zA-Z]\\w+)",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				},
-				"2": {
-					"name": "entity.name.type.ini"
 				},
 				"3": {
-					"name": "entity.name.type.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#Object-WeaponSet"
-				},
-				{
-					"include": "#Object-ArmorSet"
-				},
-				{
-					"include": "#Object-Prerequisites"
-				},
-				{
-					"include": "#UnitSpecificSounds"
-				},
-				{
-					"include": "#UnitSpecificFX"
-				},
-				{
-					"include": "#modules"
-				},
-				{
-					"include": "#AddModule-block"
-				},
-				{
-					"include": "#inline-removemodule"
-				},
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"object-class": {
-			"begin": "\\s*\\b(Object)\\s+([a-zA-Z]\\w+)",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				},
-				"2": {
-					"name": "entity.name.type.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#Object-WeaponSet"
-				},
-				{
-					"include": "#Object-ArmorSet"
-				},
-				{
-					"include": "#Object-Prerequisites"
-				},
-				{
-					"include": "#UnitSpecificSounds"
-				},
-				{
-					"include": "#UnitSpecificFX"
-				},
-				{
-					"include": "#modules"
-				},
-				{
-					"include": "#AddModule-block"
-				},
-				{
-					"include": "#inline-removemodule"
-				},
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"UnitSpecificSounds": {
-			"begin": "\\s*\\b(UnitSpecificSounds)\\b",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"Object-ArmorSet": {
-			"begin": "\\s*\\b(ArmorSet)\\b",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#WeaponArmor-condition"
-				},
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"Object-WeaponSet": {
-			"begin": "\\s*\\b(WeaponSet)\\b",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#WeaponArmor-condition"
-				},
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"WeaponArmor-condition": {
-			"match": "\\s*\\b(Conditions)\\s*(\\=)\\s*\\b([Nn][Oo][Nn][Ee]|[Pp][Ll][Aa][Yy][Ee][Rr]_[Uu][Pp][Gg][Rr][Aa][Dd][Ee])\\b",
-			"captures": {
-				"1": {
-					"name": "entity.name.function"
-				},
-				"2": {
 					"name": "keyword.operator.assignment.ini"
 				},
-				"3": {
+				"4": {
 					"name": "variable.other.constant.ini"
 				}
 			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
 			"patterns": [
 				{
-					"include": "#inline-comment"
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"CrateData-Class": {
+			"begin": "(^[ \\t]+)?\\b([Cc]rate[Dd]ata)\\b[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"CommandMap-Class": {
+			"begin": "(^[ \\t]+)?\\b([Cc]ommand[Mm]ap)\\b[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Video-Class": {
+			"begin": "(^[ \\t]+)?\\b([Vv]ideo)\\b[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Video-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Video-Comment": {
+			"begin": "(^[ \\t]+)?\\b(Comment)\\b[ \\t]+(=)[ \\t]+\\w*",
+			"name": "comment.line.ini",
+			"end": "$"
+		},
+		"Terrain-Class": {
+			"begin": "(^[ \\t]+)?\\b([Tt]errain)\\b[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Road-Class": {
+			"begin": "(^[ \\t]+)?\\b([Rr]oad|[Bb]ridge)\\b[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Music-Class": {
+			"begin": "(^[ \\t]+)?\\b([Mm]usic[Tt]rack)\\b[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"EvaEvents-Class": {
+			"begin": "(^[ \\t]+)?\\b([Ee]vaEvent)\\b[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#EvaEvent-SideSounds"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"EvaEvent-SideSounds": {
+			"begin": "(^[ \\t]+)?\\b([Ss]ide[Ss]ounds)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"ChallengeGenerals-Class": {
+			"begin": "(^[ \\t]+)?\\b([Cc]hallenge[Gg]enerals)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#GeneralsChallenge-Personas"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]	
+		},
+		"GeneralsChallenge-Personas": {
+			"begin": "(^[ \\t]+)?\\b([Gg]eneral[Pp]ersona[0-9]+)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Campaign-Class": {
+			"begin": "(^[ \\t]+)?\\b([Cc]ampaign)\\b[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Campaign-Assignemnt"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Campaign-Assignemnt": {
+			"begin": "(^[ \\t]+)?\\b([Mm]ission)\\b[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"DrawGroupInfo-Class": {
+			"begin": "(^[ \\t]+)?\\b(DrawGroupInfo)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"GameData-Class": {
+			"begin": "(^[ \\t]+)?\\b(GameData)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"AudioSettings-Class": {
+			"begin": "(^[ \\t]+)?\\b([Aa]udio[Ss]ettings)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Animation2D-Class": {
+			"begin": "(^[ \\t]+)?\\b([Aa]nimation)\\b[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Animation2D-AnimationMode-Assignemnt"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Animation2D-AnimationMode-Assignemnt": {
+			"begin": "(^[ \\t]+)?\\b([Aa]nimationMode)[ \\t]*(=)[ \\t]*",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				},
+				"3": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"end": "$",
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Animation2D-AnimationMode-Values"
+				}
+			]
+		},
+		"Animation2D-AnimationMode-Values": {
+			"match": "\\b(LOOP|ONCE|PING_PONG)\\b",
+			"name": "variable.other.constant.ini"
+		},
+		"AIData-Class": {
+			"begin": "(^[ \\t]+)?\\b(AIData)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#SideInfo-AIData-Class"
+				},
+				{
+					"include": "#SkirmishBuildList-AIData-Class"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"SideInfo-AIData-Class": {
+			"begin": "(^[ \\t]+)?(SideInfo)([ \\t]+)([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"4": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#SkillSet-SideInfo-Class"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"SkirmishBuildList-AIData-Class": {
+			"begin": "(^[ \\t]+)?\\b(SkirmishBuildList)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Structure-SkirmishBuildList-Class"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Structure-SkirmishBuildList-Class": {
+			"begin": "(^[ \\t]+)?\\b(Structure)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"SkillSet-SideInfo-Class": {
+			"begin": "(^[ \\t]+)?\\b(SkillSet[1-2])\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"InGameUI-Class": {
+			"begin": "(^[ \\t]+)?([Ii]n[Gg]ame[Uu][Ii])",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Cursor-InGameUI-Class"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Cursor-InGameUI-Class": {
+			"begin": "(^[ \\t]+)?(\\w+(?![^=\\n]*=))",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Mouse-Class": {
+			"begin": "(^[ \\t]+)?\\b([Mm]ouse)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"MouseCursor-Class": {
+			"begin": "(^[ \\t]+)?\\b([Mm]ouse[Cc]ursor)\\b[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"DamageFX-Class": {
+			"begin": "(^[ \\t]+)?([Dd]amage[Ff][Xx])[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#DamageFX-Assignment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"DamageFX-Assignment": {
+			"begin": "(^[ \\t]+)?([a-zA-Z_][\\w%]*)",
+			"captures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				}
+			},
+			"end": "$",
+			"patterns": [
+				{
+					"include": "#WhiteSpace"
+				},
+				{
+					"include": "#Equals"
+				},
+				{
+					"include": "#DamageFX-Assignment-DamageCategories"
+				},
+				{
+					"include": "#Value"
+				}
+			]
+		},
+		"DamageFX-Assignment-DamageCategories": {
+			"match": "\\b(HEROIC|PARTICLE_BEAM|EXPLOSION|CRUSH|ARMOR_PIERCING|SMALL_ARMS|GATTLING|RADIATION|FLAME|LASER|SNIPER|POISON|HEALING|UNRESISTABLE|WATER|DEPLOY|SURRENDER|HACK|KILL_PILOT|PENALTY|FALLING|MELEE|DISARM|HAZARD_CLEANUP|INFANTRY_MISSILE|AURORA_BOMB|LAND_MINE|JET_MISSILES|STEALTHJET_MISSILES|MOLOTOV_COCKTAIL|COMANCHE_VULCAN|SUBDUAL_MISSILE|SUBDUAL_VEHICLE|SUBDUAL_BUILDING|SUBDUAL_UNRESISTABLE|MICROWAVE|KILL_GARRISONED|STATUS|DEFAULT)\\b",
+			"name": "variable.other.constant.ini"
+		},
+		"ObjectCreationList-Class": {
+			"begin": "(^[ \\t]+)?([Oo]bjectCreationList)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{ "include": "#Inline-Comment" },
+				{ "include": "#OCL-Attack" },
+				{ "include": "#OCL-FireWeapon" },
+				{ "include": "#OCL-DeliverPayload" },
+				{ "include": "#OCL-ApplyRandomForce" },
+				{ "include": "#OCL-CreateObject" },
+				{ "include": "#OCL-CreateDebris" }
+			]
+		},
+		"OCL-Attack": {
+			"begin": "(^[ \\t]+)?([Aa]ttack)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#OCL-DeliveryDecal"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"OCL-FireWeapon": {
+			"begin": "(^[ \\t]+)?([Ff]ire[Ww]eapon)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b\\b([Ee]nd|END)\\b\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"OCL-DeliverPayload": {
+			"begin": "(^[ \\t]+)?([Dd]eliverPayload)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#OCL-DeliveryDecal"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"OCL-DeliveryDecal": {
+			"begin": "(^[ \\t]+)?\\b([Dd]eliveryDecal)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"OCL-ApplyRandomForce": {
+			"begin": "(^[ \\t]+)?([Aa]pplyRandomForce)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"OCL-CreateObject": {
+			"begin": "(^[ \\t]+)?([Cc]reateObject)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Disposition-Object-Assignment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]	
+		},
+		"Disposition-Object-Assignment": {
+			"begin": "(^[ \\t]+)?\\b(Disposition)[ \\t](=)[ \\t]",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				},
+				"3": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"end": "$",
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Disposition-Object-Assignment-Values"
+				}
+			]
+
+		},
+		"Disposition-Object-Assignment-Values": {
+			"match": "\\b(LIKE_EXISTING|INHERIT_VELOCITY|ON_GROUND_ALIGNED|SEND_IT_FLYING|RANDOM_FORCE|SEND_IT_OUT)",
+			"name": "variable.other.constant.ini"
+		},
+		"OCL-CreateDebris": {
+			"begin": "(^[ \\t]+)?([Cc]reateDebris)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Disposition-Debris-Assignment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Disposition-Debris-Assignment": {
+			"begin": "(^[ \\t]+)?([Dd]isposition)[ \\t]*(=)[ \\t]*",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				},
+				"3": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"end": "$",
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Disposition-Debris-Assignment-Values"
+				}
+			]
+		},
+		"Disposition-Debris-Assignment-Values": {
+			"match": "(RANDOM_FORCE|INHERIT_VELOCITY|SEND_IT_FLYING|FLOATING|SEND_IT_UP)",
+			"name": "variable.other.constant.ini"
+		},
+		"FXList-Class": {
+			"begin": "(^[ \\t]+)?([Ff][Xx][Ll]ist)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{ "include": "#Inline-Comment" },
+				{ "include": "#FXList-TerrainScorch" },
+				{ "include": "#FXList-Sound" },
+				{ "include": "#FXList-LightPulse" },
+				{ "include": "#FXList-ParticleSystem" },
+				{ "include": "#FXList-ViewShake" },
+				{ "include": "#FXList-Tracer" },
+				{ "include": "#FXList-FXListAtBonePos" }
+			]
+		},
+		"FXList-FXListAtBonePos": {
+			"begin": "(^[ \\t]+)?([Ff][Xx][Ll]istAtBonePos)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#FXListAtBonePos-Invalid-Assignment"
+				},
+				{
+					"include": "#General-Assignment"
+				}
+			]
+		},
+		"FXList-Tracer": {
+			"begin": "(^[ \\t]+)?([Tt]racer)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"FXList-ViewShake": {
+			"begin": "(^[ \\t]+)?([Vv]iew[Ss]hake)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"FXList-LightPulse": {
+			"begin": "(^[ \\t]+)?([Ll]ight[Pp]ulse)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"FXList-Sound": {
+			"begin": "(^[ \\t]+)?([Ss]ound)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"FXList-ParticleSystem": {
+			"begin": "(^[ \\t]+)?([Pp]article[Ss]ystem)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"FXList-TerrainScorch": {
+			"begin": "(^[ \\t]+)?([Tt]errain[Ss]corch)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"CommandButton-Class": {
+			"begin": "(^[ \\t]+)?([Cc]ommandButton)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#CommandButton-Cursor-Assignment"
+				},
+				{
+					"include": "#CommandButton-BorderType-Assignment"
+				},
+				{
+					"include": "#CommandButton-Options-Assignment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{	
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"CommandButton-Options-Assignment": {
+			"begin": "(^[ \\t]+)?([Oo]ptions)[ \\t]*(=)[ \\t]*",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				},
+				"3": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"end": "$",
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#CommandButton-Options-Assignment-Value"
+				},
+				{
+					"match": "[^a-zA-Z_]+",
+					"name": "invalid.illegal.options.ini"
+				}
+			]
+		},
+		"CommandButton-Options-Assignment-Value": {
+			"match": "\\b(NEED_SPECIAL_POWER_SCIENCE|NEED_TARGET_POS|CONTEXTMODE_COMMAND|CAN_USE_WAYPOINTS|SCRIPT_ONLY|NEED_TARGET_ENEMY_OBJECT|NEED_TARGET_NEUTRAL_OBJECT|OK_FOR_MULTI_SELECT|NEED_TARGET_ENEMY_OBJECT|NEED_UPGRADE|CHECK_LIKE|OPTION_ONE|OPTION_TWO|OPTION_THREE|NOT_QUEUEABLE|IGNORES_UNDERPOWERED|NEED_TARGET_ALLY_OBJECT|MUST_BE_STOPPED|USES_MINE_CLEARING_WEAPONSET)\\b",
+			"name": "variable.other.constant.ini"
+		},
+		"CommandButton-BorderType-Assignment": {
+			"begin": "(^[ \\t]+)?\\b([Bb]utton[Bb]order[Tt]ype)\\b[ \\t]*(=)[ \\t]*",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				},
+				"3": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"end": "$",
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#CommandButton-BorderType-Assignment-Value"
+				},
+				{
+					"match": "[^a-zA-Z_]+",
+					"name": "invalid.illegal.bordertype.ini"
+				}
+			]
+		},
+		"CommandButton-BorderType-Assignment-Value": {
+			"match": "\\b(ACTION|SYSTEM|UPGRADE|NONE|BUILD)\\b",
+			"name": "variable.other.constant.ini",
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				}
+			]
+		},
+		"CommandButton-Cursor-Assignment": {
+			"begin": "(^[ \\t]+)?\\b([Cc]ursor[Nn]ame|InvalidCursorName)\\b[ \\t]*(=)[ \\t]*",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				},
+				"3": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"end": "$",
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#CommandButton-Cursor-Assignment-Value"
+				},
+				{
+					"match": "[^a-zA-Z_]+",
+					"name": "invalid.illegal.cursor.ini"
+				}
+			]
+		},
+		"CommandButton-Cursor-Assignment-Value": {
+			"match": "\\b(Normal|Arrow|Scroll|Target|Move|AttackMove|AttackObj|ForceAttackObj|ForceAttackGround|Select|GenericInvalid|EnterFriendly|EnterAggressive|CaptureBuilding|SnipeVehicle|FireBomb|Defector|LaserGuidedMissiles|TankHunterTNTAttack|StabAttack|Hack|StabAttackInvalid|PlaceRemoteCharge|PlaceTimedCharge|PlaceChargeInvalid|SetRallyPoint|Dock|GetRepaired|GetHealed|DoRepair|ResumeConstruction|FireFlame|PlaceBeacon|DisguiseAsVehicle|Waypoint|OutRange|ParticleUplinkCannon)\\b",
+			"name": "variable.other.constant.ini",
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				}
+			]
+		},
+		"CommandSet-Class": {
+			"begin": "(^[ \\t]+)?([Cc]ommandSet)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#CommandSet-Assignment"
+				},
+				{
+					"include": "#CommandSet-Invalid-Assignment"
+				}
+			]
+		},
+		"CommandSet-Assignment": {
+			"begin": "(^[ \\t]+)?\\b((1[0-8])|([1-9]))\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "$",
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#WhiteSpace"
+				},
+				{
+					"include": "#Equals"
+				},
+				{
+					"include": "#String"
+				}
+			]
+		},
+		"CommandSet-Invalid-Assignment": {
+			"match": "(^[ \\t]+)?([^\\d]|0|19|[2-9]\\d+|\\d{2,})",
+			"name": "invalid.illegal.commandset.ini"
+		},
+		"WaterSet-Class": {
+			"begin": "(^[ \\t]+)?([Ww]ater[Ss]et)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"WaterTransparency-Class": {
+			"begin": "(^[ \\t]+)?\\b(WaterTransparency)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Weather-Class": {
+			"begin": "(^[ \\t]+)?\\b([Ww]eather)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"MappedImage-Class": {
+			"begin": "(^[ \\t]+)?([Mm]apped[Ii]mage)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Armor-Class": {
+			"begin": "(^[ \\t]+)?([Aa]rmor)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Locomotor-Class": {
+			"begin": "(^[ \\t]+)?([Ll]ocomotor)[ \\t]+([a-zA-Z_0-9][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Locomotor-Surface-Assignment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Locomotor-Surface-Assignment": {
+			"begin": "(^[ \\t]+)?([Ss]urfaces)[ \\t]*(=)[ \\t]*",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				},
+				"3": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"end": "$",
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Locomotor-Surface-Assignment-value01"
+				},
+				{
+					"match": "[^a-zA-Z_]+",
+					"name": "invalid.illegal.surface.ini"
+				}
+			]
+		},
+		"Locomotor-Surface-Assignment-value01": {
+			"match": "\\b(GROUND|ground|RUBBLE|rubble|CLIFF|cliff|AIR|air|WATER|water)\\b",
+			"name": "variable.other.constant.ini"
+		},
+		"Rank-Class": {
+			"begin": "(^[ \\t]+)?([Rr]ank)[ \\t]+([0-8])",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Science-Class": {
+			"begin": "(^[ \\t]+)?([Ss]cience)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Weapon-Class": {
+			"begin": "(^[ \\t]+)?([Ww]eapon)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Weapon-WeaponBonus-Assignment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Weapon-WeaponBonus-Assignment": {
+			"begin": "(^[ \\t]+)?([Ww]eaponBonus)[ \\t]*(=)[ \\t]*",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				},
+				"3": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"end": "$",
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Weapon-WeaponBonus-Assignment-value01"
+				},
+				{
+					"include": "#Number"
+				}
+			]
+		},
+		"Weapon-WeaponBonus-Assignment-value01": {
+			"match": "([ \\t]+)?\\b(DRONE_SPOTTING|PLAYER_UPGRADE|CONTINUOUS_FIRE_MEAN|CONTINUOUS_FIRE_FAST|DAMAGE|RANGE|RATE_OF_FIRE|HORDE|RADIUS|GARRISONED)\\b",
+			"captures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.other.constant.ini"
+				}
+			}
+		},
+		"Upgrade-Class": {
+			"begin": "(^[ \\t]+)?([Uu]pgrade)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"SpecialPower-Class": {
+			"begin": "(^[ \\t]+)?([Ss]pecialPower)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"ParticleSystem-Class": {
+			"begin": "(^[ \\t]+)?(ParticleSystem)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"PlayerTemplate-Class": {
+			"begin": "(^[ \\t]+)?(PlayerTemplate)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"DialogEvent-Class": {
+			"begin": "(^[ \\t]+)?(DialogEvent)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#DialogEvent-priority"
+				},
+				{
+					"include": "#AudioEvent-Type"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"DialogEvent-priority": {
+			"begin": "(^[ \\t]+)?([Pp]riority)[ \\t]*(=)[ \\t]*",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				},
+				"3": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"end": "$",
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#DialogEvent-priority-value"
+				},
+				{
+					"match": "[^0-9]+",
+					"name": "invalid.illegal.priority.ini"
+				}
+			]
+		},
+		"DialogEvent-priority-value": {
+			"match": "\\b(high|medium|low|critical)\\b",
+			"name": "variable.other.constant.ini"
+		},
+		"AudioEvent-Class": {
+			"begin": "(^[ \\t]+)?(AudioEvent)[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#AudioEvent-Type"
+				},
+				{
+					"include": "#AudioEvent-Priority"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"AudioEvent-Priority": {
+			"begin": "(^[ \\t]+)?([Pp]riority)[ \\t]*(=)[ \\t]*",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				},
+				"3": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"end": "$",
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#AudioEvent-priority-value"
+				},
+				{
+					"match": "[^a-zA-Z]+",
+					"name": "invalid.illegal.priority.ini"
+				}
+			]
+		},
+		"AudioEvent-priority-value": {
+			"match": "\\b(lowest|LOWEST|low|LOW|normal|NORMAL|high|HIGH|critical|CRITICAL)\\b",
+			"name": "variable.other.constant.ini"
+		},
+		"AudioEvent-Type": {
+			"begin": "(^[ \\t]+)?([Tt]ype)[ \\t]*(=)[ \\t]*",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				},
+				"3": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"end": "$",
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#AudioEvent-type-value"
+				},
+				{
+					"match": "[^a-zA-Z]+",
+					"name": "invalid.illegal.audiotype.ini"
+				}
+			]
+		},
+		"AudioEvent-type-value": {
+			"match": "(^[ \\t]+)?\\b(ui|UI|voice|VOICE|player|PLAYER|world|WORLD|global|GLOBAL|shrouded|SHROUDED|everyone|EVERYONE)\\b",
+			"name": "variable.other.constant.ini"
+		},
+		"ObjectRelated-Class": {
+			"patterns": [
+				{
+					"include": "#Object-Class"
+				},
+				{
+					"include": "#ObjectReskin-class"
+				}
+			]
+		},
+		"ObjectReskin-class": {
+			"begin": "(^[ \\t]+)?(ObjectReskin)[ \\t]+([a-zA-Z_][\\w%]*)[ \\t]+([a-zA-Z_0-9][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				},
+				"4": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Object-AddModule"
+				},
+				{
+					"include": "#Object-RemoveModule"
+				},
+				{
+					"include": "#Object-Modules"
+				},
+				{
+					"include": "#Object-PropertyBlocks"	
+				},
+				{
+					"include": "#Locomotor-Assignment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Object-Class": {
+			"begin": "(^[ \\t]+)?(Object)[ \\t]+([a-zA-Z_0-9][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Object-AddModule"
+				},
+				{
+					"include": "#Object-ReplaceModule"
+				},
+				{
+					"include": "#Object-RemoveModule"
+				},
+				{
+					"include": "#Object-Modules"
+				},
+				{
+					"include": "#Object-OverrideableByLikeKind-Block"
+				},
+				{
+					"include": "#Object-InheritableModule-Block"
+				},
+				{
+					"include": "#Object-PropertyBlocks"	
+				},
+				{
+					"include": "#Locomotor-Assignment"
+				},
+				{
+					"include": "#KindOf-Assignemnt"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Object-OverrideableByLikeKind-Block": {
+			"begin": "(^[ \\t]+)?\\b([Oo]verrideable[Bb]y[Ll]ike[Kk]ind)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Object-Modules"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Object-InheritableModule-Block": {
+			"begin": "(^[ \\t]+)?\\b([Ii]nheritable[Mm]odule)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Object-Modules"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"KindOf-Assignemnt": {
+			"begin": "(^[ \\t]+)?\\b(KindOf|Kindof|kindof)[ \\t](=)[ \\t]",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				},
+				"3": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"end": "$",
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#KindOf-Assignemnt-value"
+				},
+				{
+					"match": "[^a-zA-Z_\\+\\-]+",
+					"name": "invalid.illegal.kindof.ini"
+				}
+			]
+		},
+		"KindOf-Assignemnt-value": {
+			"match": "(^[ \\t]+)?\\b(UNIT|STRUCTURE|SPECIALIGNORE_DOCKING_BONES|IGNORES_SELECT_ALL|IGNORED_IN_GUI|CONSERVATIVE_BUILDING|DEMOTRAP|EMP_HARDENED|TECH_BASE_DEFENSE|CANNOT_RETALIATE|REJECT_UNMANNED|AIRCRAFT_CARRIER|OPTIMIZED_TREE|PROP|BLAST_CRATER|BOOBY_TRAP|REVEALS_ENEMY_PATHS|MONEY_HACKER|CLIFF_JUMPER|DONT_AUTO_CRUSH_INFANTRY|HERO|INERT|DISGUISER|REVEAL_TO_ALL|SUPPLY_SOURCE|CANNOT_BUILD_NEAR_SUPPLIES|SPAWNS_ARE_THE_WEAPONS|SHOW_PORTRAIT_WHEN_CONTROLLED|HULK|IMMUNE_TO_CAPTURE|BOAT|GARRISONABLE_UNTIL_DESTROYED|PARACHUTE|PARACHUTABLE|SUPPLY_SOURCE_ON_PREVIEW|CLICK_THROUGH|BALLISTIC_MISSILE|DRONE|PRODUCED_AT_HELIPAD|POWERED|TECH_BUILDING|AUTO_RALLYPOINT|FORCEATTACKABLE|LOW_OVERLAPPABLE|AIRCRAFT_PATH_AROUND|DEFENSIVE_WALL|WALK_ON_TOP_OF_WALL|ATTACK_NEEDS_LINE_OF_SIGHT|ALWAYS_SELECTABLE|PORTABLE_STRUCTURE|CLEANUP_HAZARD|MINE|UNATTACKABLE|ALWAYS_VISIBLE|SMALL_MISSILE|CLEARED_BY_BUILD|CAPTURABLE|CRATE|MOB_NEXUS|SCORE_DESTROY|SCORE_CREATE|SCORE|REBUILD_HOLE|MP_COUNT_FOR_VICTORY|DRAWABLE_ONLY|CASH_GENERATOR|STEALTH_GARRISON|HEAL_PAD|REPAIR_PAD|WAVE_EFFECT|WAVEGUIDE|NO_GARRISON|NO_COLLIDE|NO_HEAL_ICON|NO_SELECT|PRELOAD|PROJECTILE|BRIDGE_TOWER|LANDMARK_BRIDGE|BRIDGE|TRANSPORT|WEAPON_SALVAGER|ARMOR_SALVAGER|SALVAGER|LINEBUILD|COMMANDCENTER|HARVESTER|DOZER|HUGE_VEHICLE|AIRCRAFT|VEHICLE|INFANTRY|STRUCTURE|SHRUBBERY|STICK_TO_TERRAIN_SLOPE|IMMOBILE|SELECTABLE|OBSTACLE|FS_STRATEGY_CENTER|FS_SUPPLY_CENTER|FS_BLACK_MARKET|FS_SUPERWEAPON|FS_SUPPLY_DROPZONE|FS_AIRFIELD|FS_WARFACTORY|FS_BARRACKS|FS_ADVANCED_TECH|FS_TECHNOLOGY|FS_BASE_DEFENSE|FS_FACTORY|FS_POWER|FS_INTERNET_CENTER|FS_FAKE|CAN_BE_REPULSED|CAN_RAPPEL|CAN_ATTACK|CAN_CAST_REFLECTIONS|CAN_SEE_THROUGH_STRUCTURE)\\b",
+			"name": "variable.other.constant.ini"
+		},
+		"Object-ReplaceModule": {
+			"begin": "(^[ \\t]+)?([Rr]eplace[Mm]odule)[ \\t]+([a-zA-Z_0-9][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Object-Modules"
+				},
+				{
+					"include": "#Object-PropertyBlocks"	
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Object-AddModule": {
+			"begin": "(^[ \\t]+)?([Aa]dd[Mm]odule)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Object-Modules"
+				},
+				{
+					"include": "#Object-PropertyBlocks"	
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Object-Modules": {
+			"patterns": [
+				{
+					"include": "#Object-DrawModule"
+				},
+				{
+					"include": "#Object-BodyModule"
+				},
+				{
+					"include": "#Object-BehaviorModule"
+				},
+				{
+					"include": "#Object-ClientUpdate"
+				}
+			]
+		},
+		"Object-PropertyBlocks": {
+			"patterns": [
+				{
+					"include": "#Object-WeaponSet"
+				},
+				{
+					"include": "#Object-ArmorSet"
+				},
+				{
+					"include": "#Object-UnitSpecificSounds"
+				},
+				{
+					"include": "#Object-UnitSpecificFX"
+				},
+				{
+					"include": "#Object-Prerequisites"
+				}
+			]
+		},
+		"Object-UnitSpecificFX": {
+			"begin": "(^[ \\t]+)?\\b([Uu]nit[Ss]pecific[Ff][Xx]|UNITSPECIFICFX)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
 				}
 			]
 		},
 		"Object-Prerequisites": {
-			"begin": "\\s*\\b(Prerequisites)\\b",
+			"begin": "(^[ \\t]+)?\\b([Pp]rerequisites|PREREQUISITES)\\b",
 			"beginCaptures": {
 				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"UnitSpecificFX": {
-			"begin": "\\s*\\b(UnitSpecificFX)\\b",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"AddModule-block": {
-			"begin": "\\s*\\b(AddModule)\\b",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#Object-WeaponSet"
-				},
-				{
-					"include": "#Object-ArmorSet"
-				},
-				{
-					"include": "#Object-Prerequisites"
-				},
-				{
-					"include": "#UnitSpecificSounds"
-				},
-				{
-					"include": "#UnitSpecificFX"
-				},
-				{
-					"include": "#modules"
-				},
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"inline-removemodule": {
-			"match": "\\s*\\b(RemoveModule)\\b\\s*([a-zA-Z]\\w+)",
-			"captures": {
-				"1": {
-					"name": "keyword.control.ini"
+					"name": "punctuation.whitespace.ini"	
 				},
 				"2": {
-					"name": "storage.type.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"modules": {
-			"patterns": [
-				{
-					"include": "#draw-block"
-				},
-				{
-					"include": "#body-block"
-				},
-				{
-					"include": "#behavior-block"
-				},
-				{
-					"include": "#clientupdate-block"
-				}
-			]
-		},
-		"clientupdate-block": {
-			"begin": "\\s*\\b(ClientUpdate)\\b\\s*(\\=)\\s*([a-zA-Z]\\w+)\\s*([a-zA-Z][\\w_]+)",
-			"beginCaptures": {
-				"1": {
 					"name": "keyword.control.ini"
-				},
-				"2": {
-					"name": "keyword.operator.assignment.ini"
-				},
-				"3": {
-					"name": "entity.name.function"
-				},
-				"4": {
-					"name": "storage.type.ini"
 				}
 			},
-			"end": "\\s*\\b([Ee]nd|END)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
 			"endCaptures": {
 				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"behavior-block": {
-			"begin": "\\s*\\b(Behavior)\\b\\s*(\\=)\\s*([a-zA-Z]\\w+)\\s*([a-zA-Z][\\w_]+)",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
+					"name": "punctuation.whitespace.ini"	
 				},
 				"2": {
-					"name": "keyword.operator.assignment.ini"
-				},
-				"3": {
-					"name": "entity.name.function"
-				},
-				"4": {
-					"name": "storage.type.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)",
-			"endCaptures": {
-				"1": {
 					"name": "keyword.control.ini"
 				}
 			},
 			"patterns": [
 				{
-					"include": "#behavior-turret"
+					"include": "#Inline-Comment"
 				},
 				{
-					"include": "#behavior-altturret"
+					"include": "#General-Assignment"
 				},
 				{
-					"include": "#behavior-attackareadecal"
-				},
-				{
-					"include": "#behavior-targetingreticledecal"
-				},
-				{
-					"include": "#behavior-griddecaltempalte"
-				},
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
+					"include": "#Invalid-Assignment"
 				}
 			]
 		},
-		"behavior-turret": {
-			"begin": "\\s*\\b(Turret)\\b",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#weapon-types-turret"
-				},
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"behavior-altturret": {
-			"begin": "\\s*\\b(AltTurret)\\b",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#weapon-types-turret"
-				},
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"behavior-attackareadecal": {
-			"begin": "\\s*\\b(AttackAreaDecal)\\b",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"behavior-targetingreticledecal": {
-			"begin": "\\s*\\b(TargetingReticleDecal)\\b",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"behavior-griddecaltempalte": {
-			"begin": "\\s*\\b(GridDecalTemplate)",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"body-block": {
-			"begin": "\\s*\\b(Body)\\b\\s*(\\=)\\s*([a-zA-Z]\\w+)\\s*([a-zA-Z][\\w_]+)",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				},
-				"2": {
-					"name": "keyword.operator.assignment.ini"
-				},
-				"3": {
-					"name": "entity.name.function"
-				},
-				"4": {
-					"name": "storage.type.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"draw-block": {
-			"begin": "\\s*\\b(Draw)\\b\\s*(\\=)\\s*([a-zA-Z]\\w+)\\s*([a-zA-Z][\\w_]+)",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				},
-				"2": {
-					"name": "keyword.operator.assignment.ini"
-				},
-				"3": {
-					"name": "entity.name.function"
-				},
-				"4": {
-					"name": "storage.type.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#drawblock-defaultstate"
-				},
-				{
-					"include": "#drawblock-conditionstate"
-				},
-				{
-					"include": "#drawblock-transitionstate"
-				},
-				{
-					"include": "#drawblock-aliasconditionstate"
-				},
-				{
-					"include": "#drawblock-ignoreconditionstate"
-				},
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"drawblock-defaultstate": {
-			"begin": "\\s*\\b(DefaultConditionState)\\b",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"drawblock-conditionstate": {
-			"begin": "\\s*\\b(ConditionState)\\b\\s*(\\=)\\s*(?=[a-zA-Z])",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				},
-				"2": {
-					"name": "keyword.operator.assignment.ini"
-				}
-			},
-			"end": "\\s*\\b([Ee]nd|END)",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"match": "\\b(NONE|USER_1|USER_2|JAMMED|ATTACKING|WEAPONSET_CRATEUPGRADE_ONE|WEAPONSET_CRATEUPGRADE_TWO|ARMORSET_CRATEUPGRADE_TWO|ARMORSET_CRATEUPGRADE_ONE|PREORDER|STUNNED|STUNNED_FLAILING|EXPLODED_BOUNCING|EXPLODED_FLAILING|CAPTURED|RAISING_FLAG|CONTINUOUS_FIRE_SLOW|CONTINUOUS_FIRE_FAST|CONTINUOUS_FIRE_MEAN|SPECIAL_CHEERING|ARMED|RAPELLING|PARACHUTING|CLIMBING|SPLATTED|BURNED|AFLAME|SMOLDERING|POWER_PLANT_UPGRADING|POWER_PLANT_UPGRADED|OVER_WATER|MOVING|DEPLOYED|UNPACKING|PACKING|JETEXHAUST|JETAFTERBURNER|LOADED|CARRYING|DOCKING_ENDING|DOCKING_ACTIVE|DOCKING_BEGINNING|DOCKING|PANICKING|RADAR_UPGRADED|RADAR_EXTENDED|CONSTRUCTION_COMPLETE|ACTIVELY_CONSTRUCTING|ACTIVELY_BEING_CONSTRUCTED|PARTIALLY_CONSTRUCTED|AWAITING_CONSTRUCTION|DYING|PRONE|FREEFALL|POST_COLLAPSE|TOPPLED|TURRET_ROTATE|RELOADING_A|BETWEEN_FIRING_SHOTS_A|FIRING_A|PREATTACK_A|USING_WEAPON_A|RELOADING_B|BETWEEN_FIRING_SHOTS_B|FIRING_B|PREATTACK_B|USING_WEAPON_B|RELOADING_C|BETWEEN_FIRING_SHOTS_C|FIRING_C|PREATTACK_C|USING_WEAPON_C|DOOR_4_WAITING_TO_CLOSE|DOOR_4_WAITING_OPEN|DOOR_4_CLOSING|DOOR_4_OPENING|DOOR_3_WAITING_TO_CLOSE|DOOR_3_WAITING_OPEN|DOOR_3_CLOSING|DOOR_3_OPENING|DOOR_2_WAITING_TO_CLOSE|DOOR_2_WAITING_OPEN|DOOR_2_CLOSING|DOOR_2_OPENING|DOOR_1_WAITING_TO_CLOSE|DOOR_1_WAITING_OPEN|DOOR_1_CLOSING|DOOR_1_OPENING|WEAPONSET_PLAYER_UPGRADE|WEAPONSET_HERO|WEAPONSET_ELITE|WEAPONSET_VETERAN|ENEMYNEAR|REALLYDAMAGED|RUBBLE|DAMAGED|SNOW|SOLD|DISGUISED|NIGHT|SPECIAL_DAMAGED|BACKCRUSHED|FRONTCRUSHED|SECOND_LIFE|RIDER1|RIDER2|RIDER3|RIDER4|RIDER5|RIDER6|RIDER7|RIDER8|PRISTINE|RIGHT_TO_CENTER|CENTER_TO_RIGHT|LEFT_TO_CENTER|CENTER_TO_LEFT|[Nn]one|[Uu]ser_1|[Uu]ser_2|[Jj]ammed|[Aa]ttacking|[Ww]eaponset_[Cc]rateupgrade_[Oo]ne|[Ww]eaponset_[Cc]rateupgrade_[Tt]wo|[Aa]rmorset_[Cc]rateupgrade_[Tt]wo|[Aa]rmorset_[Cc]rateupgrade_[Oo]ne|[Pp]reorder|[Ss]tunned|[Ss]tunned_[Ff]lailing|[Ee]xploded_[Bb]ouncing|[Ee]xploded_[Ff]lailing|[Cc]aptured|[Rr]aising_[Ff]lag|[Cc]ontinuous_[Ff]ire_[Ss]low|[Cc]ontinuous_[Ff]ire_[Ff]ast|[Cc]ontinuous_[Ff]ire_[Mm]ean|[Ss]pecial_[Cc]heering|[Aa]rmed|[Rr]apelling|[Pp]arachuting|[Cc]limbing|[Ss]platted|[Bb]urned|[Aa]flame|[Ss]moldering|[Pp]ower_[Pp]lant_[Uu]pgrading|[Pp]ower_[Pp]lant_[Uu]pgraded|[Oo]ver_[Ww]ater|[Mm]oving|[Dd]eployed|[Uu]npacking|[Pp]acking|[Jj]etexhaust|[Jj]etafterburner|[Ll]oaded|[Cc]arrying|[Dd]ocking_[Ee]nding|[Dd]ocking_[Aa]ctive|[Dd]ocking_[Bb]eginning|[Dd]ocking|[Pp]anicking|[Rr]adar_[Uu]pgraded|[Rr]adar_[Ee]xtended|[Cc]onstruction_[Cc]omplete|[Aa]ctively_[Cc]onstructing|[Aa]ctively_[Bb]eing_[Cc]onstructed|[Pp]artially_[Cc]onstructed|[Aa]waiting_[Cc]onstruction|[Dd]ying|[Pp]rone|[Ff]reefall|[Pp]ost_[Cc]ollapse|[Tt]oppled|[Tt]urret_[Rr]otate|[Rr]eloading_[Aa]|[Bb]etween_[Ff]iring_[Ss]hots_[Aa]|[Ff]iring_[Aa]|[Pp]reattack_[Aa]|[Uu]sing_[Ww]eapon_[Aa]|[Rr]eloading_[Bb]|[Bb]etween_[Ff]iring_[Ss]hots_[Bb]|[Ff]iring_[Bb]|[Pp]reattack_[Bb]|[Uu]sing_[Ww]eapon_[Bb]|[Rr]eloading_[Cc]|[Bb]etween_[Ff]iring_[Ss]hots_[Cc]|[Ff]iring_[Cc]|[Pp]reattack_[Cc]|[Uu]sing_[Ww]eapon_[Cc]|[Dd]oor_4_[Ww]aiting_[Tt]o_[Cc]lose|[Dd]oor_4_[Ww]aiting_[Oo]pen|[Dd]oor_4_[Cc]losing|[Dd]oor_4_[Oo]pening|[Dd]oor_3_[Ww]aiting_to_[Cc]lose|[Dd]oor_3_[Ww]aiting_[Oo]pen|[Dd]oor_3_[Cc]losing|[Dd]oor_3_[Oo]pening|[Dd]oor_2_[Ww]aiting_[Tt]o_[Cc]lose|[Dd]oor_2_[Ww]aiting_[Oo]pen|[Dd]oor_2_[Cc]losing|[Dd]oor_2_[Oo]pening|[Dd]oor_1_[Ww]aiting_[Tt]o_[Cc]lose|[Dd]oor_1_[Ww]aiting_[Oo]pen|[Dd]oor_1_[Cc]losing|[Dd]oor_1_[Oo]pening|[Ww]eaponset_[Pp]layer_[Uu]pgrade|[Ww]eaponset_[Hh]ero|[Ww]eaponset_[Ee]lite|[Ww]eaponset_[Vv]eteran|[Ee]nemynear|[Rr]eally[Dd]amaged|[Rr]ubble|[Dd]amaged|[Ss]now|[Ss]old|[Dd]isguised|[Nn]ight|[Ss]pecial_[Dd]amaged|[Bb]ack[Cc]rushed|[Ff]ront[Cc]rushed|[Ss]econd_[Ll]ife|[Rr]ider1|[Rr]ider2|[Rr]ider3|[Rr]ider4|[Rr]ider5|[Rr]ider6|[Rr]ider7|[Rr]ider8|[Pp]ristine|[Rr]ight_[Tt]o_[Cc]enter|[Cc]enter_[Tt]o_[Rr]ight|[Ll]eft_[Tt]o_[Cc]enter|[Cc]enter_[Tt]o_[Ll]eft)+",
-					"name": "variable.other.constant.ini"
-				},
-				{
-					"include": "#transitionkey-assignment"
-				},
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"drawblock-transitionstate": {
-			"begin": "\\s*\\b(TransitionState)\\b\\s*(\\=)\\s*(\\b(NONE|DOWN_DEFAULT|UP_DAY|UP_NIGHT|UP_SNOWNIGHT|UP_SNOW)|[a-zA-Z][\\w_\\-]+| )+",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				},
-				"2": {
-					"name": "keyword.operator.assignment.ini"
-				}
-			},
-			"name": "variable.other.constant.ini",
-			"end": "\\s*\\b([Ee]nd|END)",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#assignment"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"drawblock-aliasconditionstate": {
-			"begin": "\\s*\\b(AliasConditionState)\\s*(=)\\s*",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				},
-				"2": {
-					"name": "keyword.operator.assignment.ini"
-				}
-			},
-			"end": "(?!\\G)",
-			"patterns": [
-				{
-					"match": "(\\s*\\b(NONE|USER_1|USER_2|JAMMED|ATTACKING|WEAPONSET_CRATEUPGRADE_ONE|WEAPONSET_CRATEUPGRADE_TWO|ARMORSET_CRATEUPGRADE_TWO|ARMORSET_CRATEUPGRADE_ONE|PREORDER|STUNNED|STUNNED_FLAILING|EXPLODED_BOUNCING|EXPLODED_FLAILING|CAPTURED|RAISING_FLAG|CONTINUOUS_FIRE_SLOW|CONTINUOUS_FIRE_FAST|CONTINUOUS_FIRE_MEAN|SPECIAL_CHEERING|ARMED|RAPELLING|PARACHUTING|CLIMBING|SPLATTED|BURNED|AFLAME|SMOLDERING|POWER_PLANT_UPGRADING|POWER_PLANT_UPGRADED|OVER_WATER|MOVING|DEPLOYED|UNPACKING|PACKING|JETEXHAUST|JETAFTERBURNER|LOADED|CARRYING|DOCKING_ENDING|DOCKING_ACTIVE|DOCKING_BEGINNING|DOCKING|PANICKING|RADAR_UPGRADED|RADAR_EXTENDED|CONSTRUCTION_COMPLETE|ACTIVELY_CONSTRUCTING|ACTIVELY_BEING_CONSTRUCTED|PARTIALLY_CONSTRUCTED|AWAITING_CONSTRUCTION|DYING|PRONE|FREEFALL|POST_COLLAPSE|TOPPLED|TURRET_ROTATE|RELOADING_A|BETWEEN_FIRING_SHOTS_A|FIRING_A|PREATTACK_A|USING_WEAPON_A|RELOADING_B|BETWEEN_FIRING_SHOTS_B|FIRING_B|PREATTACK_B|USING_WEAPON_B|RELOADING_C|BETWEEN_FIRING_SHOTS_C|FIRING_C|PREATTACK_C|USING_WEAPON_C|DOOR_4_WAITING_TO_CLOSE|DOOR_4_WAITING_OPEN|DOOR_4_CLOSING|DOOR_4_OPENING|DOOR_3_WAITING_TO_CLOSE|DOOR_3_WAITING_OPEN|DOOR_3_CLOSING|DOOR_3_OPENING|DOOR_2_WAITING_TO_CLOSE|DOOR_2_WAITING_OPEN|DOOR_2_CLOSING|DOOR_2_OPENING|DOOR_1_WAITING_TO_CLOSE|DOOR_1_WAITING_OPEN|DOOR_1_CLOSING|DOOR_1_OPENING|WEAPONSET_PLAYER_UPGRADE|WEAPONSET_HERO|WEAPONSET_ELITE|WEAPONSET_VETERAN|ENEMYNEAR|REALLYDAMAGED|RUBBLE|DAMAGED|SNOW|SOLD|DISGUISED|NIGHT|SPECIAL_DAMAGED|BACKCRUSHED|FRONTCRUSHED|SECOND_LIFE|RIDER1|RIDER2|RIDER3|RIDER4|RIDER5|RIDER6|RIDER7|RIDER8|PRISTINE|RIGHT_TO_CENTER|CENTER_TO_RIGHT|LEFT_TO_CENTER|CENTER_TO_LEFT))+",
-					"name": "variable.other.constant.ini"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"drawblock-ignoreconditionstate": {
-			"begin": "\\s*\\b(IgnoreConditionStates)\\s*(=)(\\s*[a-zA-Z][\\w_]+)+",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.ini"
-				},
-				"2": {
-					"name": "keyword.operator.assignment.ini"
-				}
-			},
-			"name": "variable.other.constant.ini",
-			"end": "(?!\\G)",
-			"patterns": [
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"transitionkey-assignment": {
-			"begin": "(^[ \\t]+)?(TransitionKey)\\s*(\\=)(\\s*[a-zA-Z][\\w_]+)+",
-			"beginCaptures": {
-				"2": {
-					"name": "variable.parameter"
-				},
-				"3": {
-					"name": "keyword.operator.assignment.ini"
-				}
-			},
-			"name": "variable.other.constant.ini",
-			"end": "(?!\\G)",
-			"patterns": [
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"assignment": {
-			"begin": "(^[ \\t]+)?([a-zA-Z][\\w%]+)\\s*(\\=)\\s*",
-			"beginCaptures": {
-				"2": {
-					"name": "variable.parameter"
-				},
-				"3": {
-					"name": "keyword.operator.assignment.ini"
-				}
-			},
-			"end": "(?!\\G)",
-			"patterns": [
-				{
-					"include": "#weapon-types"
-				},
-				{
-					"include": "#locomotor-types"
-				},
-				{
-					"include": "#boolean"
-				},
-				{
-					"include": "#numbers"
-				},
-				{
-					"include": "#string"
-				},
-				{
-					"include": "#doublequoted-strings"
-				},
-				{
-					"include": "#inline-comment"
-				}
-			]
-		},
-		"locomotor-types": {
-			"begin": "\\s*\\b(SET_NORMAL|SET_SUPERSONIC|SET_SLUGGISH|SET_TAXIING|SET_PANIC|SET_WANDER|SET_FREEFALL|SET_NORMAL_UPGRADED)\\s*([a-zA-Z][\\w_]+)?$",
-			"beginCaptures": {
-				"1": {
-					"name": "variable.other.constant.ini"
-				},
-				"2": {
-					"name": "string.unquoted.ini"
-				},
-				"3": {
-					"name": "string.unquoted.ini"
-				}
-			},
-			"end": "(?!\\G)"
-		},
-		"weapon-types-turret": {
-			"match": "\\s*([a-zA-Z][\\w%]+)\\s*(\\=)(\\s*\\b(PRIMARY|SECONDARY|TERTIARY))+",
-			"captures": {
-				"1": {
-					"name": "variable.parameter"
-				},
-				"2": {
-					"name": "keyword.operator.assignment.ini"
-				}
-			},
-			"name": "variable.other.constant.ini"
-		},
-		"weapon-types": {
-			"begin": "(\\s*\\b(PRIMARY|SECONDARY|TERTIARY))\\s*",
-			"beginCaptures": {
-				"1": {
-					"name": "variable.other.constant.ini"
-				}
-			},
-			"end": "(?!\\G)",
-			"patterns": [
-				{
-					"include": "#inline-comment"
-				},
-				{
-					"include": "#string"
-				}
-			]
-		},
-		"string": {
-			"begin": "(^[ \\t]+)?(?=[a-zA-Z])",
+		"Object-UnitSpecificSounds": {
+			"begin": "(^[ \\t]+)?\\b(UnitSpecificSounds|UNITSPECIFICSOUNDS)\\b",
 			"beginCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
 				}
 			},
-			"end": "(?!\\G)",
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
 			"patterns": [
 				{
-					"match": "[a-zA-Z][ \\._a-zA-Z0-9:\\+\\-%]*",
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Object-WeaponSet": {
+			"begin": "(^[ \\t]+)?\\b(WeaponSet|WEAPONSET)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Object-ArmorSet": {
+			"begin": "(^[ \\t]+)?\\b(ArmorSet|ARMORSET)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Object-RemoveModule": {
+			"match": "(^[ \\t]+)?(RemoveModule)([ \\t]+)([a-zA-Z_][\\w]*)",
+			"captures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"4": {
+					"name": "storage.type.ini"
+				}
+			}
+		},
+		"Object-ClientUpdate": {
+			"begin": "(^[ \\t]+)?\\b([Cc]lient[Uu]pdate|CLIENTUPDATE)\\b([ \\t]*)(=)([ \\t]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"4": {
+					"name": "keyword.operator.assignment.ini"
+				},
+				"5": {
+					"name": "punctuation.whitespace.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#WhiteSpace"
+				},
+				{
+					"begin": "(?<==[ \\t]*)([a-zA-Z_]\\w*)",
+					"beginCaptures": {
+						"1": {
+							"name": "entity.name.function.ini"
+						}
+					},
+					"end": "$",
+					"patterns": [
+						{
+							"begin": "(?<==[ \\t]*[a-zA-Z]+[ \\t]+)([a-zA-Z_]\\w*)",
+							"beginCaptures": {
+								"1": {
+									"name": "storage.type.ini"
+								}
+							},
+							"end": "$",
+							"patterns": [
+								{
+									"include": "#Inline-Comment"
+								},
+								{
+									"match": "[^ \\t]+",
+									"name": "invalid.illegal.moduletag.ini"
+								}
+							]
+						},
+						{
+							"include": "#Inline-Comment"
+						},
+						{
+							"match": "[^ \\t]+",
+							"name": "invalid.illegal.moduletag.ini"
+						}
+					]
+				},
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				},
+				{
+					"match": "[^ \\t]+",
+					"name": "invalid.illegal.moduletag.ini"
+				}
+			]
+		},
+		"Object-BehaviorModule": {
+			"begin": "(^[ \\t]+)?\\b(Behavior|BEHAVIOR)\\b([ \\t]*)(=)([ \\t]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"4": {
+					"name": "keyword.operator.assignment.ini"
+				},
+				"5": {
+					"name": "punctuation.whitespace.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#WhiteSpace"
+				},
+				{
+					"begin": "(?<==[ \\t]*)([a-zA-Z_]\\w*)",
+					"beginCaptures": {
+						"1": {
+							"name": "entity.name.function.ini"
+						}
+					},
+					"end": "$",
+					"patterns": [
+						{
+							"begin": "(?<==[ \\t]*[a-zA-Z]+[ \\t]+)([a-zA-Z_]\\w*)",
+							"beginCaptures": {
+								"1": {
+									"name": "storage.type.ini"
+								}
+							},
+							"end": "$",
+							"patterns": [
+								{
+									"include": "#Inline-Comment"
+								},
+								{
+									"match": "[^ \\t]+",
+									"name": "invalid.illegal.moduletag.ini"
+								}
+							]
+						},
+						{
+							"include": "#Inline-Comment"
+						},
+						{
+							"match": "[^ \\t]+",
+							"name": "invalid.illegal.moduletag.ini"
+						}
+					]
+				},
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Behavior-Turret"
+				},
+				{
+					"include": "#Behavior-AttackAreaDecal"
+				},
+				{
+					"include": "#Behavior-TargetingReticleDecal"
+				},
+				{
+					"include": "#Behavior-GridDecalTemplate"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Behavior-GridDecalTemplate": {
+			"begin": "(^[ \\t]+)?\\b([Gg]rid[Dd]ecal[Tt]emplate)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"	
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b\\b([Ee]nd|END)\\b\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"	
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Behavior-TargetingReticleDecal": {
+			"begin": "(^[ \\t]+)?\\b([Tt]argeting[Rr]eticle[Dd]ecal)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"	
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b\\b([Ee]nd|END)\\b\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"	
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Behavior-AttackAreaDecal": {
+			"begin": "(^[ \\t]+)?\\b([Aa]ttack[Aa]rea[Dd]ecal)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"	
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b\\b([Ee]nd|END)\\b\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"	
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Behavior-Turret": {
+			"begin": "(^[ \\t]+)?\\b([Tt]urret|TURRET|[Aa]lt[Tt]urret|ALTTURRET)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"	
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"	
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Object-BodyModule": {
+			"begin": "(^[ \\t]+)?\\b(Body|BODY)\\b([ \\t]*)(=)([ \\t]*)([a-zA-Z]+)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"4": {
+					"name": "keyword.operator.assignment.ini"
+				},
+				"5": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"6": {
+					"name": "entity.name.function.ini"
+				}	
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#WhiteSpace"
+				},
+				{
+					"begin": "(?<=\\b([a-zA-Z]*Body)[ \\t]*)([a-zA-Z_]\\w*)",
+					"beginCaptures": {
+						"1": {
+							"name": "punctuation.whitespace.ini"
+						},
+						"2": {
+							"name": "storage.type.ini"
+						}
+					},
+					"end": "$",
+					"patterns": [
+						{
+							"comment": "Makes sure nothing can be written after the module tag"
+						},
+						{
+							"include": "#Inline-Comment"
+						},
+						{
+							"match": "[^ \\t]+",
+							"name": "invalid.illegal.moduletag.ini"
+						}
+					]
+				},
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"Object-DrawModule": {
+			"begin": "(^[ \\t]+)?\\b(Draw|DRAW)\\b([ \\t]*)(=)([ \\t]*)\\b(W|W3|W3D|W3D[a-zA-Z]*)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"4": {
+					"name": "keyword.operator.assignment.ini"
+				},
+				"5": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"6": {
+					"name": "entity.name.function.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#WhiteSpace"
+				},
+				{
+					"begin": "(?<=\\b(W3D\\w*)[ \\t]+)([a-zA-Z_]\\w*)",
+					"comment": "Checks if the previous word was W3D...[ \\t] then the next will be captured as the module tag",
+					"beginCaptures": {
+						"1": {
+							"name": "punctuation.whitespace.ini"
+						},
+						"2": {
+							"name": "storage.type.ini"
+						}
+					},
+					"end": "$",
+					"patterns": [
+						{
+							"comment": "Makes sure nothing can be written after the module tag"
+						},
+						{
+							"include": "#Inline-Comment"
+						},
+						{
+							"match": "[^ \\t]+",
+							"name": "invalid.illegal.moduletag.ini"
+						}
+					]
+				},
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#DrawModule-StateBlocks"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				},
+				{
+					"include": "#General-Assignment"
+				}
+			]
+		},
+		"Module-ModuleTag": {
+			"match": "[a-zA-Z]\\w*",
+			"name": "storage.type.ini"
+		},
+		"DrawModule-StateBlocks": {
+			"patterns": [
+				{
+					"include": "#DrawModule-TransitionState"
+				},
+				{
+					"include": "#DrawModule-ConditionState"
+				},
+				{
+					"include": "#DrawModule-DefaultConditionState"
+				}
+			]
+		},
+		"DrawModule-TransitionState": {
+			"begin": "(^[ \\t]+)?\\b(Transition[Ss]tate|transitionstate)\\b([ \\t]+)(=)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"4": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#WhiteSpace"
+				},
+				{
+					"begin": "(?<=(\\b(Transition[Ss]tate|transitionstate)\\b)[ \\t]+(=)[ \\t]+)",
+					"end": "$",
+					"patterns": [
+						{
+							"include": "#Inline-Comment"
+						},
+						{
+							"match": "[a-zA-Z_\\d]+",
+							"name": "variable.other.constant.ini"
+						},
+						{
+							"match": "[^ \\t]+",
+							"name": "invalid.illegal.transitionstate.ini"
+						}
+					]
+				}, 
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				},
+				{
+					"include": "#General-Assignment"
+				}
+			]
+		},
+		"DrawModule-ConditionState": {
+			"begin": "(^[ \\t]+)?\\b(Condition[Ss]tate|conditionstate)\\b([ \\t]+)(=)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"4": {
+					"name": "keyword.operator.assignment.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#WhiteSpace"
+				},
+				{
+					"begin": "(?<=(\\b(Condition[Ss]tate|conditionstate)\\b)[ \\t]+(=)[ \\t]+)",
+					"end": "$",
+					"patterns": [
+						{
+							"include": "#Inline-Comment"
+						},
+						{
+							"match": "[a-zA-Z_\\d]+",
+							"name": "variable.other.constant.ini"
+						},
+						{
+							"match": "[^ \\t]+",
+							"name": "invalid.illegal.conditionstate.ini"
+						}
+					]
+				}, 
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				},
+				{
+					"include": "#General-Assignment"
+				}
+			]
+		},
+		"DrawModule-DefaultConditionState": {
+			"begin": "(^[ \\t]+)?\\b(DefaultConditionState|defaultconditionstate)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#WhiteSpace"
+				},
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				},
+				{
+					"include": "#General-Assignment"
+				}
+			]
+		},
+		"Invalid-Assignment": {
+			"match": "(^[ \\t]+)?([^a-zA-Z_]\\w*)",
+			"captures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "invalid.illegal.assignment.ini"
+				}
+			}
+		},
+		"Locomotor-Assignment": {
+			"begin": "(^[ \\t]+)?\\b([Ll]ocomotor)\\b([ \\t]+)(=)([ \\t]+)([A-Z_]+)",
+			"captures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				},
+				"3": {
+					"name": "punctuation.whitespace.ini"	
+				},
+				"4": {
+					"name": "keyword.operator.assignment.ini"
+				},
+				"5": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"6": {
+					"name": "variable.other.constant.ini"
+				}
+			},
+			"end": "$",
+			"patterns": [
+				{
+					"include": "#WhiteSpace"
+				},
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"match": "[^a-zA-Z_]\\w*",
+					"name": "invalid.illegal.locomotortype.ini"
+				},
+				{
+					"include": "#String"
+				}
+			]
+		},
+		"General-Assignment": {
+			"begin": "(^[ \\t]+)?([a-zA-Z_][\\w%]*)",
+			"captures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "variable.name.ini"
+				}
+			},
+			"end": "$",
+			"patterns": [
+				{
+					"include": "#WhiteSpace"
+				},
+				{
+					"include": "#Equals"
+				},
+				{
+					"include": "#WeaponSlot-Keywords"
+				},
+				{
+					"include": "#Value"
+				}
+			]
+		},
+		"WeaponSlot-Keywords": {
+			"patterns": [
+				{
+					"match": "\\b(PRIMARY|SECONDARY|TERTIARY)\\b\\s*[!%#]",
+					"name": "invalid.illegal.assignment-keywords.ini"
+				},
+				{
+					"match": "\\b(PRIMARY|SECONDARY|TERTIARY)\\b",
+					"name": "variable.other.constant.ini"
+				}
+			]
+		},
+		"Value": {
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#Invalid-Value"
+				},
+				{
+					"include": "#Number"
+				},
+				{
+					"include": "#Boolean"
+				},
+				{
+					"include": "#String"
+				}
+			]
+		},
+		"Invalid-Value": {
+			"match": "[^a-zA-Z_\\d\\-\"'\\.:+].*",
+			"name": "invalid.illegal.value.ini"
+		},
+		"WhiteSpace": {
+			"match": "[ \\t]+",
+			"name": "punctuation.whitespace.ini"
+		},
+		"Equals": {
+			"match": "=",
+			"name": "keyword.operator.assignment.ini"
+		},
+		"String": {
+			"patterns": [
+				{
+					"match": "\".*?\"",
+					"name": "string.quoted.double.ini"
+				},
+				{
+					"match": "'.*?'",
+					"name": "string.quoted.single.ini"
+				},
+				{
+					"match": "[a-zA-Z_:\\.+][\\w\\\\]*",
 					"name": "string.unquoted.ini"
 				}
 			]
 		},
-		"doublequoted-strings": {
-			"name": "string.quoted.double.ini",
-			"begin": "\"",
-			"end": "\"",
+		"Number": {
 			"patterns": [
 				{
-					"name": "constant.character.escape.ini",
-					"match": "\\\\."
-				}
-			]
-		},
-		"numbers": {
-			"begin": "(^[ \\t]+)?(?=(-|\\.){0,2}\\d)",
-			"beginCaptures": {
-				"1": {
-					"name": "punctuation.whitespace.ini"
-				}
-			},
-			"end": "(?!\\G)",
-			"patterns": [
-				{
-					"include": "#double"
-				}
-			]
-		},
-		"double": {
-			"match": "-?( |\\d+\\.|\\.|\\d+|\\d+\\.\\d+|0|%)+",
-			"name": "constant.numeric.ini"
-		},
-		"boolean": {
-			"match": "\\b([Yy]es|[Nn]o|[Tt]rue|[Ff]alse)\\s*(?![a-zA-Z])",
-			"name": "constant.language.boolean.ini",
-			"patterns": [
-				{
-					"include": "#string"
-				}
-			]
-		},
-		"commandset-assignment": {
-			"begin": "\\s*(\\d|1[0-6])\\s*(=)\\s*",
-			"beginCaptures": {
-				"1": {
-					"name": "variable.parameter"
-				},
-				"2": {
-					"name": "keyword.operator.assignment.ini"
-				}
-			},
-			"end": "(?!\\G)",
-			"patterns": [
-				{
-					"include": "#string"
+					"match": "-?\\d+(\\.\\d+)?[%fF]?",
+					"name": "constant.numeric.ini"
 				},
 				{
-					"include": "#inline-comment"
+					"match": "-?\\.\\d+[fF]?",
+					"name": "constant.numeric.ini"
+				},
+				{
+					"match": "([xXYyZzRrGgBbAa]:)(-?\\d+(\\.\\d+)?)",
+					"captures": {
+						"1": {
+							"name": "string.unquoted.ini"
+						},
+						"2": {
+							"name": "constant.numeric.ini"
+						}
+					}
+				}
+			]	
+		},
+		"Boolean": {
+			"patterns": [
+				{
+					"include": "#WhiteSpace"
+				},
+				{
+					"match": "\\b([Tt]rue|TRUE|[Yy]es|YES)\\b",
+					"name": "constant.language.boolean.true.ini"
+				},
+				{
+					"match": "\\b([Ff]alse|FALSE|[Nn]o|NO)\\b",
+					"name": "constant.language.boolean.false.ini"
 				}
 			]
 		},
-		"inline-comment": {
-			"begin": "(^[ \\t]+)?(?=(;|//))",
+		"Inline-Comment": {
+			"begin": "((^[ \\t]+)|[ \\t]+)?(?=(;|//))",
 			"beginCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -1716,7 +3845,7 @@
 					"begin": ";",
 					"beginCaptures": {
 						"0": {
-							"name": "punctuation.definition.comment.ini"
+							"name": "comment.line.semicolon.ini"
 						}
 					},
 					"end": "\\n",
@@ -1726,7 +3855,7 @@
 					"begin": "//",
 					"beginCaptures": {
 						"0": {
-							"name": "punctuation.definition.comment.ini"
+							"name": "comment.line.double-slash.ini"
 						}
 					},
 					"end": "\\n",
