@@ -57,7 +57,147 @@
 				{ "include": "#Music-Class" },
 				{ "include": "#Road-Class" },
 				{ "include": "#Terrain-Class" },
-				{ "include": "#Video-Class" }
+				{ "include": "#Video-Class" },
+				{ "include": "#CommandMap-Class" },
+				{ "include": "#CrateData-Class" },
+				{ "include": "#LOD-Class" },
+				{ "include": "#MiscAudio-Class" }
+			]
+		},
+		"MiscAudio-Class": {
+			"begin": "(^[ \\t]+)?\\b([Mm]isc[Aa]udio)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"LOD-Class": {
+			"begin": "(^[ \\t]+)?\\b([Ss]tatic[Gg]ameLOD|[Dd]ynamic[Gg]ameLOD)\\b[ \\t]+(=)[ \\t]+\\b(Low|Medium|High|VeryHigh)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "keyword.operator.assignment.ini"
+				},
+				"4": {
+					"name": "variable.other.constant.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"CrateData-Class": {
+			"begin": "(^[ \\t]+)?\\b([Cc]rate[Dd]ata)\\b[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
+			]
+		},
+		"CommandMap-Class": {
+			"begin": "(^[ \\t]+)?\\b([Cc]ommand[Mm]ap)\\b[ \\t]+([a-zA-Z_][\\w%]*)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				},
+				"3": {
+					"name": "entity.name.type.class.ini"
+				}
+			},
+			"end": "(^[ \\t]+)?\\b([Ee]nd|END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.ini"
+				},
+				"2": {
+					"name": "keyword.control.ini"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#Inline-Comment"
+				},
+				{
+					"include": "#General-Assignment"
+				},
+				{
+					"include": "#Invalid-Assignment"
+				}
 			]
 		},
 		"Video-Class": {
