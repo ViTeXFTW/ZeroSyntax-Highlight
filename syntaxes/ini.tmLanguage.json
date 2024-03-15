@@ -9,9 +9,6 @@
 			"include": "#INI-Classes"
 		},
 		{
-			"include": "#General-Assignment"
-		},
-		{
 			"include": "#Invalid-Assignment"
 		},
 		{
