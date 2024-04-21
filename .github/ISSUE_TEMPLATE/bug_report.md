@@ -10,11 +10,6 @@ assignees: ''
 ### Subject of the issue
 Describe your issue here.
 
-### Your environment
-* version of angular-translate
-* version of angular
-* which browser and its version
-
 ### Steps to reproduce
 Tell us how to reproduce your issue
 
