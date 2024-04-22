@@ -3787,7 +3787,7 @@
 				},
 				{
 					"match": "[a-zA-Z_:\\.+][\\w\\\\]*",
-					"name": "string.unquoted.ini"
+					"name": "property.ini"
 				}
 			]
 		},
