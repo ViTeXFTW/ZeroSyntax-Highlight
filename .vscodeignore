@@ -3,3 +3,5 @@
 .gitignore
 vsc-extension-quickstart.md
 ./syntaxes/ini.tmLanguage-test.json
+./extension.js
+./extension.ts

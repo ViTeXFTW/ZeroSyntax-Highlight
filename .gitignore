@@ -1,1 +1,3 @@
 ./syntaxes/ini.tmLanguage-test.json
+./extension.js
+./extension.ts
