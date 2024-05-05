@@ -3566,7 +3566,7 @@
 			]
 		},
 		"DrawModule-ConditionState": {
-			"begin": "(^[ \\t]+)?\\b(Condition[Ss]tate|conditionstate)\\b([ \\t]+)(=)",
+			"begin": "(^[ \\t]+)?\\b(Condition[Ss]tate|conditionstate)\\b([ \\t]*)(=)?",
 			"beginCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.ini"
@@ -3595,7 +3595,7 @@
 					"include": "#WhiteSpace"
 				},
 				{
-					"begin": "(?<=(\\b(Condition[Ss]tate|conditionstate)\\b)[ \\t]+(=)[ \\t]+)",
+					"begin": "(?<=(\\b(Condition[Ss]tate|conditionstate)\\b)[ \\t]*(=)?[ \\t]+)",
 					"end": "$",
 					"patterns": [
 						{
@@ -3794,11 +3794,11 @@
 		"Number": {
 			"patterns": [
 				{
-					"match": "-?\\d+(\\.\\d+)?[%fF]?",
+					"match": "-?\\d+(\\.\\d+)?[%fF]?(?![\\w\\d\\.-])",
 					"name": "constant.numeric.ini"
 				},
 				{
-					"match": "-?\\.\\d+[fF]?",
+					"match": "-?\\.\\d+[fF]?(?![\\w\\d\\.-])",
 					"name": "constant.numeric.ini"
 				},
 				{
