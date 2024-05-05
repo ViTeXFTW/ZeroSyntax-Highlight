@@ -2,7 +2,17 @@
 
 All notable changes to the "ZH-HiLi" extension will be documented in this file.
 
-## [Unreleased]
+## [1.0.3]
+### Fixed
+- Object: Conditionstate now gets captured correctly even if there isn't an equal sign after it.
+- Property: Fixed issue where string starting with #f got captured as a number instead of a string.
+
+## [1.0.2]
+### Added
+- Misc: File with to many end statement now gets marked as illigal
+
+### Fixed
+- Misc: Updated string capture so that vscode built in completion works
 
 ## [1.0.0-beta.1]
 
@@ -14,8 +24,6 @@ All notable changes to the "ZH-HiLi" extension will be documented in this file.
 
 ### Changed
 - Misc Classes: Redesigned syntax capture file to use look ahead/behind.
-
-
 
 ## [0.2.0]
 
