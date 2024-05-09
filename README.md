@@ -21,7 +21,7 @@ The project will firstly focus on supporting map.ini files which works in the ba
 If you find any issues with the syntax highlighter, please create an issue on the [Github Page](https://github.com/ViTeXFTW/ZeroSyntax-Highlight/issues). This will help me to fix the issue and make the highlighter better. Please provide as much information as possible when creating an issue, this makes it much easier and more likely that the issue will be fixed.
 
 ## Contributing  
-If you want to contribute to the project, please take a look at the [CONTRIBUTING.md](./CONTRIBUTING.md) file.
+If you want to contribute to the project, please take a look at the [CONTRIBUTING.md](./CONTRIBUTING.md.md) file.
 
 ## Contributors
 
