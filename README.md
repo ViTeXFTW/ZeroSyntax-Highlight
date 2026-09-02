@@ -1,3 +1,5 @@
+# Depricated This extension is depricated in favour of [ZeroSyntaxV2](https://github.com/ViTeXFTW/ZeroSyntaxV2)
+
 ![Visual Studio Marketplace Downloads](https://img.shields.io/visual-studio-marketplace/d/ViTeXFTW.ZS-HiLi?style=for-the-badge)
 ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/ViTeXFTW/ZeroSyntax-Highlight?style=for-the-badge)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/ViTeXFTW/ZeroSyntax-Highlight?style=for-the-badge)
